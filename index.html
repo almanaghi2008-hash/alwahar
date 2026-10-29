@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام إدارة وتشغيل الغرف والمسابح والصيانة | منتجع الواحة السياحي - الحديدة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0f2c59;
+      --primary-light: #1e4986;
+      --secondary: #c5a059;
+      --secondary-light: #dfba73;
+      --dark: #1a1a2e;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --cyan: #06b6d4;
+      --cyan-dark: #0891b2;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-500: #64748b;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(15,44,89,0.12);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+    body { background-color: #f0f4f8; color: #334155; min-height: 100vh; display: flex; flex-direction: column; }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #0a1c38 100%);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow-md);
+      border-bottom: 3px solid var(--secondary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand i { font-size: 2rem; color: var(--secondary); }
+    .brand-title h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.3px; }
+    .brand-title p { font-size: 0.8rem; color: var(--secondary-light); }
+    
+    .role-switcher {
+      display: flex;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 4px;
+      border-radius: 30px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .role-btn {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      padding: 8px 13px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.83rem;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .role-btn.active, .role-btn:hover {
+      background: var(--secondary);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(197, 160, 89, 0.4);
+    }
+    .role-btn.pool-tab.active {
+      background: var(--cyan);
+      color: var(--white);
+      box-shadow: 0 2px 8px rgba(6, 182, 212, 0.4);
+    }
+    
+    main {
+      flex: 1;
+      max-width: 1350px;
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+    .view-section { display: none; animation: fadeIn 0.3s ease; }
+    .view-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .kpi-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      border-right: 4px solid var(--primary);
+      transition: transform 0.2s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); }
+    .kpi-info p { font-size: 0.82rem; color: var(--gray-500); font-weight: 700; }
+    .kpi-info h2 { font-size: 1.7rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
+    .kpi-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+    
+    .content-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+    }
+    .content-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--gray-100);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .content-header h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.85rem; font-weight: 700; color: var(--dark); }
+    .form-control {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+      font-size: 0.9rem;
+      background: #fafbfc;
+      transition: all 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(15,44,89,0.1);
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-light); }
+    .btn-secondary { background: var(--secondary); color: var(--primary); }
+    .btn-secondary:hover { background: var(--secondary-light); }
+    .btn-success { background: var(--success); color: var(--white); }
+    .btn-danger { background: var(--danger); color: var(--white); }
+    .btn-cyan { background: var(--cyan); color: var(--white); }
+    .btn-cyan:hover { background: var(--cyan-dark); }
+    .btn-sm { padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; }
+    
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .room-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1rem;
+      position: relative;
+      border-top: 5px solid var(--gray-500);
+      transition: all 0.2s;
+    }
+    .room-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .room-card.occupied { border-top-color: var(--primary); }
+    .room-card.vacant { border-top-color: var(--success); }
+    .room-card.checkout { border-top-color: var(--warning); }
+    .room-card.maintenance { border-top-color: var(--danger); }
+    
+    .pool-card {
+      background: var(--white);
+      border: 1px solid #cffafe;
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      position: relative;
+      border-top: 5px solid var(--cyan);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+    .pool-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .pool-card.ready { border-top-color: var(--success); }
+    .pool-card.working { border-top-color: var(--warning); }
+    .pool-card.out { border-top-color: var(--danger); }
+    
+    .room-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .room-number { font-size: 1.25rem; font-weight: 800; color: var(--primary); }
+    .room-type {
+      font-size: 0.75rem;
+      background: var(--gray-100);
+      padding: 3px 8px;
+      border-radius: 20px;
+      color: var(--gray-500);
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .badge-primary { background: #e0e7ff; color: #3730a3; }
+    .badge-success { background: #dcfce7; color: #166534; }
+    .badge-warning { background: #fef3c7; color: #92400e; }
+    .badge-danger { background: #fee2e2; color: #991b1b; }
+    .badge-cyan { background: #cffafe; color: #0e7490; }
+    
+    .room-detail {
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .room-actions {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--gray-200);
+      display: flex;
+      gap: 6px;
+    }
+    
+    .table-container { overflow-x: auto; max-height: 520px; }
+    table { width: 100%; border-collapse: collapse; text-align: right; }
+    th {
+      background: var(--gray-100);
+      color: var(--dark);
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-bottom: 2px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    td {
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--gray-200);
+      vertical-align: middle;
+    }
+    tr:hover { background: #f8fafc; }
+    
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: var(--gray-100);
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .checklist-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin: 10px 0;
+    }
+    
+    .notice-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1e40af;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .notice-box.cyan {
+      background: #ecfeff;
+      border-color: #a5f3fc;
+      color: #0e7490;
+    }
+    
+    footer {
+      background: var(--dark);
+      color: #94a3b8;
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.85rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    @media (max-width: 768px) {
+      .header-container { flex-direction: column; text-align: center; }
+      .role-switcher { width: 100%; overflow-x: auto; justify-content: center; }
+      .role-btn { padding: 6px 10px; font-size: 0.76rem; }
+    }
+  
+    /* DATE & TIME BADGE */
+    .header-datetime {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #f8fafc;
+      font-weight: 700;
+    }
+    .header-datetime i { color: var(--secondary); }
+
+    /* AUTHENTICATION STATUS & MODAL */
+    .auth-bar {
+      background: #0b1f3d;
+      color: #cbd5e1;
+      padding: 6px 1.5rem;
+      font-size: 0.82rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .auth-user-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+    .auth-user-badge {
+      background: var(--secondary);
+      color: var(--primary);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+    .btn-logout {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid var(--danger);
+      color: #fca5a5;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .btn-logout:hover {
+      background: var(--danger);
+      color: var(--white);
+    }
+
+    /* LOGIN MODAL */
+    .login-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 28, 56, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .login-modal-overlay.active { display: flex; }
+    .login-box {
+      background: var(--white);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 440px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border-top: 6px solid var(--secondary);
+      animation: modalScale 0.25s ease;
+      text-align: center;
+    }
+    .login-box h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .login-box p {
+      color: var(--gray-500);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .credentials-hint {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 1.25rem;
+      font-size: 0.78rem;
+      color: #475569;
+      text-align: right;
+      line-height: 1.6;
+      border-right: 3px solid var(--secondary);
+    }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="auth-bar">
+    <div class="header-container" style="padding:0; margin:0 auto; width:100%;">
+      <div class="auth-user-info">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>الحساب النشط:</span>
+        <span class="auth-user-badge" id="current-user-display">المدير العام (نشط)</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="header-datetime" id="live-header-datetime">
+          <i class="fa-regular fa-clock"></i>
+          <span id="live-datetime-text">جاري التحميل...</span>
+        </div>
+        <button class="btn-logout" onclick="lockCurrentSession()"><i class="fa-solid fa-lock"></i> قفل الواجهة / تسجيل خروج</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <div class="brand-title">
+          <h1>منتجع الواحة السياحي - الحديدة</h1>
+          <p>نظام التشغيل وإدارة الغرف (65 غرفة) والمسابح (10 مسابح) والصيانة</p>
+        </div>
+      </div>
+
+      <div class="role-switcher">
+        <button class="role-btn active" onclick="switchRole('manager')">
+          <i class="fa-solid fa-chart-pie"></i> المدير العام
+        </button>
+        <button class="role-btn" onclick="switchRole('supervisor')">
+          <i class="fa-solid fa-user-tie"></i> المشرف
+        </button>
+        <button class="role-btn" onclick="switchRole('housekeeping')">
+          <i class="fa-solid fa-broom"></i> عامل الخدمات
+        </button>
+        <button class="role-btn" onclick="switchRole('maintenance')">
+          <i class="fa-solid fa-screwdriver-wrench"></i> موظف الصيانة
+        </button>
+        <button class="role-btn pool-tab" onclick="switchRole('pools')">
+          <i class="fa-solid fa-water-ladder"></i> قسم المسابح (10)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 1. المدير العام -->
+    <div id="view-manager" class="view-section active">
+      <div class="kpi-grid">
+        <div class="kpi-card" style="border-right-color: var(--primary);">
+          <div class="kpi-info"><p>إجمالي الغرف</p><h2 id="kpi-total-rooms">65</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-hotel"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: #3b82f6;">
+          <div class="kpi-info"><p>الغرف المشغولة</p><h2 id="kpi-occupied-rooms">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-bed"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--success);">
+          <div class="kpi-info"><p>نسبة الإشغال</p><h2 id="kpi-occupancy-rate">0%</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-percent"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--warning);">
+          <div class="kpi-info"><p>مغادرة اليوم</p><h2 id="kpi-checkout-rooms">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-person-walking-arrow-right"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--cyan);">
+          <div class="kpi-info"><p>المسابح الجاهزة</p><h2 id="kpi-pools-ready">0 / 10</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--danger);">
+          <div class="kpi-info"><p>صيانة الغرف الجارية</p><h2 id="kpi-maint-open">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        </div>
+      </div>
+
+      <!-- تقرير ملخص المسابح السريع للمدير -->
+      <div class="content-box" style="border-right: 4px solid var(--cyan);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i> تقرير ومتابعة جاهزية المسابح (10 مسابح)</h3>
+          <button class="btn btn-cyan btn-sm" onclick="switchRole('pools')"><i class="fa-solid fa-arrow-left"></i> الانتقال لواجهة المسابح</button>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>المسبح</th>
+                <th>التصنيف</th>
+                <th>الحالة الحالية</th>
+                <th>آخر أعمال نُفذت</th>
+                <th>الفني المسؤول</th>
+                <th>توقيت التحديث</th>
+              </tr>
+            </thead>
+            <tbody id="manager-pools-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- تقرير الغرف -->
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-list-check"></i> كشف حالة الغرف الفوري - منتجع الواحة بالحديدة (65 وحدة)</h3>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-secondary btn-sm" onclick="resetToOfficialRooms()"><i class="fa-solid fa-rotate"></i> تحديث قائمة الغرف الـ 65</button>
+            <button class="btn btn-primary btn-sm" onclick="exportData()"><i class="fa-solid fa-download"></i> تصدير البيانات</button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم الغرفة</th>
+                <th>نوع الوحدة</th>
+                <th>الطابق / القسم</th>
+                <th>حالة الإشغال</th>
+                <th>اسم النزيل</th>
+                <th>المغادرة</th>
+                <th>جاهزية النظافة</th>
+                <th>حالة الصيانة</th>
+              </tr>
+            </thead>
+            <tbody id="manager-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- تقرير الصيانة -->
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-screwdriver-wrench"></i> تقرير بلاغات وأعمال الصيانة المنجزة والجارية</h3>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم البلاغ</th>
+                <th>رقم الغرفة</th>
+                <th>وصف العطل</th>
+                <th>درجة الأهمية</th>
+                <th>فني الصيانة المنفذ</th>
+                <th>الحالة</th>
+                <th>تقرير ما تم إنجازه وإصلاحه</th>
+              </tr>
+            </thead>
+            <tbody id="manager-maint-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. المشرف -->
+    <div id="view-supervisor" class="view-section">
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-user-pen"></i> تسجيل وتحديث حالة الغرفة (المشرف)</h3>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>اختر رقم الغرفة (جميع الـ 65 غرفة كاملة)</label>
+            <select id="sup-room-select" class="form-control" onchange="autoFillSupervisorRoom()"></select>
+          </div>
+          <div class="form-group">
+            <label>حالة الإشغال</label>
+            <select id="sup-occ-status" class="form-control">
+              <option value="مشغولة">مشغولة (نزيل حالي)</option>
+              <option value="شاغرة">شاغرة (جاهزة للحجز)</option>
+              <option value="مغادرة اليوم">مغادرة اليوم (تحتاج تنظيف)</option>
+              <option value="تحت الصيانة">تحت الصيانة</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>اسم النزيل</label>
+            <input type="text" id="sup-guest-name" class="form-control" placeholder="اسم النزيل">
+          </div>
+          <div class="form-group">
+            <label>تاريخ المغادرة المتوقع</label>
+            <input type="date" id="sup-checkout-date" class="form-control">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="saveSupervisorRoomUpdate()"><i class="fa-solid fa-floppy-disk"></i> حفظ تحديث الغرفة</button>
+      </div>
+
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-bell"></i> إرسال بلاغ صيانة مباشر لموظف الصيانة</h3>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>رقم الغرفة التي بها عطل</label>
+            <select id="sup-maint-room" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label>درجة الأهمية</label>
+            <select id="sup-maint-prio" class="form-control">
+              <option value="عاجل">عاجل جداً (خلل يؤثر على النزيل)</option>
+              <option value="متوسط">متوسط (خلل غير حرج)</option>
+              <option value="طبيعي">طبيعي (صيانة روتينية وقائية)</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label>وصف العطل بدقة</label>
+            <input type="text" id="sup-maint-desc" class="form-control" placeholder="مثال: ضعف تبريد المكيف، تسريب في مياه الحمام، عطل لمبة...">
+          </div>
+        </div>
+        <button class="btn btn-secondary" onclick="createMaintenanceTicket()"><i class="fa-solid fa-paper-plane"></i> إرسال البلاغ فوراً لموظف الصيانة</button>
+      </div>
+
+      <div class="content-header" style="margin-top: 1rem;">
+        <h3><i class="fa-solid fa-grid-horizontal"></i> خريطة غرف ووحدات منتجع الواحة (65 غرفة كاملة)</h3>
+      </div>
+      <div class="rooms-grid" id="supervisor-rooms-grid"></div>
+    </div>
+
+    <!-- 3. عامل الخدمات -->
+    <div id="view-housekeeping" class="view-section">
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-clipboard-check"></i> تشييك وتجهيز الغرفة بعد مغادرة النزيل</h3>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>حدد رقم الغرفة المراد تشييكها</label>
+            <select id="hk-room-select" class="form-control" onchange="loadHousekeepingStatus()"></select>
+          </div>
+          <div class="form-group">
+            <label>اسم عامل الخدمات</label>
+            <input type="text" id="hk-staff-name" class="form-control" value="علي محمد">
+          </div>
+        </div>
+
+        <h4 style="margin: 1rem 0 0.5rem 0; font-size: 0.95rem; color: var(--primary);">قائمة الفحص والتشييك المعتمدة بالمنتجع:</h4>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk-bed">
+          <label for="chk-bed">تم استبدال بياضات الأسرة والشراشف والمناشف المعقمة بالكامل</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk-bath">
+          <label for="chk-bath">تنظيف وتعقيم الحمام، وتوفير مستلزمات النظافة والصابون</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk-fridge">
+          <label for="chk-fridge">تشييك الثلاجة، نظافتها، وإعادة تعبئة مياه الشرب والضيافة</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk-furniture">
+          <label for="chk-furniture">سلامة الأجهزة والتأكد من عدم وجود مفقودات للنزيل</label>
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label>ملاحظات عامل الخدمات (أو توثيق مفقودات)</label>
+          <input type="text" id="hk-notes" class="form-control" placeholder="اكتب أي ملاحظة إن وجدت">
+        </div>
+
+        <div style="margin-top: 1.25rem; display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="markRoomCleanReady()"><i class="fa-solid fa-check-double"></i> اعتماد: الغرفة نظيفة وجاهزة للتسكين</button>
+          <button class="btn btn-secondary" onclick="markRoomUnderClean()"><i class="fa-solid fa-spinner"></i> جاري العمل والتجهيز</button>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-bell-concierge"></i> الغرف التي تتطلب تنظيف وتجهيز فوري</h3>
+        </div>
+        <div class="rooms-grid" id="hk-rooms-grid"></div>
+      </div>
+    </div>
+
+    <!-- 4. موظف الصيانة -->
+    <div id="view-maintenance" class="view-section">
+      <div class="content-box" style="border: 2px solid var(--secondary);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-toolbox"></i> واجهة تسجيل وتوثيق ما تم إصلاحه (موظف الصيانة)</h3>
+          <span class="badge badge-primary">تسجيل الإنجاز الفوري</span>
+        </div>
+
+        <div class="notice-box">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>يمكنك اختيار الغرفة أو البلاغ مباشرة من الـ 65 غرفة، وتدوين ما تم إصلاحه لغلق البلاغ وتحديث حالة الغرفة فوراً عند المدير والمشرف.</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>اختر رقم الغرفة المراد تسجيل إصلاحها</label>
+            <select id="tech-room-select" class="form-control" onchange="autoLoadRoomTicketInfo()"></select>
+          </div>
+          <div class="form-group">
+            <label>اسم فني الصيانة القائم بالإصلاح</label>
+            <input type="text" id="tech-worker-name" class="form-control" value="م. طارق حسن">
+          </div>
+          <div class="form-group">
+            <label>حالة الصيانة والإصلاح</label>
+            <select id="tech-repair-status" class="form-control">
+              <option value="تم الإصلاح بنجاح">تم الإصلاح بنجاح (جاهزة وسليمة 100%)</option>
+              <option value="قيد التنفيذ">قيد التنفيذ (جاري العمل عليها)</option>
+              <option value="معلق لقطع غيار">معلق (بانتظار توفير قطع غيار)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>تاريخ وتوقيت الإصلاح</label>
+            <input type="text" id="tech-repair-date" class="form-control" readonly>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label>تفاصيل ما تم تنفيذه من إصلاح وقطع الغيار المستبدلة</label>
+          <textarea id="tech-repair-details" class="form-control" rows="3" placeholder="اكتب بالتفصيل: مثلاً (تم تنظيف فلاتر المكيف وتعبئة الغاز، تم استبدال خلاط الحمام بقطعة جديدة، تم فحص الإنارة والتأكد من السلامة...)"></textarea>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-success" onclick="saveDirectMaintenanceRecord()"><i class="fa-solid fa-circle-check"></i> حفظ واعتماد الإصلاح رسمياً</button>
+          <button class="btn btn-secondary" onclick="clearTechForm()"><i class="fa-solid fa-eraser"></i> مسح الخانات</button>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-list-ol"></i> البلاغات المفتوحة والمحولة من المشرف</h3>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم البلاغ</th>
+                <th>الغرفة</th>
+                <th>وصف العطل</th>
+                <th>درجة الأهمية</th>
+                <th>الحالة الحالية</th>
+                <th>الملاحظات السابقة</th>
+                <th>إجراء سريع</th>
+              </tr>
+            </thead>
+            <tbody id="technician-maint-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. واجهة المسابح المتكاملة (جديدة) -->
+    <div id="view-pools" class="view-section">
+      
+      <!-- إحصائيات المسابح -->
+      <div class="kpi-grid">
+        <div class="kpi-card" style="border-right-color: var(--cyan);">
+          <div class="kpi-info"><p>إجمالي مسابح المنتجع</p><h2>10</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--success);">
+          <div class="kpi-info"><p>جاهزة للاستخدام</p><h2 id="kpi-pool-ready-count">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-circle-check" style="color:var(--success);"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--warning);">
+          <div class="kpi-info"><p>قيد العمل والتنظيف</p><h2 id="kpi-pool-work-count">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-arrows-rotate" style="color:var(--warning);"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--danger);">
+          <div class="kpi-info"><p>خارج الخدمة / صيانة</p><h2 id="kpi-pool-out-count">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-ban" style="color:var(--danger);"></i></div>
+        </div>
+      </div>
+
+      <!-- نموذج تسجيل أعمال المسبح -->
+      <div class="content-box" style="border: 2px solid var(--cyan);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i> تسجيل ومتابعة أعمال المسبح اليومية</h3>
+          <span class="badge badge-cyan">إشراف وتشغيل المسابح</span>
+        </div>
+
+        <div class="notice-box cyan">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>حدد المسبح واختر الأعمال التي تمت (فلترة المياه، تنظيف الحوض، تفريغ المياه، صيانة دورية) واعتمد حالته لتظهر فوراً في شاشة الإدارة.</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>اختر المسبح</label>
+            <select id="pool-select" class="form-control" onchange="autoLoadPoolData()">
+              <option value="P-A">مسبح A (رئيسي / عام)</option>
+              <option value="P-B">مسبح B (عائلي)</option>
+              <option value="P-C">مسبح C (أطفال)</option>
+              <option value="P-CH1">مسبح شاليه 1</option>
+              <option value="P-CH2">مسبح شاليه 2</option>
+              <option value="P-CH3">مسبح شاليه 3</option>
+              <option value="P-CH4">مسبح شاليه 4</option>
+              <option value="P-CH5">مسبح شاليه 5</option>
+              <option value="P-CH6">مسبح شاليه 6</option>
+              <option value="P-CLUB">مسبح النادي (الرياضي)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>اسم المسؤول / الفني المنفذ</label>
+            <input type="text" id="pool-staff-name" class="form-control" value="م. سالم اليافعي">
+          </div>
+          <div class="form-group">
+            <label>حالة المسبح النهائية</label>
+            <select id="pool-status-select" class="form-control">
+              <option value="جاهز للاستخدام">جاهز للاستخدام (نظيف ومعقم 100%)</option>
+              <option value="قيد العمل والتنظيف">قيد العمل والتنظيف / جاري التعبئة</option>
+              <option value="خارج الخدمة مؤقتاً">خارج الخدمة مؤقتاً (تحت الصيانة)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>تاريخ وتوقيت التنفيذ</label>
+            <input type="text" id="pool-work-date" class="form-control" readonly>
+          </div>
+        </div>
+
+        <h4 style="margin: 1.25rem 0 0.5rem 0; font-size: 0.95rem; color: var(--primary);">
+          <i class="fa-solid fa-list-check"></i> حدد الأعمال التي تم تنفيذها في المسبح:
+        </h4>
+        
+        <div class="checklist-grid">
+          <div class="checklist-item">
+            <input type="checkbox" id="chk-pool-filter">
+            <label for="chk-pool-filter"><strong>فلترة المياه</strong> (تشغيل مضخات وفلاتر التنقية)</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk-pool-clean">
+            <label for="chk-pool-clean"><strong>تنظيف حوض المسبح</strong> (شفط الرواسب، كنس وجلي الجدران والأرضية)</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk-pool-drain">
+            <label for="chk-pool-drain"><strong>تفريغ المياه</strong> (إفراغ الحوض بالكامل للتجديد أو الصيانة)</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="chk-pool-maint">
+            <label for="chk-pool-maint"><strong>صيانة دورية</strong> (فحص المضخات، الإنارة، المحابس، والكلور/الكيماويات)</label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem; margin-bottom: 1.25rem;">
+          <label>ملاحظات إضافية (نسبة الكلور / جودة المياه / قطع تم استبدالها)</label>
+          <input type="text" id="pool-work-notes" class="form-control" placeholder="اكتب أي ملاحظة إن وجدت...">
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-cyan" onclick="savePoolWorkRecord()"><i class="fa-solid fa-floppy-disk"></i> حفظ واعتماد حالة المسبح</button>
+          <button class="btn btn-secondary" onclick="resetPoolCheckboxes()"><i class="fa-solid fa-rotate-left"></i> تفريغ الخيارات</button>
+        </div>
+      </div>
+
+      <!-- كروت المسابح التفاعلية الـ 10 -->
+      <div class="content-header" style="margin-top: 1rem;">
+        <h3><i class="fa-solid fa-grip"></i> حالة مسابح منتجع الواحة (10 مسابح)</h3>
+      </div>
+      <div class="rooms-grid" id="pools-cards-grid"></div>
+
+      <!-- سجل عمليات المسابح -->
+      <div class="content-box" style="margin-top: 1.5rem;">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-clock-rotate-left"></i> سجل عمليات وأعمال صيانة ونظافة المسابح</h3>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>المسبح</th>
+                <th>التصنيف</th>
+                <th>الأعمال المنفذة</th>
+                <th>الحالة</th>
+                <th>المسؤول</th>
+                <th>التاريخ والوقت</th>
+                <th>ملاحظات</th>
+              </tr>
+            </thead>
+            <tbody id="pools-log-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- نافذة تسجيل الدخول وحماية الواجهات -->
+  <div class="login-modal-overlay" id="loginModal">
+    <div class="login-box">
+      <i class="fa-solid fa-lock" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.75rem;"></i>
+      <h3 id="loginModalTitle">تسجيل الدخول للواجهة</h3>
+      <p id="loginModalSubtitle">أدخل اسم المستخدم وكلمة المرور الخاصة بهذه الصلاحية</p>
+      
+      <div class="form-group" style="text-align: right; margin-bottom: 1rem;">
+        <label>اسم المستخدم</label>
+        <input type="text" id="loginUsername" class="form-control" placeholder="اسم المستخدم">
+      </div>
+      <div class="form-group" style="text-align: right; margin-bottom: 1.25rem;">
+        <label>كلمة المرور</label>
+        <input type="password" id="loginPassword" class="form-control" placeholder="كلمة المرور">
+      </div>
+      
+      <div id="loginError" style="display:none; color:var(--danger); font-size:0.82rem; font-weight:700; margin-bottom:1rem;">
+        <i class="fa-solid fa-circle-exclamation"></i> اسم المستخدم أو كلمة المرور غير صحيحة!
+      </div>
+      
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-primary" style="flex:1;" onclick="processLogin()"><i class="fa-solid fa-right-to-bracket"></i> دخول</button>
+        <button class="btn btn-secondary" onclick="cancelLogin()"><i class="fa-solid fa-xmark"></i> إلغاء</button>
+      </div>
+
+      <div class="credentials-hint">
+        <strong>🔑 بيانات الدخول الافتراضية للواجهات:</strong><br>
+        • <strong>المدير العام:</strong> admin / <code>1234</code><br>
+        • <strong>المشرف:</strong> supervisor / <code>1122</code><br>
+        • <strong>عامل الخدمات:</strong> clean / <code>3344</code><br>
+        • <strong>موظف الصيانة:</strong> tech / <code>5566</code><br>
+        • <strong>قسم المسابح:</strong> pool / <code>7788</code>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>جميع الحقوق محفوظة &copy; 2026 منتجع الواحة السياحي - الحديدة | نظام إدارة الغرف الفندقية والمسابح والصيانة المتكامل</p>
+  </footer>
+
+  <script>
+    const roleCredentials = {
+      manager: { user: "admin", pass: "1234", title: "المدير العام", icon: "fa-chart-pie" },
+      supervisor: { user: "supervisor", pass: "1122", title: "المشرف", icon: "fa-user-tie" },
+      housekeeping: { user: "clean", pass: "3344", title: "عامل الخدمات", icon: "fa-broom" },
+      maintenance: { user: "tech", pass: "5566", title: "موظف الصيانة", icon: "fa-screwdriver-wrench" },
+      pools: { user: "pool", pass: "7788", title: "قسم المسابح", icon: "fa-water-ladder" }
+    };
+
+    let authenticatedRole = localStorage.getItem("alwaha_auth_role") || "manager";
+    let pendingRoleSwitch = null;
+
+    function updateLiveDateTime() {
+      const now = new Date();
+      const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+      const dayName = days[now.getDay()];
+      const datePart = now.toLocaleDateString("ar-YE", { year: "numeric", month: "long", day: "numeric" });
+      const timePart = now.toLocaleTimeString("ar-YE", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      
+      const fullText = `${dayName}، ${datePart} | ${timePart}`;
+      const el = document.getElementById("live-datetime-text");
+      if (el) el.textContent = fullText;
+
+      const techDate = document.getElementById("tech-repair-date");
+      if (techDate) techDate.value = `${datePart} - ${timePart}`;
+      const poolDate = document.getElementById("pool-work-date");
+      if (poolDate) poolDate.value = `${datePart} - ${timePart}`;
+    }
+    setInterval(updateLiveDateTime, 1000);
+
+    function updateAuthDisplay() {
+      const display = document.getElementById("current-user-display");
+      if (display && roleCredentials[authenticatedRole]) {
+        display.textContent = `${roleCredentials[authenticatedRole].title} (نشط)`;
+      }
+    }
+
+    function switchRole(role) {
+      if (authenticatedRole === "manager" || authenticatedRole === role) {
+        applyRoleSwitch(role);
+      } else {
+        pendingRoleSwitch = role;
+        document.getElementById("loginModalTitle").textContent = `دخول إلى واجهة: ${roleCredentials[role].title}`;
+        document.getElementById("loginUsername").value = roleCredentials[role].user;
+        document.getElementById("loginPassword").value = "";
+        document.getElementById("loginError").style.display = "none";
+        document.getElementById("loginModal").classList.add("active");
+        setTimeout(() => document.getElementById("loginPassword").focus(), 150);
+      }
+    }
+
+    function applyRoleSwitch(role) {
+      document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+      
+      const activeBtn = Array.from(document.querySelectorAll('.role-btn')).find(b => b.getAttribute('onclick').includes(role));
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      document.getElementById('view-' + role).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function processLogin() {
+      const u = document.getElementById("loginUsername").value.trim();
+      const p = document.getElementById("loginPassword").value.trim();
+      const targetRole = pendingRoleSwitch || "manager";
+
+      if ((u === roleCredentials[targetRole].user && p === roleCredentials[targetRole].pass) ||
+          (u === roleCredentials.manager.user && p === roleCredentials.manager.pass)) {
+        
+        authenticatedRole = (u === roleCredentials.manager.user) ? "manager" : targetRole;
+        localStorage.setItem("alwaha_auth_role", authenticatedRole);
+        updateAuthDisplay();
+        
+        document.getElementById("loginModal").classList.remove("active");
+        applyRoleSwitch(targetRole);
+        pendingRoleSwitch = null;
+      } else {
+        document.getElementById("loginError").style.display = "block";
+      }
+    }
+
+    function cancelLogin() {
+      document.getElementById("loginModal").classList.remove("active");
+      pendingRoleSwitch = null;
+    }
+
+    function lockCurrentSession() {
+      authenticatedRole = null;
+      localStorage.removeItem("alwaha_auth_role");
+      document.getElementById("current-user-display").textContent = "تم قفل الجلسة";
+      switchRole("manager");
+    }
+
+    const officialRooms = [
+      { "id": 1, "type": "شاليه / جناح أرضي", "floor": "الشاليهات / الطابق الأرضي", "occ": "مشغولة", "guest": "محمد سالم", "checkout": "2026-10-30", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 2, "type": "شاليه / جناح أرضي", "floor": "الشاليهات / الطابق الأرضي", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 3, "type": "شاليه / جناح أرضي", "floor": "الشاليهات / الطابق الأرضي", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 4, "type": "شاليه / جناح أرضي", "floor": "الشاليهات / الطابق الأرضي", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 5, "type": "شاليه / جناح أرضي", "floor": "الشاليهات / الطابق الأرضي", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 6, "type": "شاليه / جناح أرضي", "floor": "الشاليهات / الطابق الأرضي", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 101, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "مشغولة", "guest": "أحمد المنصوري", "checkout": "2026-10-31", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 102, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "مشغولة", "guest": "خالد العتيبي", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "تحتاج صيانة" },
+      { "id": 103, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 104, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 130, "type": "جناح / شاليه أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 131, "type": "جناح / شاليه أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 132, "type": "جناح / شاليه أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 133, "type": "جناح / شاليه أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 134, "type": "جناح / شاليه أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 135, "type": "جناح / شاليه أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 201, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "مغادرة اليوم", "guest": "عبدالله القحطاني", "checkout": "-", "clean": "تحتاج تنظيف بعد مغادرة", "maint": "سليمة" },
+      { "id": 202, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 203, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 204, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 210, "type": "جناح فندقي", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 220, "type": "جناح فندقي", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 230, "type": "جناح فندقي", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 231, "type": "جناح فندقي", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 233, "type": "جناح فندقي", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 234, "type": "جناح فندقي", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 301, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 302, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 303, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 304, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 310, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 311, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 312, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 313, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 314, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 315, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 316, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 317, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 320, "type": "غرفة / جناح", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 401, "type": "غرفة فاخرة", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 402, "type": "غرفة فاخرة", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 403, "type": "غرفة فاخرة", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 404, "type": "غرفة فاخرة", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 410, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 411, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 412, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 413, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 414, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 415, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 416, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 417, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 420, "type": "جناح ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 501, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 502, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 503, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 504, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 510, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 511, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 512, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 513, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 514, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 515, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 516, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 517, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" },
+      { "id": 520, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "نظيفة وجاهزة", "maint": "سليمة" }
+    ];
+
+    const defaultTickets = [
+      { id: "T-101", room: 102, desc: "ضعف تبريد مكيف الغرفة", prio: "عاجل", status: "قيد التنفيذ", tech: "م. طارق حسن", notes: "تم فحص الفريون وجاري استبدال الفلاتر" },
+      { id: "T-102", room: 202, desc: "تسريب مياه أسفل مغسلة الحمام", prio: "طبيعي", status: "قيد التنفيذ", tech: "م. عمر السعيد", notes: "جاري تغيير المحابس" },
+      { id: "T-103", room: 302, desc: "عطل بالثلاجة الصغيرة", prio: "متوسط", status: "جديد - لم يبدأ", tech: "لم يعين", notes: "بانتظار الفحص" }
+    ];
+
+    const officialPools = [
+      { "id": "P-A", "name": "مسبح A", "type": "مسبح عام / رئيسي", "status": "جاهز للاستخدام", "last_work": "فلترة المياه وتنظيف الحوض", "tech": "م. سالم اليافعي", "date": "2026-10-28 16:30" },
+      { "id": "P-B", "name": "مسبح B", "type": "مسبح عائلي", "status": "جاهز للاستخدام", "last_work": "فلترة المياه", "tech": "علي عثمان", "date": "2026-10-28 14:00" },
+      { "id": "P-C", "name": "مسبح C", "type": "مسبح أطفال", "status": "جاهز للاستخدام", "last_work": "تنظيف حوض المسبح", "tech": "علي عثمان", "date": "2026-10-28 10:15" },
+      { "id": "P-CH1", "name": "مسبح شاليه 1", "type": "مسبح خاص (شاليه 1)", "status": "جاهز للاستخدام", "last_work": "فلترة المياه وتعديل الكلور", "tech": "كمال الدين", "date": "2026-10-28 09:30" },
+      { "id": "P-CH2", "name": "مسبح شاليه 2", "type": "مسبح خاص (شاليه 2)", "status": "قيد العمل والتنظيف", "last_work": "تفريغ المياه وإعادة التعبئة", "tech": "سعيد مبروك", "date": "2026-10-28 17:00" },
+      { "id": "P-CH3", "name": "مسبح شاليه 3", "type": "مسبح خاص (شاليه 3)", "status": "جاهز للاستخدام", "last_work": "فلترة المياه", "tech": "كمال الدين", "date": "2026-10-27 18:00" },
+      { "id": "P-CH4", "name": "مسبح شاليه 4", "type": "مسبح خاص (شاليه 4)", "status": "جاهز للاستخدام", "last_work": "تنظيف حوض المسبح", "tech": "علي عثمان", "date": "2026-10-28 11:20" },
+      { "id": "P-CH5", "name": "مسبح شاليه 5", "type": "مسبح خاص (شاليه 5)", "status": "جاهز للاستخدام", "last_work": "صيانة دورية للمضخات", "tech": "م. طارق حسن", "date": "2026-10-27 15:45" },
+      { "id": "P-CH6", "name": "مسبح شاليه 6", "type": "مسبح خاص (شاليه 6)", "status": "خارج الخدمة مؤقتاً", "last_work": "صيانة دورية وإصلاح تسريب", "tech": "م. عمر السعيد", "date": "2026-10-28 12:00" },
+      { "id": "P-CLUB", "name": "مسبح النادي", "type": "مسبح نادي المنتجع الرياضي", "status": "جاهز للاستخدام", "last_work": "فلترة المياه وتنظيف الفلاتر", "tech": "سعيد مبروك", "date": "2026-10-28 08:00" }
+    ];
+
+    const CURRENT_VERSION = "alwaha_v_pools_and_65rooms_v1";
+    if (localStorage.getItem("alwaha_version") !== CURRENT_VERSION) {
+      localStorage.setItem("alwaha_rooms", JSON.stringify(officialRooms));
+      localStorage.setItem("alwaha_tickets", JSON.stringify(defaultTickets));
+      localStorage.setItem("alwaha_pools", JSON.stringify(officialPools));
+      localStorage.setItem("alwaha_version", CURRENT_VERSION);
+    }
+
+    let rooms = JSON.parse(localStorage.getItem('alwaha_rooms')) || officialRooms;
+    let tickets = JSON.parse(localStorage.getItem('alwaha_tickets')) || defaultTickets;
+    let pools = JSON.parse(localStorage.getItem('alwaha_pools')) || officialPools;
+
+    function saveState() {
+      localStorage.setItem('alwaha_rooms', JSON.stringify(rooms));
+      localStorage.setItem('alwaha_tickets', JSON.stringify(tickets));
+      localStorage.setItem('alwaha_pools', JSON.stringify(pools));
+      refreshAll();
+    }
+
+    function resetToOfficialRooms() {
+      if (confirm("هل تريد إعادة ضبط وتحديث كامل الـ 65 غرفة والـ 10 مسابح؟")) {
+        rooms = JSON.parse(JSON.stringify(officialRooms));
+        pools = JSON.parse(JSON.stringify(officialPools));
+        saveState();
+        alert("تم تحديث كافة أرقام الغرف (65 غرفة) والمسابح (10 مسابح) بنجاح!");
+      }
+    }
+
+    function populateDropdowns() {
+      const roomSelects = [
+        document.getElementById('sup-room-select'),
+        document.getElementById('sup-maint-room'),
+        document.getElementById('hk-room-select'),
+        document.getElementById('tech-room-select')
+      ];
+
+      roomSelects.forEach(select => {
+        if (!select) return;
+        const currentVal = select.value;
+        select.innerHTML = '';
+        rooms.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r.id;
+          opt.textContent = `غرفة / وحدة ${r.id} - ${r.type} (${r.floor})`;
+          select.appendChild(opt);
+        });
+        if (currentVal) select.value = currentVal;
+      });
+    }
+
+    function refreshAll() {
+      renderManagerDashboard();
+      renderSupervisorRooms();
+      renderHousekeepingRooms();
+      renderTechnicianView();
+      renderPoolsView();
+    }
+
+    function renderManagerDashboard() {
+      const total = rooms.length;
+      const occupied = rooms.filter(r => r.occ === 'مشغولة').length;
+      const checkout = rooms.filter(r => r.occ === 'مغادرة اليوم').length;
+      const openMaint = tickets.filter(t => t.status !== 'تم الإصلاح بنجاح').length;
+      const rate = total > 0 ? Math.round((occupied / total) * 100) : 0;
+      const poolsReady = pools.filter(p => p.status === 'جاهز للاستخدام').length;
+
+      document.getElementById('kpi-total-rooms').textContent = total;
+      document.getElementById('kpi-occupied-rooms').textContent = occupied;
+      document.getElementById('kpi-occupancy-rate').textContent = rate + '%';
+      document.getElementById('kpi-checkout-rooms').textContent = checkout;
+      document.getElementById('kpi-pools-ready').textContent = `${poolsReady} / 10`;
+      document.getElementById('kpi-maint-open').textContent = openMaint;
+
+      const mptb = document.getElementById('manager-pools-table-body');
+      mptb.innerHTML = '';
+      pools.forEach(p => {
+        const tr = document.createElement('tr');
+        let badge = 'badge-success';
+        if (p.status.includes('قيد')) badge = 'badge-warning';
+        if (p.status.includes('خارج')) badge = 'badge-danger';
+
+        tr.innerHTML = `
+          <td><strong>${p.name}</strong></td>
+          <td>${p.type}</td>
+          <td><span class="badge ${badge}">${p.status}</span></td>
+          <td>${p.last_work || '-'}</td>
+          <td>${p.tech || 'غير محدد'}</td>
+          <td><small style="color:var(--gray-500);">${p.date || '-'}</small></td>
+        `;
+        mptb.appendChild(tr);
+      });
+
+      const tb = document.getElementById('manager-table-body');
+      tb.innerHTML = '';
+      rooms.forEach(r => {
+        const tr = document.createElement('tr');
+        let occBadge = 'badge-primary';
+        if (r.occ === 'شاغرة') occBadge = 'badge-success';
+        if (r.occ === 'مغادرة اليوم') occBadge = 'badge-warning';
+        if (r.occ === 'تحت الصيانة') occBadge = 'badge-danger';
+
+        let cleanBadge = r.clean.includes('نظيفة') ? 'badge-success' : 'badge-warning';
+        let maintBadge = r.maint === 'سليمة' ? 'badge-success' : 'badge-danger';
+
+        tr.innerHTML = `
+          <td><strong>${r.id}</strong></td>
+          <td>${r.type}</td>
+          <td>${r.floor}</td>
+          <td><span class="badge ${occBadge}">${r.occ}</span></td>
+          <td>${r.guest}</td>
+          <td>${r.checkout}</td>
+          <td><span class="badge ${cleanBadge}">${r.clean}</span></td>
+          <td><span class="badge ${maintBadge}">${r.maint}</span></td>
+        `;
+        tb.appendChild(tr);
+      });
+
+      const mtb = document.getElementById('manager-maint-table-body');
+      mtb.innerHTML = '';
+      tickets.forEach(t => {
+        const tr = document.createElement('tr');
+        let statusBadge = t.status === 'تم الإصلاح بنجاح' ? 'badge-success' : (t.status === 'قيد التنفيذ' ? 'badge-warning' : 'badge-danger');
+        tr.innerHTML = `
+          <td><strong>${t.id}</strong></td>
+          <td>غرفة ${t.room}</td>
+          <td>${t.desc}</td>
+          <td><span class="badge ${t.prio === 'عاجل' ? 'badge-danger' : 'badge-warning'}">${t.prio}</span></td>
+          <td>${t.tech || 'غير محدد'}</td>
+          <td><span class="badge ${statusBadge}">${t.status}</span></td>
+          <td>${t.notes || 'لا توجد ملاحظات'}</td>
+        `;
+        mtb.appendChild(tr);
+      });
+    }
+
+    function autoFillSupervisorRoom() {
+      const selectedId = parseInt(document.getElementById('sup-room-select').value);
+      const room = rooms.find(r => r.id === selectedId);
+      if (room) {
+        document.getElementById('sup-occ-status').value = room.occ;
+        document.getElementById('sup-guest-name').value = room.guest !== '-' ? room.guest : '';
+        document.getElementById('sup-checkout-date').value = room.checkout !== '-' ? room.checkout : '';
+      }
+    }
+
+    function saveSupervisorRoomUpdate() {
+      const selectedId = parseInt(document.getElementById('sup-room-select').value);
+      const room = rooms.find(r => r.id === selectedId);
+      if (room) {
+        room.occ = document.getElementById('sup-occ-status').value;
+        const gName = document.getElementById('sup-guest-name').value.trim();
+        room.guest = gName ? gName : '-';
+        const cDate = document.getElementById('sup-checkout-date').value;
+        room.checkout = cDate ? cDate : '-';
+
+        if (room.occ === 'مغادرة اليوم') {
+          room.clean = 'تحتاج تنظيف بعد مغادرة';
+        }
+
+        saveState();
+        alert(`تم تحديث بيانات الغرفة [${room.id}] بنجاح!`);
+      }
+    }
+
+    function createMaintenanceTicket() {
+      const roomId = parseInt(document.getElementById('sup-maint-room').value);
+      const prio = document.getElementById('sup-maint-prio').value;
+      const desc = document.getElementById('sup-maint-desc').value.trim();
+
+      if (!desc) {
+        alert('الرجاء كتابة وصف العطل بدقة');
+        return;
+      }
+
+      const ticketNumber = 'T-' + (tickets.length + 101);
+      tickets.unshift({
+        id: ticketNumber,
+        room: roomId,
+        desc: desc,
+        prio: prio,
+        status: 'جديد - لم يبدأ',
+        tech: 'بانتظار الفني',
+        notes: 'تم تسجيل البلاغ بواسطة المشرف'
+      });
+
+      const room = rooms.find(r => r.id === roomId);
+      if (room) {
+        room.maint = 'تحتاج صيانة';
+      }
+
+      saveState();
+      document.getElementById('sup-maint-desc').value = '';
+      alert(`تم إرسال بلاغ الصيانة برقم [${ticketNumber}] بنجاح، وظهر في واجهة موظف الصيانة فوراً!`);
+    }
+
+    function renderSupervisorRooms() {
+      const container = document.getElementById('supervisor-rooms-grid');
+      container.innerHTML = '';
+      rooms.forEach(r => {
+        const div = document.createElement('div');
+        let statusClass = 'vacant';
+        if (r.occ === 'مشغولة') statusClass = 'occupied';
+        if (r.occ === 'مغادرة اليوم') statusClass = 'checkout';
+        if (r.occ === 'تحت الصيانة' || r.maint === 'تحتاج صيانة') statusClass = 'maintenance';
+
+        div.className = `room-card ${statusClass}`;
+        div.innerHTML = `
+          <div class="room-header">
+            <span class="room-number">غرفة ${r.id}</span>
+            <span class="room-type">${r.type}</span>
+          </div>
+          <div class="room-detail"><span>القسم:</span><span>${r.floor}</span></div>
+          <div class="room-detail"><span>الحالة:</span><strong>${r.occ}</strong></div>
+          <div class="room-detail"><span>النزيل:</span><span>${r.guest}</span></div>
+          <div class="room-detail"><span>النظافة:</span><span>${r.clean}</span></div>
+          <div class="room-detail"><span>الصيانة:</span><span>${r.maint}</span></div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function loadHousekeepingStatus() {
+      document.getElementById('chk-bed').checked = false;
+      document.getElementById('chk-bath').checked = false;
+      document.getElementById('chk-fridge').checked = false;
+      document.getElementById('chk-furniture').checked = false;
+      document.getElementById('hk-notes').value = '';
+    }
+
+    function markRoomCleanReady() {
+      const roomId = parseInt(document.getElementById('hk-room-select').value);
+      const room = rooms.find(r => r.id === roomId);
+      if (room) {
+        room.clean = 'نظيفة وجاهزة';
+        if (room.occ === 'مغادرة اليوم') {
+          room.occ = 'شاغرة';
+          room.guest = '-';
+          room.checkout = '-';
+        }
+        saveState();
+        alert(`تم توثيق تشييك الغرفة [${room.id}] وأصبحت جاهزة للتسكين الفوري!`);
+      }
+    }
+
+    function markRoomUnderClean() {
+      const roomId = parseInt(document.getElementById('hk-room-select').value);
+      const room = rooms.find(r => r.id === roomId);
+      if (room) {
+        room.clean = 'جاري التنظيف والتشييك';
+        saveState();
+        alert(`تم تسجيل الغرفة [${room.id}] قيد التجهيز والتنظيف.`);
+      }
+    }
+
+    function renderHousekeepingRooms() {
+      const container = document.getElementById('hk-rooms-grid');
+      container.innerHTML = '';
+      const pendingRooms = rooms.filter(r => r.clean.includes('تحتاج') || r.clean.includes('جاري') || r.occ === 'مغادرة اليوم');
+
+      if (pendingRooms.length === 0) {
+        container.innerHTML = '<p style="color:var(--success); font-weight:700; padding:10px;">جميع غرف المنتجع نظيفة ومعقمة بالكامل ومجهزة للضيوف!</p>';
+        return;
+      }
+
+      pendingRooms.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'room-card checkout';
+        div.innerHTML = `
+          <div class="room-header">
+            <span class="room-number">غرفة ${r.id}</span>
+            <span class="badge badge-warning">${r.clean}</span>
+          </div>
+          <p style="font-size:0.85rem; margin-bottom:8px;">${r.type} - ${r.floor}</p>
+          <div class="room-actions">
+            <button class="btn btn-primary btn-sm" onclick="quickClean(${r.id})"><i class="fa-solid fa-check"></i> تم التشييك وجاهزة</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function quickClean(id) {
+      const room = rooms.find(r => r.id === id);
+      if (room) {
+        room.clean = 'نظيفة وجاهزة';
+        if (room.occ === 'مغادرة اليوم') {
+          room.occ = 'شاغرة';
+          room.guest = '-';
+          room.checkout = '-';
+        }
+        saveState();
+        alert(`تم تأكيد جاهزية الغرفة ${id}`);
+      }
+    }
+
+    function autoLoadRoomTicketInfo() {
+      const roomId = parseInt(document.getElementById('tech-room-select').value);
+      const openTicket = tickets.find(t => t.room === roomId && t.status !== 'تم الإصلاح بنجاح');
+      if (openTicket) {
+        document.getElementById('tech-repair-status').value = openTicket.status === 'جديد - لم يبدأ' ? 'قيد التنفيذ' : openTicket.status;
+        if (openTicket.notes && openTicket.notes !== 'تم تسجيل البلاغ بواسطة المشرف') {
+          document.getElementById('tech-repair-details').value = openTicket.notes;
+        }
+      }
+      updateLiveDateTime();
+    }
+
+    function renderTechnicianView() {
+      updateLiveDateTime();
+      const tb = document.getElementById('technician-maint-table');
+      tb.innerHTML = '';
+
+      tickets.forEach(t => {
+        const tr = document.createElement('tr');
+        let statusBadge = t.status === 'تم الإصلاح بنجاح' ? 'badge-success' : (t.status === 'قيد التنفيذ' ? 'badge-warning' : 'badge-danger');
+
+        tr.innerHTML = `
+          <td><strong>${t.id}</strong></td>
+          <td>غرفة ${t.room}</td>
+          <td>${t.desc}</td>
+          <td><span class="badge ${t.prio === 'عاجل' ? 'badge-danger' : 'badge-warning'}">${t.prio}</span></td>
+          <td><span class="badge ${statusBadge}">${t.status}</span></td>
+          <td>${t.notes || '-'}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm" onclick="selectTicketForRepair('${t.id}')">
+              <i class="fa-solid fa-wrench"></i> تسجيل الإصلاح
+            </button>
+          </td>
+        `;
+        tb.appendChild(tr);
+      });
+    }
+
+    function selectTicketForRepair(ticketId) {
+      const t = tickets.find(x => x.id === ticketId);
+      if (t) {
+        document.getElementById('tech-room-select').value = t.room;
+        document.getElementById('tech-repair-status').value = t.status === 'جديد - لم يبدأ' ? 'تم الإصلاح بنجاح' : t.status;
+        document.getElementById('tech-repair-details').value = t.notes && t.notes !== 'تم تسجيل البلاغ بواسطة المشرف' ? t.notes : `تم فحص وإصلاح عطل (${t.desc}) بالكامل.`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function saveDirectMaintenanceRecord() {
+      const roomId = parseInt(document.getElementById('tech-room-select').value);
+      const techName = document.getElementById('tech-worker-name').value.trim() || 'فني الصيانة';
+      const status = document.getElementById('tech-repair-status').value;
+      const details = document.getElementById('tech-repair-details').value.trim();
+
+      if (!details) {
+        alert('الرجاء كتابة تفاصيل ما تم تنفيذه من إصلاح أو قطع الغيار المستبدلة.');
+        return;
+      }
+
+      let ticket = tickets.find(t => t.room === roomId && t.status !== 'تم الإصلاح بنجاح');
+      if (ticket) {
+        ticket.status = status;
+        ticket.tech = techName;
+        ticket.notes = details;
+      } else {
+        tickets.unshift({
+          id: 'M-' + (tickets.length + 101),
+          room: roomId,
+          desc: 'صيانة دورية / فحص عام',
+          prio: 'طبيعي',
+          status: status,
+          tech: techName,
+          notes: details
+        });
+      }
+
+      const room = rooms.find(r => r.id === roomId);
+      if (room) {
+        if (status === 'تم الإصلاح بنجاح') {
+          const otherOpen = tickets.filter(t => t.room === roomId && t.status !== 'تم الإصلاح بنجاح');
+          if (otherOpen.length === 0) {
+            room.maint = 'سليمة';
+            if (room.occ === 'تحت الصيانة') room.occ = 'شاغرة';
+          }
+        } else if (status === 'قيد التنفيذ' || status === 'معلق لقطع غيار') {
+          room.maint = 'تحت الصيانة';
+          room.occ = 'تحت الصيانة';
+        }
+      }
+
+      saveState();
+      alert(`تم بنجاح تسجيل وتوثيق صيانة الغرفة [${roomId}]، وتحديث حالتها في لوحة تحكم المدير العام!`);
+      clearTechForm();
+    }
+
+    function clearTechForm() {
+      document.getElementById('tech-repair-details').value = '';
+      updateLiveDateTime();
+    }
+
+    function autoLoadPoolData() {
+      updateLiveDateTime();
+      const pId = document.getElementById('pool-select').value;
+      const p = pools.find(x => x.id === pId);
+      if (p) {
+        document.getElementById('pool-status-select').value = p.status;
+        if (p.tech) document.getElementById('pool-staff-name').value = p.tech;
+        
+        document.getElementById('chk-pool-filter').checked = (p.last_work && p.last_work.includes('فلترة'));
+        document.getElementById('chk-pool-clean').checked = (p.last_work && p.last_work.includes('تنظيف'));
+        document.getElementById('chk-pool-drain').checked = (p.last_work && p.last_work.includes('تفريغ'));
+        document.getElementById('chk-pool-maint').checked = (p.last_work && p.last_work.includes('صيانة'));
+      }
+    }
+
+    function resetPoolCheckboxes() {
+      document.getElementById('chk-pool-filter').checked = false;
+      document.getElementById('chk-pool-clean').checked = false;
+      document.getElementById('chk-pool-drain').checked = false;
+      document.getElementById('chk-pool-maint').checked = false;
+      document.getElementById('pool-work-notes').value = '';
+    }
+
+    function savePoolWorkRecord() {
+      const pId = document.getElementById('pool-select').value;
+      const techName = document.getElementById('pool-staff-name').value.trim() || 'فني المسابح';
+      const status = document.getElementById('pool-status-select').value;
+      const notes = document.getElementById('pool-work-notes').value.trim();
+
+      let tasks = [];
+      if (document.getElementById('chk-pool-filter').checked) tasks.push('فلترة المياه');
+      if (document.getElementById('chk-pool-clean').checked) tasks.push('تنظيف حوض المسبح');
+      if (document.getElementById('chk-pool-drain').checked) tasks.push('تفريغ المياه');
+      if (document.getElementById('chk-pool-maint').checked) tasks.push('صيانة دورية');
+
+      if (tasks.length === 0) {
+        alert('الرجاء اختيار عمل واحد على الأقل من الأعمال التي تمت (فلترة، تنظيف، تفريغ، صيانة دورية).');
+        return;
+      }
+
+      const now = new Date();
+      const timeStr = now.toLocaleDateString('ar-YE') + ' ' + now.toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' });
+
+      const pool = pools.find(x => x.id === pId);
+      if (pool) {
+        pool.status = status;
+        pool.tech = techName;
+        pool.last_work = tasks.join(' + ') + (notes ? ` (${notes})` : '');
+        pool.date = timeStr;
+      }
+
+      saveState();
+      alert(`تم بنجاح اعتماد أعمال [${pool.name}] وتحديث حالته إلى (${status})!`);
+      resetPoolCheckboxes();
+    }
+
+    function renderPoolsView() {
+      updateLiveDateTime();
+      
+      const readyCount = pools.filter(p => p.status === 'جاهز للاستخدام').length;
+      const workCount = pools.filter(p => p.status.includes('قيد')).length;
+      const outCount = pools.filter(p => p.status.includes('خارج')).length;
+
+      document.getElementById('kpi-pool-ready-count').textContent = readyCount;
+      document.getElementById('kpi-pool-work-count').textContent = workCount;
+      document.getElementById('kpi-pool-out-count').textContent = outCount;
+
+      const container = document.getElementById('pools-cards-grid');
+      container.innerHTML = '';
+
+      pools.forEach(p => {
+        const div = document.createElement('div');
+        let cardClass = 'ready';
+        let badgeClass = 'badge-success';
+        if (p.status.includes('قيد')) { cardClass = 'working'; badgeClass = 'badge-warning'; }
+        if (p.status.includes('خارج')) { cardClass = 'out'; badgeClass = 'badge-danger'; }
+
+        div.className = `pool-card ${cardClass}`;
+        div.innerHTML = `
+          <div class="room-header">
+            <span class="room-number" style="font-size:1.15rem; color:var(--primary);"><i class="fa-solid fa-water-ladder" style="color:var(--cyan); margin-left:6px;"></i>${p.name}</span>
+            <span class="badge ${badgeClass}">${p.status}</span>
+          </div>
+          <div class="room-detail"><span>النوع:</span><span>${p.type}</span></div>
+          <div class="room-detail"><span>آخر عمل منفذ:</span><strong>${p.last_work || 'لا يوجد'}</strong></div>
+          <div class="room-detail"><span>الفني / المشغل:</span><span>${p.tech || '-'}</span></div>
+          <div class="room-detail"><span>آخر تحديث:</span><small style="color:var(--gray-500);">${p.date || '-'}</small></div>
+          <div class="room-actions">
+            <button class="btn btn-cyan btn-sm" style="width:100%;" onclick="quickSelectPool('${p.id}')">
+              <i class="fa-solid fa-pen-to-square"></i> تسجيل وتحديث أعمال المسبح
+            </button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      const tb = document.getElementById('pools-log-table-body');
+      tb.innerHTML = '';
+      pools.forEach(p => {
+        const tr = document.createElement('tr');
+        let badge = 'badge-success';
+        if (p.status.includes('قيد')) badge = 'badge-warning';
+        if (p.status.includes('خارج')) badge = 'badge-danger';
+
+        tr.innerHTML = `
+          <td><strong>${p.name}</strong></td>
+          <td>${p.type}</td>
+          <td><strong>${p.last_work || '-'}</strong></td>
+          <td><span class="badge ${badge}">${p.status}</span></td>
+          <td>${p.tech || '-'}</td>
+          <td>${p.date || '-'}}</td>
+          <td><button class="btn btn-secondary btn-sm" onclick="quickSelectPool('${p.id}')"><i class="fa-solid fa-pen"></i> تحديث</button></td>
+        `;
+        tb.appendChild(tr);
+      });
+    }
+
+    function quickSelectPool(pId) {
+      document.getElementById('pool-select').value = pId;
+      autoLoadPoolData();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ rooms, tickets, pools }, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "بيانات_منتجع_الواحة_الحديدة_غرف_ومسابح.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    updateLiveDateTime();
+    updateAuthDisplay();
+    populateDropdowns();
+    autoFillSupervisorRoom();
+    autoLoadRoomTicketInfo();
+    autoLoadPoolData();
+    refreshAll();
+  </script>
+</body>
+</html>
