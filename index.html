@@ -20,6 +20,7 @@
       --danger: #ef4444;
       --cyan: #06b6d4;
       --purple: #8b5cf6;
+      --teal: #0d9488;
       --gray-100: #f1f5f9;
       --gray-200: #e2e8f0;
       --gray-500: #64748b;
@@ -75,7 +76,7 @@
       box-shadow: var(--shadow-md);
       border-bottom: 3px solid var(--secondary);
     }
-    .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .header-container { max-width: 1440px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     .brand { display: flex; align-items: center; gap: 12px; }
     .brand i { font-size: 2.2rem; color: var(--secondary); }
     .brand-title h1 { font-size: 1.25rem; font-weight: 800; }
@@ -105,7 +106,7 @@
     }
     .role-btn.active, .role-btn:hover { background: var(--secondary); color: var(--primary); }
     
-    main { flex: 1; max-width: 1400px; width: 100%; margin: 1.5rem auto; padding: 0 1rem; }
+    main { flex: 1; max-width: 1440px; width: 100%; margin: 1.5rem auto; padding: 0 1rem; }
     .view-section { display: none; animation: fadeIn 0.25s ease; }
     .view-section.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -114,13 +115,13 @@
     .content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--gray-100); flex-wrap: wrap; gap: 10px; }
     .content-header h3 { font-size: 1.15rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
     
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
     .kpi-card { background: var(--white); border-radius: var(--radius); padding: 1.15rem; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-sm); border-right: 4px solid var(--primary); }
     .kpi-info p { font-size: 0.8rem; color: var(--gray-500); font-weight: 700; }
-    .kpi-info h2 { font-size: 1.6rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
-    .kpi-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--primary); }
+    .kpi-info h2 { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
+    .kpi-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--primary); }
 
-    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
     .form-group { display: flex; flex-direction: column; gap: 5px; }
     .form-group label { font-size: 0.82rem; font-weight: 700; color: var(--dark); }
     .form-control { padding: 9px 12px; border-radius: 8px; border: 1px solid var(--gray-200); font-size: 0.88rem; background: #fafbfc; }
@@ -133,6 +134,7 @@
     .btn-danger { background: var(--danger); color: var(--white); }
     .btn-cyan { background: var(--cyan); color: var(--white); }
     .btn-purple { background: var(--purple); color: var(--white); }
+    .btn-teal { background: var(--teal); color: var(--white); }
     .btn-sm { padding: 5px 10px; font-size: 0.78rem; border-radius: 6px; }
 
     .table-container { overflow-x: auto; max-height: 500px; }
@@ -148,19 +150,20 @@
     .badge-danger { background: #fee2e2; color: #991b1b; }
     .badge-cyan { background: #cffafe; color: #0e7490; }
     .badge-purple { background: #ede9fe; color: #5b21b6; }
+    .badge-teal { background: #ccfbf1; color: #115e59; }
 
-    .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 12px 0; }
+    .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 12px 0; }
     .checklist-item { display: flex; align-items: center; gap: 8px; padding: 10px; background: var(--gray-100); border-radius: 8px; font-size: 0.85rem; font-weight: 600; }
     .checklist-item input { width: 18px; height: 18px; accent-color: var(--primary); }
 
-    .rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    .rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
     .room-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1rem; border-top: 5px solid var(--gray-500); }
     .room-card.occupied { border-top-color: var(--primary); }
     .room-card.vacant { border-top-color: var(--success); }
     .room-card.checkout { border-top-color: var(--warning); }
     .room-card.maintenance { border-top-color: var(--danger); }
 
-    /* شاشة الدخول الموحدة بحصر الصلاحيات */
+    /* شاشة الدخول الموحدة */
     .login-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -175,31 +178,31 @@
       background: #fff;
       border-radius: 16px;
       width: 100%;
-      max-width: 450px;
-      padding: 2.2rem;
+      max-width: 460px;
+      padding: 2rem;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       border-top: 6px solid var(--secondary);
       text-align: center;
     }
-    .login-card i.main-icon { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
-    .login-card h2 { color: var(--primary); font-size: 1.35rem; font-weight: 800; margin-bottom: 6px; }
-    .login-card p { color: var(--gray-500); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .login-card i.main-icon { font-size: 2.8rem; color: var(--primary); margin-bottom: 0.75rem; }
+    .login-card h2 { color: var(--primary); font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+    .login-card p { color: var(--gray-500); font-size: 0.85rem; margin-bottom: 1.25rem; }
     .quick-creds {
       background: var(--gray-100);
       border-radius: 10px;
       padding: 12px;
-      margin-top: 1.5rem;
-      font-size: 0.77rem;
+      margin-top: 1.25rem;
+      font-size: 0.76rem;
       text-align: right;
       color: #475569;
-      line-height: 1.7;
+      line-height: 1.6;
       border-right: 3px solid var(--secondary);
     }
 
     footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 1.25rem; font-size: 0.82rem; margin-top: auto; }
     
     @media print {
-      header, .auth-bar, .role-switcher, button, footer, .login-overlay { display: none !important; }
+      header, .auth-bar, .role-switcher, button, footer, .login-overlay, .filter-box { display: none !important; }
       body { background: #fff !important; }
       .content-box { box-shadow: none !important; border: 1px solid #ccc !important; }
     }
@@ -212,36 +215,38 @@
     <div class="login-card">
       <i class="fa-solid fa-hotel main-icon"></i>
       <h2>منتجع الواحة السياحي - الحديدة</h2>
-      <p>تسجيل الدخول للنظام (تفتح شاشة اختصاصك تلقائياً)</p>
+      <p>يرجى تسجيل الدخول للوصول لشاشة اختصاصك فقط</p>
 
       <form onsubmit="event.preventDefault(); doLogin();">
-        <div class="form-group" style="text-align:right; margin-bottom:1rem;">
+        <div class="form-group" style="text-align:right; margin-bottom:0.75rem;">
           <label><i class="fa-solid fa-user"></i> اسم المستخدم / المعرف</label>
           <input type="text" id="login-user" class="form-control" placeholder="أدخل اسم المستخدم" required>
         </div>
-        <div class="form-group" style="text-align:right; margin-bottom:1.25rem;">
+        <div class="form-group" style="text-align:right; margin-bottom:1rem;">
           <label><i class="fa-solid fa-key"></i> كلمة المرور</label>
           <input type="password" id="login-pass" class="form-control" placeholder="أدخل كلمة المرور" required>
         </div>
-        <div id="login-err" style="display:none; color:var(--danger); font-size:0.82rem; font-weight:700; margin-bottom:1rem;">
+        <div id="login-err" style="display:none; color:var(--danger); font-size:0.82rem; font-weight:700; margin-bottom:0.75rem;">
           <i class="fa-solid fa-triangle-exclamation"></i> اسم المستخدم أو كلمة المرور غير صحيحة!
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; padding:11px;"><i class="fa-solid fa-arrow-right-to-bracket"></i> دخول النظام</button>
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:10px;"><i class="fa-solid fa-arrow-right-to-bracket"></i> دخول النظام</button>
       </form>
 
       <div class="quick-creds">
-        <strong>🔑 بيانات الدخول وفق توزيع الصلاحيات المحدث:</strong><br>
-        • <strong>المدير العام:</strong> <code>admin</code> / <code>1234</code> (إشراف كامل + كافة التقارير)<br>
-        • <strong>مشرف الغرف:</strong> <code>supervisor</code> / <code>1122</code> (مستوى تجهيز ونظافة الغرفة والمناشف والمستلزمات)<br>
-        • <strong>عامل الخدمات:</strong> <code>clean</code> / <code>3344</code> (تشييك الأثاث، التلفزيون، المكيف، الإضاءة، ريموت، مرايا...)<br>
-        • <strong>عامل المسابح والنادي:</strong> <code>pool</code> أو <code>club</code> / <code>7788</code> (المسابح الـ 10 + النادي والمرافق)<br>
-        • <strong>قسم الاستقبال:</strong> <code>reception</code> / <code>2026</code> (حركة المفاتيح + انطباعات النزلاء)<br>
-        • <strong>موظف الصيانة:</strong> <code>tech</code> / <code>5566</code> (توثيق الإصلاحات والأعطال)
+        <strong>🔑 بيانات تسجيل الدخول للاختصاصات:</strong><br>
+        • <strong>المدير العام:</strong> <code>admin</code> / <code>1234</code> (إشراف كامل + كافة التقارير)[span_5](start_span)[span_5](end_span)<br>
+        • <strong>مشرف الغرف:</strong> <code>supervisor</code> / <code>1122</code> (التجهيز + بلاغات الصيانة + إرسال المغسلة)[span_6](start_span)[span_6](end_span)<br>
+        • <strong>موظف الصيانة:</strong> <code>tech</code> / <code>5566</code> (استلام بلاغات المشرف وإصلاحها وإغلاقها)[span_7](start_span)[span_7](end_span)<br>
+        • <strong>مسؤول المغسلة:</strong> <code>laundry</code> / <code>6677</code> (استلام الغسيل، توثيق التبديل، ورصد التلفيات)<br>
+        • <strong>كاشير تذاكر الدخول:</strong> <code>tickets</code> / <code>4455</code> (إصدار تذاكر متسلسلة للمنتجع)<br>
+        • <strong>عامل الخدمات:</strong> <code>clean</code> / <code>3344</code> (تشييك الأثاث والأجهزة عند المغادرة)[span_8](start_span)[span_8](end_span)<br>
+        • <strong>المسابح والنادي:</strong> <code>pool</code> أو <code>club</code> / <code>7788</code> (المسابح الـ 10 + النادي)[span_9](start_span)[span_9](end_span)<br>
+        • <strong>الاستقبال:</strong> <code>reception</code> / <code>2026</code> (حركة المفاتيح + انطباعات النزلاء)
       </div>
     </div>
   </div>
 
-  <!-- الشريط العلوي -->
+  <!-- الشريط العلوي للأمان والوقت -->
   <div class="auth-bar">
     <div class="header-container" style="padding:0; margin:0 auto; width:100%;">
       <div class="auth-user-info">
@@ -270,31 +275,36 @@
         </div>
       </div>
 
-      <!-- شريط الاختصاصات: يظهر كاملاً للمدير العام فقط، بينما يقتصر للمستخدمين الآخرين على شاشاتهم -->
       <div class="role-switcher" id="main-role-nav">
         <button class="role-btn nav-item" id="btn-nav-manager" onclick="switchView('manager')">
           <i class="fa-solid fa-chart-pie"></i> المدير العام
         </button>
         <button class="role-btn nav-item" id="btn-nav-reports" onclick="switchView('reports')">
-          <i class="fa-solid fa-file-waveform"></i> مركز التقارير
+          <i class="fa-solid fa-file-waveform"></i> التقارير الفترية
         </button>
         <button class="role-btn nav-item" id="btn-nav-supervisor" onclick="switchView('supervisor')">
-          <i class="fa-solid fa-user-tie"></i> مشرف الغرف (التجهيز والمستلزمات)
+          <i class="fa-solid fa-user-tie"></i> مشرف الغرف
+        </button>
+        <button class="role-btn nav-item" id="btn-nav-maintenance" onclick="switchView('maintenance')">
+          <i class="fa-solid fa-screwdriver-wrench"></i> الصيانة
+        </button>
+        <button class="role-btn nav-item" id="btn-nav-laundry" onclick="switchView('laundry')">
+          <i class="fa-solid fa-shirt"></i> المغسلة
+        </button>
+        <button class="role-btn nav-item" id="btn-nav-tickets" onclick="switchView('tickets')">
+          <i class="fa-solid fa-ticket"></i> تذاكر الدخول
         </button>
         <button class="role-btn nav-item" id="btn-nav-clean" onclick="switchView('clean')">
-          <i class="fa-solid fa-clipboard-check"></i> عامل الخدمات (تشييك الأثاث والأجهزة)
+          <i class="fa-solid fa-clipboard-check"></i> عامل الخدمات
         </button>
         <button class="role-btn nav-item" id="btn-nav-pools" onclick="switchView('pools')">
           <i class="fa-solid fa-water-ladder"></i> المسابح والنادي
         </button>
         <button class="role-btn nav-item" id="btn-nav-keys" onclick="switchView('keys')">
-          <i class="fa-solid fa-key"></i> تسليم واستلام المفاتيح
+          <i class="fa-solid fa-key"></i> المفاتيح
         </button>
         <button class="role-btn nav-item" id="btn-nav-feedback" onclick="switchView('feedback')">
-          <i class="fa-solid fa-comments"></i> انطباع النزلاء والملاحظات
-        </button>
-        <button class="role-btn nav-item" id="btn-nav-maintenance" onclick="switchView('maintenance')">
-          <i class="fa-solid fa-screwdriver-wrench"></i> الصيانة
+          <i class="fa-solid fa-comments"></i> انطباعات النزلاء
         </button>
       </div>
     </div>
@@ -302,115 +312,493 @@
 
   <main>
 
-    <!-- 1. واجهة مشرف الغرف (مستوى التجهيز، النظافة، توزيع المناشف والمستلزمات) -->
+    <!-- 1. واجهة مشرف الغرف (تجهيز + بلاغات الصيانة + إرسال للمغسلة) -->
     <div id="view-supervisor" class="view-section">
+      <!-- بلاغات الصيانة من المشرف -->
+      <div class="content-box" style="border-top: 5px solid var(--danger);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-triangle-exclamation" style="color:var(--danger);"></i> تسجيل بلاغ صيانة مباشر لموظف الصيانة</h3>
+          <span class="badge badge-danger">بلاغ صيانة عاجل</span>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>اختر رقم الغرفة التي بها عطل</label>
+            <select id="sup-maint-room" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label>درجة الأهمية والسرعة</label>
+            <select id="sup-maint-prio" class="form-control">
+              <option value="عاجل جداً">عاجل جداً (خلل يؤثر على النزيل فوراً)</option>
+              <option value="متوسط">متوسط (خلل غير حرج)</option>
+              <option value="صيانة روتينية">صيانة روتينية وقائية</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label>وصف العطل المطلوب صيانته بدقة</label>
+            <input type="text" id="sup-maint-desc" class="form-control" placeholder="مثال: ضعف تبريد المكيف، تسريب مياه الحمام، عطل لمبات، عطل التلفون...">
+          </div>
+        </div>
+        <button class="btn btn-danger" onclick="sendSupervisorMaintenance()"><i class="fa-solid fa-paper-plane"></i> إرسال البلاغ فوراً لموظف الصيانة</button>
+      </div>
+
+      <!-- إرسال بياضات وملايات للمغسلة -->
+      <div class="content-box" style="border-top: 5px solid var(--teal);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-shirt" style="color:var(--teal);"></i> إرسال مفارش وملايات الغرفة إلى المغسلة</h3>
+          <span class="badge badge-teal">قسم المغسلة واللاندري</span>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>رقم الغرفة المرسل مفارشها</label>
+            <select id="sup-laundry-room" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label>عدد الملايات والفرش</label>
+            <input type="number" id="sup-laundry-sheets" class="form-control" value="2" min="1">
+          </div>
+          <div class="form-group">
+            <label>عدد المناشف وأكياس المخدات</label>
+            <input type="number" id="sup-laundry-towels" class="form-control" value="4" min="1">
+          </div>
+          <div class="form-group">
+            <label>ملاحظة المشرف للمغسلة</label>
+            <input type="text" id="sup-laundry-note" class="form-control" placeholder="مثال: تبديل عاجل، توجد بقع...">
+          </div>
+        </div>
+        <button class="btn btn-teal" onclick="sendToLaundry()"><i class="fa-solid fa-truck-ramp-box"></i> إرسال الطلب للمغسلة</button>
+      </div>
+
+      <!-- تجهيز الغرفة وصرف المستلزمات -->
       <div class="content-box" style="border-top: 5px solid var(--primary);">
         <div class="content-header">
-          <h3><i class="fa-solid fa-user-tie" style="color:var(--secondary);"></i> إشراف تجهيز الغرفة وصرف مستلزمات النظافة والضيافة</h3>
+          <h3><i class="fa-solid fa-user-tie" style="color:var(--secondary);"></i> إشراف تجهيز الغرفة وصرف مستلزمات النظافة</h3>
           <span class="badge badge-primary">مشرف الغرف</span>
         </div>
-
         <div class="form-grid">
           <div class="form-group">
             <label>اختر رقم الغرفة (من الـ 65 غرفة)</label>
-            <select id="sup-prep-room" class="form-control" onchange="autoLoadSupervisorData()"></select>
+            <select id="sup-prep-room" class="form-control"></select>
           </div>
           <div class="form-group">
             <label>اسم مشرف الغرف</label>
             <input type="text" id="sup-prep-inspector" class="form-control" value="جمال العديني">
           </div>
           <div class="form-group">
-            <label>مستوى النظافة والتجهيز العام</label>
+            <label>مستوى النظافة والتجهيز</label>
             <select id="sup-prep-clean-level" class="form-control">
               <option value="نظافة ممتازة 100% - جاهزة">نظافة ممتازة 100% (معقمة ومجهزة)</option>
-              <option value="جيدة - تحتاج لمسات إضافية">جيدة (تحتاج استكمال بعض المستلزمات)</option>
-              <option value="غير مرضية - إعادة تنظيف">غير مرضية (تحتاج إعادة تنظيف كاملة)</option>
+              <option value="تحتاج استكمال بعض المستلزمات">تحتاج استكمال بعض المستلزمات</option>
+              <option value="تحتاج إعادة تنظيف">تحتاج إعادة تنظيف كاملة</option>
             </select>
           </div>
           <div class="form-group">
-            <label>حالة الغرفة النهائية</label>
+            <label>الحالة النهائية للغرفة</label>
             <select id="sup-prep-final-status" class="form-control">
-              <option value="شاغرة جاهزة للتسكين">شاغرة وجاهزة للتسكين الفوري</option>
+              <option value="شاغرة جاهزة للتسكين">شاغرة وجاهزة للتسكين</option>
               <option value="قيد التجهيز والتأثيث">قيد التجهيز والتأثيث</option>
             </select>
           </div>
         </div>
 
-        <h4 style="margin: 1.25rem 0 0.5rem 0; font-size: 0.95rem; color: var(--primary);">
-          <i class="fa-solid fa-boxes-packing"></i> تأكيد توزيع وتوفير المناشف ومستلزمات النظافة الشخصية:
+        <h4 style="margin: 1rem 0 0.5rem 0; font-size: 0.95rem; color: var(--primary);">
+          <i class="fa-solid fa-boxes-packing"></i> صرف وتوزيع المناشف ومستلزمات النظافة والضيافة:
         </h4>
         <div class="checklist-grid">
-          <div class="checklist-item">
-            <input type="checkbox" id="sup-sup-towels" checked>
-            <label for="sup-sup-towels"><strong>المناشف المعقمة</strong> (كبيرة + صغيرة مغلفة)</label>
+          <div class="checklist-item"><input type="checkbox" id="sup-sup-towels" checked><label for="sup-sup-towels">مناشف معقمة</label></div>
+          <div class="checklist-item"><input type="checkbox" id="sup-sup-soap" checked><label for="sup-sup-soap">صابون يدين واستحمام</label></div>
+          <div class="checklist-item"><input type="checkbox" id="sup-sup-shampoo" checked><label for="sup-sup-shampoo">شامبو وجل استحمام</label></div>
+          <div class="checklist-item"><input type="checkbox" id="sup-sup-toothpaste" checked><label for="sup-sup-toothpaste">معجون أسنان وفرشاة</label></div>
+          <div class="checklist-item"><input type="checkbox" id="sup-sup-cream" checked><label for="sup-sup-cream">كريم وترطيب</label></div>
+          <div class="checklist-item"><input type="checkbox" id="sup-sup-tissues" checked><label for="sup-sup-tissues">فاين / مناديل وجه وتواليت</label></div>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top:0.75rem;" onclick="saveSupervisorPreparation()"><i class="fa-solid fa-circle-check"></i> اعتماد جاهزية الغرفة ومستلزماتها</button>
+      </div>
+    </div>
+
+    <!-- 2. واجهة موظف الصيانة (استلام البلاغات وإغلاقها) -->
+    <div id="view-maintenance" class="view-section">
+      <div class="content-box" style="border-top: 5px solid var(--secondary);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-screwdriver-wrench" style="color:var(--secondary);"></i> لوحة معالجة بلاغات الصيانة وإغلاق المشاكل</h3>
+          <span class="badge badge-primary">موظف الصيانة</span>
+        </div>
+
+        <div class="notice-box" style="background:#fef3c7; border:1px solid #fde68a; padding:10px; border-radius:8px; margin-bottom:1rem; font-size:0.85rem; color:#92400e;">
+          <i class="fa-solid fa-circle-info"></i> تظهر هنا بلاغات الأعطال الواردة من مشرف الغرف مباشرة. يمكنك اختيار البلاغ وتدوين ما تم إصلاحه وإغلاق المشكلة لتصبح الغرفة سليمة في لوحة المدير.
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>حدد البلاغ المطلوب معالجته</label>
+            <select id="maint-ticket-select" class="form-control" onchange="loadSelectedTicket()"></select>
           </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="sup-sup-soap" checked>
-            <label for="sup-sup-soap"><strong>صابون الاستحمام واليدين</strong></label>
+          <div class="form-group">
+            <label>فني الصيانة المنفذ</label>
+            <input type="text" id="maint-tech-name" class="form-control" value="م. طارق حسن">
           </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="sup-sup-shampoo" checked>
-            <label for="sup-sup-shampoo"><strong>الشامبو وجل الاستحمام</strong></label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="sup-sup-toothpaste" checked>
-            <label for="sup-sup-toothpaste"><strong>معجون الأسنان والفرشاة</strong></label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="sup-sup-cream" checked>
-            <label for="sup-sup-cream"><strong>كريم / لوشن العناية والترطيب</strong></label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="sup-sup-tissues" checked>
-            <label for="sup-sup-tissues"><strong>فاين / مناديل وجه وتواليت</strong></label>
+          <div class="form-group">
+            <label>حالة الإغلاق</label>
+            <select id="maint-close-status" class="form-control">
+              <option value="تم الإصلاح بنجاح - إغلاق البلاغ">تم الإصلاح بنجاح - إغلاق البلاغ (الغرفة سليمة)</option>
+              <option value="قيد التنفيذ / جاري العمل">قيد التنفيذ / جاري العمل</option>
+              <option value="معلق لقطع غيار">معلق بانتظار قطع غيار</option>
+            </select>
           </div>
         </div>
 
-        <div class="form-group" style="margin-top:1rem; margin-bottom:1.25rem;">
-          <label>ملاحظات المشرف وتوجيهات عمال الخدمات</label>
-          <input type="text" id="sup-prep-notes" class="form-control" placeholder="مثال: تم تزويد الغرفة بضيافة إضافية، رائحة الغرفة معطرة وجاهزة تماماً...">
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label>تقرير ما تم تنفيذه وإصلاحه بدقة (وقطع الغيار المستبدلة)</label>
+          <textarea id="maint-action-notes" class="form-control" rows="3" placeholder="اكتب تفاصيل الإصلاح، مثلاً: تم تنظيف الفلاتر وتعبئة الغاز، تم تغيير خلاط المياه، تم إصلاح الإنارة..."></textarea>
         </div>
 
-        <button class="btn btn-primary" onclick="saveSupervisorPreparation()"><i class="fa-solid fa-circle-check"></i> اعتماد جاهزية الغرفة ومستلزماتها</button>
+        <button class="btn btn-success" onclick="resolveTicket()"><i class="fa-solid fa-circle-check"></i> تأكيد وحفظ إغلاق البلاغ</button>
       </div>
 
       <div class="content-box">
         <div class="content-header">
-          <h3><i class="fa-solid fa-list-check"></i> سجل جاهزية الغرف ومستلزمات النظافة المعتمدة</h3>
+          <h3><i class="fa-solid fa-list-ol"></i> كشف كافة بلاغات الصيانة (المفتوحة والمنجزة)</h3>
         </div>
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>رقم الغرفة</th>
-                <th>المشرف المعتمد</th>
-                <th>مستوى النظافة والتجهيز</th>
-                <th>المستلزمات المصروفة (مناشف/صابون/شامبو/معجون/كريم/فاين)</th>
+                <th>رقم البلاغ</th>
+                <th>الغرفة</th>
+                <th>وصف العطل</th>
+                <th>الأهمية</th>
                 <th>الحالة</th>
-                <th>التاريخ والوقت</th>
+                <th>الفني المنفذ</th>
+                <th>تقرير الإصلاح</th>
+                <th>التاريخ</th>
+                <th>إجراء</th>
               </tr>
             </thead>
-            <tbody id="sup-prep-log-tbody"></tbody>
+            <tbody id="maint-tickets-tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- 2. واجهة عامل الخدمات (تشييك الغرفة، الأثاث، التلفون، التلفزيون، المكيف، الريموت، المرايا، الإضاءة عند المغادرة) -->
-    <div id="view-clean" class="view-section">
-      <div class="content-box" style="border-top: 5px solid var(--warning);">
+    <!-- 3. واجهة المغسلة واللاندري (استلام، تبديل، رصد تالف) -->
+    <div id="view-laundry" class="view-section">
+      <div class="content-box" style="border-top: 5px solid var(--teal);">
         <div class="content-header">
-          <h3><i class="fa-solid fa-clipboard-check" style="color:var(--warning);"></i> محضر تشييك وفحص أثاث وأجهزة الغرفة عند مغادرة النزيل</h3>
-          <span class="badge badge-warning">عامل الخدمات - جرد المغادرة</span>
+          <h3><i class="fa-solid fa-shirt" style="color:var(--teal);"></i> قسم المغسلة - استلام وتبديل المفارش ورصد التلفيات</h3>
+          <span class="badge badge-teal">المغسلة المركزية</span>
         </div>
 
         <div class="form-grid">
           <div class="form-group">
-            <label>اختر رقم الغرفة المغادرة</label>
+            <label>اختر طلب الغسيل الوارد من المشرف</label>
+            <select id="laundry-order-select" class="form-control" onchange="loadLaundryOrder()"></select>
+          </div>
+          <div class="form-group">
+            <label>مسؤول المغسلة</label>
+            <input type="text" id="laundry-staff-name" class="form-control" value="فؤاد القاسمي">
+          </div>
+          <div class="form-group">
+            <label>إجراء المغسلة</label>
+            <select id="laundry-action-status" class="form-control">
+              <option value="تم الاستلام والتبديل بمفارش نظيفة">تم الاستلام والتبديل بمفارش نظيفة جاهزة</option>
+              <option value="قيد الغسيل والتعقيم">قيد الغسيل والتعقيم حالياً</option>
+              <option value="يوجد ملايات تالفة / سوء استخدام">يوجد ملايات تالفة / سوء استخدام</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>عدد الملايات التالفة (إن وجدت)</label>
+            <input type="number" id="laundry-damaged-count" class="form-control" value="0" min="0">
+          </div>
+          <div class="form-group">
+            <label>تكلفة التلفيات بالريال (إن وجدت)</label>
+            <input type="number" id="laundry-damaged-cost" class="form-control" value="0" min="0">
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label>ملاحظة التلف أو سوء الاستخدام</label>
+            <input type="text" id="laundry-damaged-notes" class="form-control" placeholder="سجل نوع التلف: حروق، تمزق، بقع غير قابلة للإزالة...">
+          </div>
+        </div>
+
+        <button class="btn btn-teal" onclick="processLaundryOrder()"><i class="fa-solid fa-check-double"></i> تأكيد استلام وتبديل الغسيل</button>
+      </div>
+
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-clock-rotate-left"></i> سجل طلبات المغسلة والتبديل والتلفيات</h3>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم الطلب</th>
+                <th>الغرفة</th>
+                <th>الكمية (ملايات / مناشف)</th>
+                <th>حالة الطلب</th>
+                <th>التالف وسوء الاستخدام</th>
+                <th>المسؤول</th>
+                <th>التوقيت</th>
+              </tr>
+            </thead>
+            <tbody id="laundry-orders-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. واجهة بيع تذاكر الدخول للمنتجع (تذاكر متسلسلة) -->
+    <div id="view-tickets" class="view-section">
+      <div class="content-box" style="border-top: 5px solid var(--purple);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-ticket" style="color:var(--purple);"></i> نظام إصدار وبيع تذاكر دخول المنتجع</h3>
+          <span class="badge badge-purple">كاشير الدخول</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>نوع التذكرة</label>
+            <select id="tkt-type" class="form-control" onchange="calcTicketPrice()">
+              <option value="تذكرة دخول عام (كبار)" data-price="2000">تذكرة دخول عام (كبار) - 2000 ر.ي</option>
+              <option value="تذكرة أطفال" data-price="1000">تذكرة أطفال - 1000 ر.ي</option>
+              <option value="تذكرة عائلية شاملة" data-price="5000">تذكرة عائلية شاملة - 5000 ر.ي</option>
+              <option value="تذكرة مسبح وسباحة" data-price="3000">تذكرة دخول + مسبح - 3000 ر.ي</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>العدد</label>
+            <input type="number" id="tkt-count" class="form-control" value="1" min="1" oninput="calcTicketPrice()">
+          </div>
+          <div class="form-group">
+            <label>اسم الزائر / العائلة</label>
+            <input type="text" id="tkt-guest" class="form-control" placeholder="اسم الزائر الكريم">
+          </div>
+          <div class="form-group">
+            <label>المبلغ الإجمالي (ريال)</label>
+            <input type="text" id="tkt-total" class="form-control" value="2000" readonly style="font-weight:800; color:var(--primary);">
+          </div>
+        </div>
+
+        <button class="btn btn-purple" onclick="issueTicket()"><i class="fa-solid fa-print"></i> إصدار وحفظ التذكرة</button>
+      </div>
+
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-list-check"></i> سجل التذاكر المباعة اليوم</h3>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم التذكرة</th>
+                <th>نوع التذكرة</th>
+                <th>العدد</th>
+                <th>المبلغ</th>
+                <th>اسم الزائر</th>
+                <th>الكاشير</th>
+                <th>التاريخ والوقت</th>
+              </tr>
+            </thead>
+            <tbody id="tickets-log-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. مركز التقارير الفترية (من تاريخ إلى تاريخ) -->
+    <div id="view-reports" class="view-section">
+      <div class="content-box filter-box" style="border-top: 5px solid var(--purple);">
+        <div class="content-header">
+          <div>
+            <h3><i class="fa-solid fa-filter" style="color:var(--purple);"></i> محدد الفترة الزمنية للتقارير (من تاريخ إلى تاريخ)</h3>
+            <p style="font-size:0.8rem; color:var(--gray-500); margin-top:3px;">حدد الفترة لعرض تقارير الصيانة، المغسلة، مشرف الغرف، والتذاكر بدقة</p>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="window.print()"><i class="fa-solid fa-print"></i> طباعة التقرير الشامل</button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fa-regular fa-calendar"></i> من تاريخ:</label>
+            <input type="date" id="rep-from-date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label><i class="fa-regular fa-calendar-check"></i> إلى تاريخ:</label>
+            <input type="date" id="rep-to-date" class="form-control">
+          </div>
+          <div class="form-group" style="align-self: flex-end;">
+            <button class="btn btn-purple" style="width:100%;" onclick="filterReportsByDate()"><i class="fa-solid fa-magnifying-glass"></i> تطبيق الفلترة الفترية</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- تقرير الصيانة الفتري -->
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-screwdriver-wrench" style="color:var(--secondary);"></i> تقرير أعمال وبلاغات الصيانة المنجزة خلال الفترة</h3>
+          <span class="badge badge-secondary" id="rep-maint-count-badge">0 بلاغ</span>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم البلاغ</th>
+                <th>الغرفة</th>
+                <th>وصف العطل</th>
+                <th>الأهمية</th>
+                <th>الحالة</th>
+                <th>الفني</th>
+                <th>ما تم إنجازه وإصلاحه</th>
+                <th>التاريخ</th>
+              </tr>
+            </thead>
+            <tbody id="rep-maint-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- تقرير المغسلة الفتري -->
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-shirt" style="color:var(--teal);"></i> تقرير المغسلة والتبديل والملايات التالفة خلال الفترة</h3>
+          <span class="badge badge-teal" id="rep-laundry-count-badge">0 طلب</span>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم الطلب</th>
+                <th>الغرفة</th>
+                <th>الكمية</th>
+                <th>الحالة والتبديل</th>
+                <th>التلفيات المسجلة</th>
+                <th>المسؤول</th>
+                <th>التاريخ</th>
+              </tr>
+            </thead>
+            <tbody id="rep-laundry-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- تقرير مشرف الغرف الفتري -->
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-user-tie" style="color:var(--primary);"></i> تقرير تجهيز الغرف وصرف مستلزمات النظافة خلال الفترة</h3>
+          <span class="badge badge-primary" id="rep-sup-count-badge">0 غرفة</span>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>الغرفة</th>
+                <th>المشرف</th>
+                <th>مستوى التجهيز</th>
+                <th>المستلزمات المصروفة</th>
+                <th>الحالة</th>
+                <th>التاريخ</th>
+              </tr>
+            </thead>
+            <tbody id="rep-sup-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- تقرير مبيعات التذاكر الفتري -->
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-ticket" style="color:var(--purple);"></i> تقرير مبيعات وإيرادات تذاكر دخول المنتجع خلال الفترة</h3>
+          <span class="badge badge-purple" id="rep-tickets-total-badge">0 ريال</span>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>رقم التذكرة</th>
+                <th>النوع</th>
+                <th>العدد</th>
+                <th>المبلغ</th>
+                <th>اسم الزائر</th>
+                <th>الكاشير</th>
+                <th>التاريخ</th>
+              </tr>
+            </thead>
+            <tbody id="rep-tickets-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. واجهة المدير العام -->
+    <div id="view-manager" class="view-section">
+      <div class="kpi-grid">
+        <div class="kpi-card" style="border-right-color: var(--primary);">
+          <div class="kpi-info"><p>إجمالي الغرف</p><h2 id="kpi-total-rooms">65</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-hotel"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: #3b82f6;">
+          <div class="kpi-info"><p>الغرف المشغولة</p><h2 id="kpi-occupied-rooms">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-bed"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--cyan);">
+          <div class="kpi-info"><p>المسابح الجاهزة</p><h2 id="kpi-pools-ready">0 / 10</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--danger);">
+          <div class="kpi-info"><p>بلاغات صيانة مفتوحة</p><h2 id="kpi-open-maint">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-screwdriver-wrench" style="color:var(--danger);"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--teal);">
+          <div class="kpi-info"><p>طلبات المغسلة</p><h2 id="kpi-laundry-orders">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-shirt" style="color:var(--teal);"></i></div>
+        </div>
+        <div class="kpi-card" style="border-right-color: var(--purple);">
+          <div class="kpi-info"><p>إيراد التذاكر اليوم</p><h2 id="kpi-tickets-revenue">0</h2></div>
+          <div class="kpi-icon"><i class="fa-solid fa-ticket" style="color:var(--purple);"></i></div>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-hotel"></i> كشف حالة الغرف الشامل (65 غرفة كاملة)</h3>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-secondary btn-sm" onclick="resetOfficial()"><i class="fa-solid fa-rotate"></i> ضبط الغرف الأصلية</button>
+            <button class="btn btn-primary btn-sm" onclick="exportData()"><i class="fa-solid fa-download"></i> تصدير البيانات</button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>الغرفة</th>
+                <th>التصنيف والطابق</th>
+                <th>الإشغال</th>
+                <th>النزيل</th>
+                <th>المغادرة</th>
+                <th>تجهيز النظافة</th>
+                <th>حالة الصيانة</th>
+              </tr>
+            </thead>
+            <tbody id="mgr-rooms-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. واجهة عامل الخدمات (تشييك الأجهزة والأثاث) -->
+    <div id="view-clean" class="view-section">
+      <div class="content-box" style="border-top: 5px solid var(--warning);">
+        <div class="content-header">
+          <h3><i class="fa-solid fa-clipboard-check" style="color:var(--warning);"></i> محضر تشييك أثاث وأجهزة الغرفة عند المغادرة</h3>
+          <span class="badge badge-warning">عامل الخدمات</span>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>رقم الغرفة</label>
             <select id="hk-audit-room" class="form-control"></select>
           </div>
           <div class="form-group">
-            <label>اسم عامل الخدمات القائم بالفحص</label>
+            <label>عامل الخدمات الفاحص</label>
             <input type="text" id="hk-audit-worker" class="form-control" value="علي محمد">
           </div>
           <div class="form-group">
@@ -418,107 +806,51 @@
             <input type="text" id="hk-audit-guest" class="form-control" placeholder="اسم النزيل">
           </div>
           <div class="form-group">
-            <label>حالة الأثاث والأجهزة الإجمالية</label>
+            <label>قرار الفحص</label>
             <select id="hk-audit-decision" class="form-control">
-              <option value="سليمة 100% - لا توجد تلفيات">سليمة 100% (كافة الأجهزة والمحتويات تعمل بنجاح)</option>
-              <option value="يوجد كسر أو تلفيات أو فقدان عهدة">يوجد كسر / تلفيات / فقدان عهدة</option>
-              <option value="تم العثور على مفقودات تخص النزيل">تم العثور على مفقودات للنزيل</option>
+              <option value="سليمة 100% - لا توجد تلفيات">سليمة 100% (كافة الأجهزة والمحتويات تعمل)</option>
+              <option value="يوجد تلفيات أو فقدان عهدة">يوجد كسر / تلفيات / فقدان عهدة</option>
             </select>
           </div>
         </div>
 
-        <h4 style="margin: 1.25rem 0 0.5rem 0; font-size: 0.95rem; color: var(--primary);">
-          <i class="fa-solid fa-list-ol"></i> بنود التشييك التفصيلية المطلوبة عند المغادرة:
+        <h4 style="margin: 1rem 0 0.5rem 0; font-size: 0.95rem; color: var(--primary);">
+          <i class="fa-solid fa-list-ol"></i> بنود التشييك عند المغادرة:
         </h4>
         <div class="checklist-grid">
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-phone" checked>
-            <label for="chk-item-phone"><strong>تلفون الغرفة</strong> (حرارة الهاتف تعمل وسليم)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-tv" checked>
-            <label for="chk-item-tv"><strong>شاشة التلفزيون</strong> (شاشة سليمة بدون كسر)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-tv-remote" checked>
-            <label for="chk-item-tv-remote"><strong>ريموت التلفزيون</strong> (موجود ويعمل بالبطاريات)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-ac" checked>
-            <label for="chk-item-ac"><strong>مكيف الهواء</strong> (تبريد فعال وسليم)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-ac-remote" checked>
-            <label for="chk-item-ac-remote"><strong>ريموت المكيف</strong> (موجود وسليم)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-towels" checked>
-            <label for="chk-item-towels"><strong>المناشف</strong> (العدد كامل بدون فقدان)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-pillows" checked>
-            <label for="chk-item-pillows"><strong>المخدات والفرش</strong> (سليمة من التمزق أو الحرق)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-bath" checked>
-            <label for="chk-item-bath"><strong>أدوات وخلاطات الحمام والدش</strong> (سليمة)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-mirror" checked>
-            <label for="chk-item-mirror"><strong>المرايا والزجاج</strong> (بدون شروخ أو كسر)</label>
-          </div>
-          <div class="checklist-item">
-            <input type="checkbox" id="chk-item-lights" checked>
-            <label for="chk-item-lights"><strong>سلامة الإضاءة</strong> (كافة اللمبات والأبجورات تعمل)</label>
-          </div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-phone" checked><label for="chk-item-phone">حرارة وتلفون الغرفة</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-tv" checked><label for="chk-item-tv">شاشة التلفزيون</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-tv-remote" checked><label for="chk-item-tv-remote">ريموت التلفزيون</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-ac" checked><label for="chk-item-ac">مكيف الهواء</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-ac-remote" checked><label for="chk-item-ac-remote">ريموت المكيف</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-towels" checked><label for="chk-item-towels">المناشف كاملة</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-pillows" checked><label for="chk-item-pillows">المخدات والفرش</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-bath" checked><label for="chk-item-bath">أدوات الحمام والدش</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-mirror" checked><label for="chk-item-mirror">المرايا والزجاج</label></div>
+          <div class="checklist-item"><input type="checkbox" id="chk-item-lights" checked><label for="chk-item-lights">سلامة الإضاءة واللمبات</label></div>
         </div>
 
         <div class="form-grid" style="margin-top:1rem;">
           <div class="form-group">
-            <label>قيمة التلفيات بالريال (إن وجدت)</label>
+            <label>قيمة التلفيات (إن وجدت)</label>
             <input type="number" id="hk-audit-cost" class="form-control" placeholder="0">
           </div>
           <div class="form-group" style="grid-column: span 2;">
-            <label>تفاصيل النواقص أو التلفيات أو مفقودات النزيل بدقة</label>
-            <input type="text" id="hk-audit-notes" class="form-control" placeholder="سجل بالتفصيل: مثلاً كسر ريموت المكيف، نسيان هاتف محمول...">
+            <label>ملاحظات التلف أو مفقودات النزيل</label>
+            <input type="text" id="hk-audit-notes" class="form-control" placeholder="سجل بالتفصيل...">
           </div>
         </div>
-
         <button class="btn btn-warning" onclick="saveHousekeepingAudit()"><i class="fa-solid fa-floppy-disk"></i> توثيق واعتماد محضر التشييك</button>
-      </div>
-
-      <div class="content-box">
-        <div class="content-header">
-          <h3><i class="fa-solid fa-clock-rotate-left"></i> سجل محاضر تشييك أثاث وأجهزة الغرف المغادرة</h3>
-        </div>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>الغرفة</th>
-                <th>عامل الخدمات الفاحص</th>
-                <th>اسم النزيل</th>
-                <th>نتيجة الفحص</th>
-                <th>التلفيات المسجلة</th>
-                <th>ملاحظات الفحص / مفقودات</th>
-                <th>توقيت التشييك</th>
-              </tr>
-            </thead>
-            <tbody id="hk-audits-tbody"></tbody>
-          </table>
-        </div>
       </div>
     </div>
 
-    <!-- 3. واجهة عامل المسابح والنادي الموحدة (10 مسابح + النادي الرياضي) -->
+    <!-- 8. واجهة المسابح والنادي -->
     <div id="view-pools" class="view-section">
-      <!-- قسم المسابح الـ 10 -->
       <div class="content-box" style="border-top: 5px solid var(--cyan);">
         <div class="content-header">
-          <h3><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i> إدارة وتشغيل مسابح المنتجع الـ 10</h3>
-          <span class="badge badge-cyan">المسابح والنادي الرياضي</span>
+          <h3><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i> إدارة وتشغيل مسابح المنتجع الـ 10 والنادي</h3>
+          <span class="badge badge-cyan">المسابح والنادي</span>
         </div>
-
         <div class="form-grid">
           <div class="form-group">
             <label>اختر المسبح</label>
@@ -536,214 +868,73 @@
             </select>
           </div>
           <div class="form-group">
-            <label>اسم الفني / مسؤول التشغيل</label>
+            <label>اسم المسؤول</label>
             <input type="text" id="pool-tech-name" class="form-control" value="م. سالم اليافعي">
           </div>
           <div class="form-group">
-            <label>الحالة التشغيلية للمسبح</label>
+            <label>حالة المسبح</label>
             <select id="pool-status-select" class="form-control">
               <option value="جاهز للاستخدام">جاهز للاستخدام (نظيف ومعقم 100%)</option>
-              <option value="قيد العمل والتنظيف">قيد العمل والتنظيف / جاري التعبئة</option>
-              <option value="خارج الخدمة مؤقتاً">خارج الخدمة مؤقتاً (صيانة)</option>
+              <option value="قيد العمل والتنظيف">قيد العمل والتنظيف</option>
+              <option value="خارج الخدمة مؤقتاً">خارج الخدمة مؤقتاً</option>
             </select>
           </div>
         </div>
-
-        <div class="checklist-grid">
-          <div class="checklist-item"><input type="checkbox" id="chk-p-filter" checked><label for="chk-p-filter">تشغيل الفلاتر وتنقية المياه</label></div>
-          <div class="checklist-item"><input type="checkbox" id="chk-p-clean" checked><label for="chk-p-clean">كنس وجلي أرضية الحوض وشفط الرواسب</label></div>
-          <div class="checklist-item"><input type="checkbox" id="chk-p-chem" checked><label for="chk-p-chem">قياس وضبط نسبة الكلور والتعقيم</label></div>
-          <div class="checklist-item"><input type="checkbox" id="chk-p-maint"><label for="chk-p-maint">صيانة المضخات والمحابس وكشافات الإضاءة</label></div>
-        </div>
-
         <button class="btn btn-cyan" onclick="savePoolRecord()"><i class="fa-solid fa-floppy-disk"></i> حفظ واعتماد حالة المسبح</button>
       </div>
-
-      <div class="rooms-grid" id="pools-cards-grid" style="margin-bottom:1.5rem;"></div>
-
-      <!-- قسم النادي الرياضي والمرافق الترفيهية -->
-      <div class="content-box" style="border-top: 5px solid var(--purple);">
-        <div class="content-header">
-          <h3><i class="fa-solid fa-dumbbell" style="color:var(--purple);"></i> إدارة رواد النادي الرياضي والمرافق</h3>
-          <span class="badge badge-purple">صالة اللياقة والمرافق</span>
-        </div>
-
-        <div class="form-grid">
-          <div class="form-group">
-            <label>اسم العضو أو رقم الغرفة (للنزلاء)</label>
-            <input type="text" id="club-user-input" class="form-control" placeholder="اكتب اسم الزائر أو رقم الشاليه">
-          </div>
-          <div class="form-group">
-            <label>نوع الاشتراك والدخول</label>
-            <select id="club-type-input" class="form-control">
-              <option value="دخول يومي (نزيل منتجع)">دخول يومي (نزيل منتجع)</option>
-              <option value="دخول يومي (زائر خارجي)">دخول يومي (زائر خارجي)</option>
-              <option value="اشتراك شهري منتظم">اشتراك شهري منتظم</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>المرفق المستخدم</label>
-            <select id="club-fac-input" class="form-control">
-              <option value="صالة اللياقة والجيم">صالة اللياقة والجيم</option>
-              <option value="مسبح النادي الرياضي">مسبح النادي الرياضي</option>
-              <option value="الساونا والبخار">الساونا والبخار</option>
-              <option value="باقة شاملة (جيم + مسبح + ساونا)">باقة شاملة (جيم + مسبح + ساونا)</option>
-            </select>
-          </div>
-        </div>
-        <button class="btn btn-purple" onclick="registerClubUser()"><i class="fa-solid fa-plus"></i> قيد دخول جديد للنادي</button>
-      </div>
-
-      <div class="table-container content-box">
-        <table>
-          <thead>
-            <tr><th>رقم القيد</th><th>الاسم / الغرفة</th><th>النوع</th><th>المرفق</th><th>التوقيت</th></tr>
-          </thead>
-          <tbody id="club-tbody"></tbody>
-        </table>
-      </div>
+      <div class="rooms-grid" id="pools-cards-grid"></div>
     </div>
 
-    <!-- 4. واجهة المدير العام -->
-    <div id="view-manager" class="view-section">
-      <div class="kpi-grid">
-        <div class="kpi-card" style="border-right-color: var(--primary);">
-          <div class="kpi-info"><p>إجمالي الغرف</p><h2 id="kpi-total-rooms">65</h2></div>
-          <div class="kpi-icon"><i class="fa-solid fa-hotel"></i></div>
-        </div>
-        <div class="kpi-card" style="border-right-color: #3b82f6;">
-          <div class="kpi-info"><p>الغرف المشغولة</p><h2 id="kpi-occupied-rooms">0</h2></div>
-          <div class="kpi-icon"><i class="fa-solid fa-bed"></i></div>
-        </div>
-        <div class="kpi-card" style="border-right-color: var(--success);">
-          <div class="kpi-info"><p>نسبة الإشغال</p><h2 id="kpi-occupancy-rate">0%</h2></div>
-          <div class="kpi-icon"><i class="fa-solid fa-percent"></i></div>
-        </div>
-        <div class="kpi-card" style="border-right-color: var(--cyan);">
-          <div class="kpi-info"><p>المسابح الجاهزة</p><h2 id="kpi-pools-ready">0 / 10</h2></div>
-          <div class="kpi-icon"><i class="fa-solid fa-water-ladder" style="color:var(--cyan);"></i></div>
-        </div>
-        <div class="kpi-card" style="border-right-color: var(--warning);">
-          <div class="kpi-info"><p>محاضر التشييك</p><h2 id="kpi-total-audits">0</h2></div>
-          <div class="kpi-icon"><i class="fa-solid fa-clipboard-check" style="color:var(--warning);"></i></div>
-        </div>
-        <div class="kpi-card" style="border-right-color: var(--purple);">
-          <div class="kpi-info"><p>شكاوى النزلاء</p><h2 id="kpi-active-complaints">0</h2></div>
-          <div class="kpi-icon"><i class="fa-solid fa-triangle-exclamation" style="color:var(--purple);"></i></div>
-        </div>
-      </div>
-
-      <div class="content-box">
-        <div class="content-header">
-          <h3><i class="fa-solid fa-hotel"></i> الحالة الشاملة للغرف والوحدات الـ 65</h3>
-          <div style="display:flex; gap:8px;">
-            <button class="btn btn-secondary btn-sm" onclick="resetOfficial()"><i class="fa-solid fa-rotate"></i> ضبط الغرف الأصلية</button>
-            <button class="btn btn-primary btn-sm" onclick="exportData()"><i class="fa-solid fa-download"></i> تصدير البيانات</button>
-          </div>
-        </div>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>رقم الغرفة</th>
-                <th>التصنيف والطابق</th>
-                <th>الإشغال</th>
-                <th>النزيل</th>
-                <th>المغادرة</th>
-                <th>تجهيز النظافة والمستلزمات</th>
-                <th>سلامة الأثاث والأجهزة</th>
-                <th>الصيانة</th>
-              </tr>
-            </thead>
-            <tbody id="mgr-rooms-tbody"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. مركز التقارير الدورية (يومي / أسبوعي / شهري) -->
-    <div id="view-reports" class="view-section">
-      <div class="content-box" style="border-top: 5px solid var(--purple);">
-        <div class="content-header">
-          <div>
-            <h3><i class="fa-solid fa-chart-line" style="color:var(--purple);"></i> مركز التقارير الدورية (يومي / أسبوعي / شهري)</h3>
-            <p style="font-size:0.8rem; color:var(--gray-500); margin-top:3px;">تقارير تشغيل الغرف، النظافة والمستلزمات، فحص الأثاث، المسابح والنادي</p>
-          </div>
-          <div style="display:flex; gap:8px;">
-            <button class="btn btn-secondary btn-sm" onclick="setPeriod('daily')">تقرير يومي</button>
-            <button class="btn btn-secondary btn-sm" onclick="setPeriod('weekly')">تقرير أسبوعي</button>
-            <button class="btn btn-secondary btn-sm" onclick="setPeriod('monthly')">تقرير شهري</button>
-            <button class="btn btn-primary btn-sm" onclick="window.print()"><i class="fa-solid fa-print"></i> طباعة التقرير</button>
-          </div>
-        </div>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>البيان والنشاط</th>
-                <th>الحجم الكلي</th>
-                <th>المؤشر الفعلي للفترة</th>
-                <th>نسبة الأداء / الجاهزية</th>
-                <th>الملاحظات الإدارية</th>
-              </tr>
-            </thead>
-            <tbody id="reports-summary-tbody"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. واجهة تسليم واستلام المفاتيح (الاستقبال) -->
+    <!-- 9. المفاتيح -->
     <div id="view-keys" class="view-section">
       <div class="content-box" style="border-top: 5px solid var(--primary);">
         <div class="content-header">
           <h3><i class="fa-solid fa-key" style="color:var(--secondary);"></i> حركة تسليم واستلام مفاتيح الغرف</h3>
-          <span class="badge badge-primary">الاستقبال ⮂ مشرف الغرف</span>
+          <span class="badge badge-primary">الاستقبال ⮂ المشرف</span>
         </div>
         <div class="form-grid">
           <div class="form-group">
-            <label>اختر رقم الغرفة</label>
+            <label>رقم الغرفة</label>
             <select id="key-room-select" class="form-control"></select>
           </div>
           <div class="form-group">
             <label>نوع الحركة</label>
             <select id="key-action-type" class="form-control">
-              <option value="تسليم من الاستقبال إلى مشرف الغرف لتجهيزها">تسليم من الاستقبال ➔ إلى مشرف الغرف لتجهيزها</option>
-              <option value="استلام من مشرف الغرف إلى الاستقبال (جاهزة للتسكين)">استلام من مشرف الغرف ➔ إلى الاستقبال (جاهزة للتسكين)</option>
+              <option value="تسليم من الاستقبال لمشرف الغرف لتجهيزها">تسليم من الاستقبال ➔ للمشرف لتجهيزها</option>
+              <option value="استلام من مشرف الغرف للاستقبال (جاهزة للتسكين)">استلام من المشرف ➔ للاستقبال (جاهزة)</option>
               <option value="استلام مفتاح من نزيل مغادر">استلام مفتاح من نزيل مغادر ➔ للاستقبال</option>
             </select>
           </div>
           <div class="form-group">
             <label>موظف الاستقبال</label>
-            <input type="text" id="key-reception-officer" class="form-control" value="أحمد الوصابي">
+            <input type="text" id="key-rec-officer" class="form-control" value="أحمد الوصابي">
           </div>
           <div class="form-group">
             <label>مشرف الغرف</label>
-            <input type="text" id="key-supervisor-officer" class="form-control" value="جمال العديني">
+            <input type="text" id="key-sup-officer" class="form-control" value="جمال العديني">
           </div>
         </div>
         <button class="btn btn-primary" onclick="recordKeyMovement()"><i class="fa-solid fa-floppy-disk"></i> توثيق حركة المفتاح</button>
       </div>
-
       <div class="table-container content-box">
         <table>
           <thead>
-            <tr><th>رقم الغرفة</th><th>نوع الحركة</th><th>الاستقبال</th><th>مشرف الغرف</th><th>التوقيت</th></tr>
+            <tr><th>الغرفة</th><th>الحركة</th><th>الاستقبال</th><th>المشرف</th><th>التوقيت</th></tr>
           </thead>
           <tbody id="keys-log-tbody"></tbody>
         </table>
       </div>
     </div>
 
-    <!-- 7. واجهة انطباع النزلاء والملاحظات والشكاوى (الاستقبال) -->
+    <!-- 10. انطباعات النزلاء -->
     <div id="view-feedback" class="view-section">
       <div class="content-box" style="border-top: 5px solid var(--cyan);">
         <div class="content-header">
-          <h3><i class="fa-solid fa-comments" style="color:var(--cyan);"></i> انطباعات النزلاء ومتابعة جودة الخدمات والشكاوى</h3>
+          <h3><i class="fa-solid fa-comments" style="color:var(--cyan);"></i> انطباعات النزلاء والشكاوى الفورية</h3>
         </div>
         <div class="form-grid">
           <div class="form-group">
-            <label>رقم الغرفة / الشاليه</label>
+            <label>رقم الغرفة</label>
             <select id="fb-room-select" class="form-control"></select>
           </div>
           <div class="form-group">
@@ -751,69 +942,36 @@
             <input type="text" id="fb-guest-name" class="form-control" placeholder="اسم النزيل">
           </div>
           <div class="form-group">
-            <label>التقييم العام للإقامة</label>
+            <label>التقييم العام</label>
             <select id="fb-overall-rate" class="form-control">
               <option value="ممتاز (5 نجوم)">⭐⭐⭐⭐⭐ ممتاز جداً</option>
               <option value="جيد جداً (4 نجوم)">⭐⭐⭐⭐ جيد جداً</option>
-              <option value="متوسط (3 نجوم)">⭐⭐⭐ متوسط - يحتاج تحسين</option>
-              <option value="غير راضٍ (توجد شكوى)">⭐ غير راضٍ - توجد شكوى</option>
+              <option value="متوسط (3 نجوم)">⭐⭐⭐ متوسط</option>
+              <option value="غير راضٍ (شكوى)">⭐ غير راضٍ (شكوى)</option>
             </select>
           </div>
           <div class="form-group">
-            <label>حالة الشكوى / الملاحظة</label>
+            <label>حالة الشكوى</label>
             <select id="fb-status" class="form-control">
               <option value="ملاحظة شكر وإشادة">ملاحظة شكر وإشادة</option>
-              <option value="شكوى عاجلة - تتطلب معالجة فورية">شكوى عاجلة - تتطلب معالجة فورية</option>
-              <option value="تم حل الشكوى وإرضاء النزيل">تم حل الشكوى وإرضاء النزيل</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group" style="margin-bottom:1.25rem;">
-          <label>تفاصيل الملاحظات أو الشكوى</label>
-          <textarea id="fb-details" class="form-control" rows="3" placeholder="سجل تفاصيل ملاحظات النزيل بدقة..."></textarea>
-        </div>
-        <button class="btn btn-cyan" onclick="saveGuestFeedback()"><i class="fa-solid fa-paper-plane"></i> توثيق انطباع النزيل</button>
-      </div>
-
-      <div class="table-container content-box">
-        <table>
-          <thead>
-            <tr><th>الغرفة</th><th>النزيل</th><th>التقييم</th><th>الملاحظات / الشكاوى</th><th>الحالة</th><th>التوقيت</th></tr>
-          </thead>
-          <tbody id="feedback-log-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 8. واجهة موظف الصيانة -->
-    <div id="view-maintenance" class="view-section">
-      <div class="content-box" style="border-top: 5px solid var(--secondary);">
-        <div class="content-header">
-          <h3><i class="fa-solid fa-screwdriver-wrench"></i> توثيق وإنجاز أعمال الصيانة</h3>
-          <span class="badge badge-primary">قسم الصيانة</span>
-        </div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>رقم الغرفة</label>
-            <select id="tech-room-select" class="form-control"></select>
-          </div>
-          <div class="form-group">
-            <label>فني الصيانة القائم بالإصلاح</label>
-            <input type="text" id="tech-name" class="form-control" value="م. طارق حسن">
-          </div>
-          <div class="form-group">
-            <label>حالة الإصلاح</label>
-            <select id="tech-status" class="form-control">
-              <option value="تم الإصلاح بنجاح">تم الإصلاح بنجاح (سليمة)</option>
-              <option value="قيد التنفيذ">قيد التنفيذ</option>
+              <option value="شكوى عاجلة - تتطلب معالجة">شكوى عاجلة - تتطلب معالجة</option>
+              <option value="تم حل الشكوى بنجاح">تم حل الشكوى بنجاح</option>
             </select>
           </div>
         </div>
         <div class="form-group" style="margin-bottom:1rem;">
-          <label>تفاصيل الإصلاح وقطع الغيار</label>
-          <input type="text" id="tech-notes" class="form-control" placeholder="اكتب ما تم تنفيذه وإصلاحه...">
+          <label>تفاصيل الملاحظات أو الشكوى</label>
+          <input type="text" id="fb-details" class="form-control" placeholder="اكتب التفاصيل...">
         </div>
-        <button class="btn btn-success" onclick="saveMaintenanceRecord()"><i class="fa-solid fa-circle-check"></i> حفظ الإنجاز وتحديث الغرفة</button>
+        <button class="btn btn-cyan" onclick="saveGuestFeedback()"><i class="fa-solid fa-paper-plane"></i> توثيق الانطباع</button>
+      </div>
+      <div class="table-container content-box">
+        <table>
+          <thead>
+            <tr><th>الغرفة</th><th>النزيل</th><th>التقييم</th><th>الملاحظة</th><th>الحالة</th><th>التاريخ</th></tr>
+          </thead>
+          <tbody id="feedback-log-tbody"></tbody>
+        </table>
       </div>
     </div>
 
@@ -824,20 +982,21 @@
   </footer>
 
   <script>
-    // نظام الصلاحيات المحدث وحصر كل مستخدم في شاشته
+    // الصلاحيات وقفل الواجهات
     const USERS_DB = {
-      "admin":       { pass: "1234", name: "المدير العام", role: "admin", views: ["manager", "reports", "supervisor", "clean", "pools", "keys", "feedback", "maintenance"] },
-      "supervisor":  { pass: "1122", name: "مشرف الغرف (التجهيز والمستلزمات)", role: "supervisor", views: ["supervisor"] },
-      "clean":       { pass: "3344", name: "عامل الخدمات (تشييك الأثاث والأجهزة)", role: "clean", views: ["clean"] },
+      "admin":       { pass: "1234", name: "المدير العام", role: "admin", views: ["manager", "reports", "supervisor", "maintenance", "laundry", "tickets", "clean", "pools", "keys", "feedback"] },
+      "supervisor":  { pass: "1122", name: "مشرف الغرف", role: "supervisor", views: ["supervisor"] },
+      "tech":        { pass: "5566", name: "موظف الصيانة", role: "tech", views: ["maintenance"] },
+      "laundry":     { pass: "6677", name: "مسؤول المغسلة", role: "laundry", views: ["laundry"] },
+      "tickets":     { pass: "4455", name: "كاشير تذاكر الدخول", role: "tickets", views: ["tickets"] },
+      "clean":       { pass: "3344", name: "عامل الخدمات", role: "clean", views: ["clean"] },
       "pool":        { pass: "7788", name: "عامل المسابح والنادي", role: "pool", views: ["pools"] },
       "club":        { pass: "7788", name: "عامل المسابح والنادي", role: "pool", views: ["pools"] },
-      "reception":   { pass: "2026", name: "قسم الاستقبال", role: "reception", views: ["keys", "feedback"] },
-      "tech":        { pass: "5566", name: "موظف الصيانة", role: "tech", views: ["maintenance"] }
+      "reception":   { pass: "2026", name: "قسم الاستقبال", role: "reception", views: ["keys", "feedback"] }
     };
 
     let currentUser = null;
 
-    // توقيت وتاريخ حي مباشر
     function updateLiveDateTime() {
       const now = new Date();
       const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
@@ -849,7 +1008,6 @@
     }
     setInterval(updateLiveDateTime, 1000);
 
-    // تسجيل الدخول مع قفل الواجهات للمستخدم
     function doLogin() {
       const u = document.getElementById('login-user').value.trim();
       const p = document.getElementById('login-pass').value.trim();
@@ -857,7 +1015,7 @@
 
       if (userObj && userObj.pass === p) {
         currentUser = userObj;
-        localStorage.setItem('alwaha_auth_active', u);
+        localStorage.setItem('alwaha_auth_active_v5', u);
         document.getElementById('login-err').style.display = 'none';
         document.getElementById('login-screen').style.display = 'none';
         applyUserPermissions();
@@ -868,7 +1026,7 @@
 
     function doLogout() {
       currentUser = null;
-      localStorage.removeItem('alwaha_auth_active');
+      localStorage.removeItem('alwaha_auth_active_v5');
       document.getElementById('login-user').value = '';
       document.getElementById('login-pass').value = '';
       document.getElementById('login-screen').style.display = 'flex';
@@ -908,265 +1066,459 @@
       const targetSec = document.getElementById('view-' + viewName);
       if (targetSec) targetSec.classList.add('active');
 
+      if (viewName === 'reports') {
+        initDefaultReportDates();
+        filterReportsByDate();
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // قاعدة بيانات الـ 65 غرفة والـ 10 مسابح
     const officialRooms = [
-      { "id": 1, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "مشغولة", "guest": "محمد سالم", "checkout": "2026-10-31", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 2, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 3, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 4, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 5, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 6, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 101, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "مشغولة", "guest": "أحمد المنصوري", "checkout": "2026-11-01", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 102, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "مشغولة", "guest": "خالد العتيبي", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "تحتاج صيانة", "audit": "سليمة 100%" },
-      { "id": 103, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 104, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 130, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 131, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 132, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 133, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 134, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 135, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 201, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "مغادرة اليوم", "guest": "عبدالله القحطاني", "checkout": "-", "clean": "تحتاج إعادة تجهيز ومستلزمات", "maint": "سليمة", "audit": "تم فحص الأجهزة والأثاث" },
-      { "id": 202, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 203, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 204, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 210, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 220, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 230, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 231, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 233, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 234, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 301, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 302, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 303, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 304, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 310, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 311, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 312, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 313, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 314, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 315, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 316, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 317, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 320, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 401, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 402, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 403, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 404, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 410, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 411, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 412, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 413, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 414, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 415, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 416, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 417, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 420, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 501, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 502, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 503, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 504, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 510, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 511, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 512, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 513, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 514, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 515, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 516, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 517, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" },
-      { "id": 520, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "مستوى ممتاز (مكتملة المستلزمات)", "maint": "سليمة", "audit": "سليمة 100%" }
+      { "id": 1, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "مشغولة", "guest": "محمد سالم", "checkout": "2026-10-31", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 2, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 3, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 4, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 5, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 6, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 101, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "مشغولة", "guest": "أحمد المنصوري", "checkout": "2026-11-01", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 102, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "مشغولة", "guest": "خالد العتيبي", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "تحتاج صيانة" },
+      { "id": 103, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 104, "type": "غرفة فندقية", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 130, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 131, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 132, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 133, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 134, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 135, "type": "جناح أول", "floor": "الطابق الأول", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 201, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "مغادرة اليوم", "guest": "عبدالله القحطاني", "checkout": "-", "clean": "تحتاج تنظيف", "maint": "سليمة" },
+      { "id": 202, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 203, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 204, "type": "غرفة فندقية", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 210, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 220, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 230, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 231, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 233, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 234, "type": "جناح ثاني", "floor": "الطابق الثاني", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 301, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 302, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 303, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 304, "type": "غرفة فندقية", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 310, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 311, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 312, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 313, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 314, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 315, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 316, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 317, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 320, "type": "جناح ثالث", "floor": "الطابق الثالث", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 401, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 402, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 403, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 404, "type": "غرفة ديلوكس", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 410, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 411, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 412, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 413, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 414, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 415, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 416, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 417, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 420, "type": "جناح رابع", "floor": "الطابق الرابع", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 501, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 502, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 503, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 504, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 510, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 511, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 512, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 513, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 514, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 515, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 516, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 517, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" },
+      { "id": 520, "type": "جناح VIP", "floor": "الطابق الخامس", "occ": "شاغرة", "guest": "-", "checkout": "-", "clean": "ممتاز (مكتملة)", "maint": "سليمة" }
     ];
 
     const officialPools = [
-      { "id": "P-A", "name": "مسبح A", "type": "مسبح عام رئيسي", "status": "جاهز للاستخدام", "last_work": "فلترة المياه والتعقيم", "tech": "م. سالم اليافعي", "date": "اليوم 10:00 ص" },
-      { "id": "P-B", "name": "مسبح B", "type": "مسبح عائلي", "status": "جاهز للاستخدام", "last_work": "فلترة المياه", "tech": "علي عثمان", "date": "اليوم 11:30 ص" },
-      { "id": "P-C", "name": "مسبح C", "type": "مسبح أطفال", "status": "جاهز للاستخدام", "last_work": "تنظيف الحوض والكلور", "tech": "علي عثمان", "date": "اليوم 09:15 ص" },
-      { "id": "P-CH1", "name": "مسبح شاليه 1", "type": "شاليه خاص", "status": "جاهز للاستخدام", "last_work": "تنظيف وفلترة", "tech": "كمال الدين", "date": "اليوم 08:30 ص" },
-      { "id": "P-CH2", "name": "مسبح شاليه 2", "type": "شاليه خاص", "status": "قيد العمل والتنظيف", "last_work": "تفريغ وتعبئة مياه", "tech": "سعيد مبروك", "date": "اليوم 12:00 م" },
-      { "id": "P-CH3", "name": "مسبح شاليه 3", "type": "شاليه خاص", "status": "جاهز للاستخدام", "last_work": "فلترة المياه", "tech": "كمال الدين", "date": "أمس" },
-      { "id": "P-CH4", "name": "مسبح شاليه 4", "type": "شاليه خاص", "status": "جاهز للاستخدام", "last_work": "تنظيف دوري", "tech": "علي عثمان", "date": "أمس" },
-      { "id": "P-CH5", "name": "مسبح شاليه 5", "type": "شاليه خاص", "status": "جاهز للاستخدام", "last_work": "صيانة مضخات", "tech": "م. طارق حسن", "date": "منذ يومين" },
-      { "id": "P-CH6", "name": "مسبح شاليه 6", "type": "شاليه خاص", "status": "خارج الخدمة مؤقتاً", "last_work": "صيانة دورية", "tech": "م. عمر السعيد", "date": "اليوم 01:00 م" },
-      { "id": "P-CLUB", "name": "مسبح النادي", "type": "النادي الرياضي", "status": "جاهز للاستخدام", "last_work": "فلترة المياه وتعقيم", "tech": "سعيد مبروك", "date": "اليوم 07:00 ص" }
+      { "id": "P-A", "name": "مسبح A", "type": "مسبح عام رئيسي", "status": "جاهز للاستخدام", "tech": "م. سالم اليافعي", "date": "2026-10-30" },
+      { "id": "P-B", "name": "مسبح B", "type": "مسبح عائلي", "status": "جاهز للاستخدام", "tech": "علي عثمان", "date": "2026-10-30" },
+      { "id": "P-C", "name": "مسبح C", "type": "مسبح أطفال", "status": "جاهز للاستخدام", "tech": "علي عثمان", "date": "2026-10-30" },
+      { "id": "P-CH1", "name": "مسبح شاليه 1", "type": "شاليه خاص", "status": "جاهز للاستخدام", "tech": "كمال الدين", "date": "2026-10-30" },
+      { "id": "P-CH2", "name": "مسبح شاليه 2", "type": "شاليه خاص", "status": "قيد العمل والتنظيف", "tech": "سعيد مبروك", "date": "2026-10-30" },
+      { "id": "P-CH3", "name": "مسبح شاليه 3", "type": "شاليه خاص", "status": "جاهز للاستخدام", "tech": "كمال الدين", "date": "2026-10-29" },
+      { "id": "P-CH4", "name": "مسبح شاليه 4", "type": "شاليه خاص", "status": "جاهز للاستخدام", "tech": "علي عثمان", "date": "2026-10-29" },
+      { "id": "P-CH5", "name": "مسبح شاليه 5", "type": "شاليه خاص", "status": "جاهز للاستخدام", "tech": "م. طارق حسن", "date": "2026-10-28" },
+      { "id": "P-CH6", "name": "مسبح شاليه 6", "type": "شاليه خاص", "status": "خارج الخدمة مؤقتاً", "tech": "م. عمر السعيد", "date": "2026-10-30" },
+      { "id": "P-CLUB", "name": "مسبح النادي", "type": "النادي الرياضي", "status": "جاهز للاستخدام", "tech": "سعيد مبروك", "date": "2026-10-30" }
     ];
 
-    let rooms = JSON.parse(localStorage.getItem('alwaha_rooms_v4')) || officialRooms;
-    let pools = JSON.parse(localStorage.getItem('alwaha_pools_v4')) || officialPools;
-    let prepLog = JSON.parse(localStorage.getItem('alwaha_prep_v4')) || [
-      { room: 101, inspector: "جمال العديني", level: "نظافة ممتازة 100% - جاهزة", supplies: "مناشف، صابون، شامبو، معجون، كريم، فاين", status: "جاهزة للتسكين", time: "اليوم 09:30 ص" }
+    let rooms = JSON.parse(localStorage.getItem('alwaha_rooms_v5')) || officialRooms;
+    let pools = JSON.parse(localStorage.getItem('alwaha_pools_v5')) || officialPools;
+    
+    // بلاغات الصيانة
+    let maintTickets = JSON.parse(localStorage.getItem('alwaha_maint_v5')) || [
+      { id: "T-101", room: 102, desc: "ضعف تبريد مكيف الغرفة وتسريب مياه", prio: "عاجل جداً", status: "جديد - مطلوب صيانته", tech: "بانتظار الفني", notes: "-", date: "2026-10-30" }
     ];
-    let auditsLog = JSON.parse(localStorage.getItem('alwaha_audits_v4')) || [
-      { room: 201, worker: "علي محمد", guest: "عبدالله القحطاني", decision: "سليمة 100% - لا توجد تلفيات", cost: 0, notes: "التلفون والتلفزيون والمكيف والإضاءة والمرايا سليمة", time: "اليوم 11:40 ص" }
+
+    // طلبات المغسلة
+    let laundryOrders = JSON.parse(localStorage.getItem('alwaha_laundry_v5')) || [
+      { id: "L-101", room: 201, sheets: 2, towels: 4, note: "ملايات غسيل بعد مغادرة", status: "تم الاستلام والتبديل بمفارش نظيفة", damagedCount: 0, damagedCost: 0, damagedNotes: "لا يوجد تلف", staff: "فؤاد القاسمي", date: "2026-10-30" }
     ];
-    let keysLog = JSON.parse(localStorage.getItem('alwaha_keys_v4')) || [];
-    let feedbacks = JSON.parse(localStorage.getItem('alwaha_fb_v4')) || [];
-    let clubLog = JSON.parse(localStorage.getItem('alwaha_club_v4')) || [];
+
+    // تذاكر الدخول
+    let ticketsLog = JSON.parse(localStorage.getItem('alwaha_tickets_v5')) || [
+      { id: "TICK-1001", type: "تذكرة دخول عام (كبار)", count: 2, total: 4000, guest: "عصام الأهدل", cashier: "كاشير البوابة", date: "2026-10-30" }
+    ];
+
+    // سجل إشراف التجهيز
+    let prepLog = JSON.parse(localStorage.getItem('alwaha_prep_v5')) || [
+      { room: 101, inspector: "جمال العديني", level: "نظافة ممتازة 100% - جاهزة", supplies: "مناشف، صابون، شامبو، معجون، كريم، فاين", status: "جاهزة للتسكين", date: "2026-10-30" }
+    ];
+
+    let auditsLog = JSON.parse(localStorage.getItem('alwaha_audits_v5')) || [];
+    let keysLog = JSON.parse(localStorage.getItem('alwaha_keys_v5')) || [];
+    let feedbacks = JSON.parse(localStorage.getItem('alwaha_fb_v5')) || [];
 
     function saveToStorage() {
-      localStorage.setItem('alwaha_rooms_v4', JSON.stringify(rooms));
-      localStorage.setItem('alwaha_pools_v4', JSON.stringify(pools));
-      localStorage.setItem('alwaha_prep_v4', JSON.stringify(prepLog));
-      localStorage.setItem('alwaha_audits_v4', JSON.stringify(auditsLog));
-      localStorage.setItem('alwaha_keys_v4', JSON.stringify(keysLog));
-      localStorage.setItem('alwaha_fb_v4', JSON.stringify(feedbacks));
-      localStorage.setItem('alwaha_club_v4', JSON.stringify(clubLog));
+      localStorage.setItem('alwaha_rooms_v5', JSON.stringify(rooms));
+      localStorage.setItem('alwaha_pools_v5', JSON.stringify(pools));
+      localStorage.setItem('alwaha_maint_v5', JSON.stringify(maintTickets));
+      localStorage.setItem('alwaha_laundry_v5', JSON.stringify(laundryOrders));
+      localStorage.setItem('alwaha_tickets_v5', JSON.stringify(ticketsLog));
+      localStorage.setItem('alwaha_prep_v5', JSON.stringify(prepLog));
+      localStorage.setItem('alwaha_audits_v5', JSON.stringify(auditsLog));
+      localStorage.setItem('alwaha_keys_v5', JSON.stringify(keysLog));
+      localStorage.setItem('alwaha_fb_v5', JSON.stringify(feedbacks));
       refreshUI();
     }
 
-    // 1. مشرف الغرف: حفظ اعتماد مستوى التجهيز والمستلزمات
+    // 1. مشرف الغرف: إرسال بلاغ صيانة
+    function sendSupervisorMaintenance() {
+      const room = parseInt(document.getElementById('sup-maint-room').value);
+      const prio = document.getElementById('sup-maint-prio').value;
+      const desc = document.getElementById('sup-maint-desc').value.trim();
+
+      if (!desc) { alert('يرجى كتابة وصف العطل بدقة'); return; }
+
+      const tId = "T-" + (maintTickets.length + 101);
+      const today = new Date().toISOString().split('T')[0];
+
+      maintTickets.unshift({
+        id: tId,
+        room: room,
+        desc: desc,
+        prio: prio,
+        status: "جديد - مطلوب صيانته",
+        tech: "بانتظار الفني",
+        notes: "-",
+        date: today
+      });
+
+      const r = rooms.find(x => x.id === room);
+      if (r) r.maint = 'تحتاج صيانة';
+
+      saveToStorage();
+      document.getElementById('sup-maint-desc').value = '';
+      alert(`تم إرسال بلاغ الصيانة [${tId}] للغرفة [${room}] فوراً لموظف الصيانة!`);
+    }
+
+    // 2. مشرف الغرف: إرسال بياضات للمغسلة
+    function sendToLaundry() {
+      const room = parseInt(document.getElementById('sup-laundry-room').value);
+      const sheets = parseInt(document.getElementById('sup-laundry-sheets').value) || 0;
+      const towels = parseInt(document.getElementById('sup-laundry-towels').value) || 0;
+      const note = document.getElementById('sup-laundry-note').value.trim() || 'غسيل اعتيادي';
+      const today = new Date().toISOString().split('T')[0];
+
+      const orderId = "L-" + (laundryOrders.length + 101);
+      laundryOrders.unshift({
+        id: orderId,
+        room: room,
+        sheets: sheets,
+        towels: towels,
+        note: note,
+        status: "طلب مرسل للمغسلة (بانتظار الاستلام والتبديل)",
+        damagedCount: 0,
+        damagedCost: 0,
+        damagedNotes: "-",
+        staff: "بانتظار مسؤول المغسلة",
+        date: today
+      });
+
+      saveToStorage();
+      document.getElementById('sup-laundry-note').value = '';
+      alert(`تم إرسال طلب المفارش والملايات [${orderId}] للغرفة [${room}] إلى قسم المغسلة!`);
+    }
+
+    // 3. موظف الصيانة: إغلاق البلاغ وحل المشكلة
+    function loadSelectedTicket() {
+      const tId = document.getElementById('maint-ticket-select').value;
+      const t = maintTickets.find(x => x.id === tId);
+      if (t) {
+        document.getElementById('maint-action-notes').value = t.notes !== '-' ? t.notes : `تم معالجة وإصلاح خلل (${t.desc}) بالكامل.`;
+      }
+    }
+
+    function resolveTicket() {
+      const tId = document.getElementById('maint-ticket-select').value;
+      const techName = document.getElementById('maint-tech-name').value.trim() || 'فني الصيانة';
+      const status = document.getElementById('maint-close-status').value;
+      const notes = document.getElementById('maint-action-notes').value.trim();
+
+      if (!notes) { alert('يرجى كتابة تقرير ما تم إنجازه وإصلاحه'); return; }
+
+      const t = maintTickets.find(x => x.id === tId);
+      if (t) {
+        t.status = status;
+        t.tech = techName;
+        t.notes = notes;
+
+        const r = rooms.find(x => x.id === t.room);
+        if (r && status.includes('تم الإصلاح')) {
+          r.maint = 'سليمة';
+        }
+      }
+
+      saveToStorage();
+      alert(`تم توثيق إنجاز البلاغ [${tId}] وتحديث حالة الغرفة إلى سليمة!`);
+    }
+
+    // 4. مسؤول المغسلة: استلام وتبديل ورصد تالف
+    function loadLaundryOrder() {
+      const orderId = document.getElementById('laundry-order-select').value;
+      const o = laundryOrders.find(x => x.id === orderId);
+      if (o) {
+        document.getElementById('laundry-damaged-notes').value = o.damagedNotes !== '-' ? o.damagedNotes : '';
+      }
+    }
+
+    function processLaundryOrder() {
+      const orderId = document.getElementById('laundry-order-select').value;
+      const status = document.getElementById('laundry-action-status').value;
+      const staff = document.getElementById('laundry-staff-name').value.trim();
+      const dmgCount = parseInt(document.getElementById('laundry-damaged-count').value) || 0;
+      const dmgCost = parseInt(document.getElementById('laundry-damaged-cost').value) || 0;
+      const dmgNotes = document.getElementById('laundry-damaged-notes').value.trim() || 'لا توجد ملاحظات تالف';
+
+      const o = laundryOrders.find(x => x.id === orderId);
+      if (o) {
+        o.status = status;
+        o.staff = staff;
+        o.damagedCount = dmgCount;
+        o.damagedCost = dmgCost;
+        o.damagedNotes = dmgNotes;
+      }
+
+      saveToStorage();
+      alert(`تم اعتماد معالجة طلب المغسلة [${orderId}] وتبديل المفارش بنجاح!`);
+    }
+
+    // 5. تذاكر الدخول المتسلسلة
+    function calcTicketPrice() {
+      const opt = document.getElementById('tkt-type').selectedOptions[0];
+      const price = parseInt(opt.getAttribute('data-price')) || 2000;
+      const count = parseInt(document.getElementById('tkt-count').value) || 1;
+      document.getElementById('tkt-total').value = (price * count) + " ر.ي";
+    }
+
+    function issueTicket() {
+      const type = document.getElementById('tkt-type').value;
+      const count = parseInt(document.getElementById('tkt-count').value) || 1;
+      const guest = document.getElementById('tkt-guest').value.trim() || 'زائر كريم';
+      const opt = document.getElementById('tkt-type').selectedOptions[0];
+      const price = parseInt(opt.getAttribute('data-price')) || 2000;
+      const total = price * count;
+      const today = new Date().toISOString().split('T')[0];
+
+      const tktNumber = "TICK-" + (1000 + ticketsLog.length + 1);
+
+      ticketsLog.unshift({
+        id: tktNumber,
+        type: type,
+        count: count,
+        total: total,
+        guest: guest,
+        cashier: currentUser ? currentUser.name : "كاشير البوابة",
+        date: today
+      });
+
+      saveToStorage();
+      alert(`تم بنجاح إصدار التذكرة رقم [${tktNumber}] بإجمالي ${total} ريال!`);
+      document.getElementById('tkt-guest').value = '';
+    }
+
+    // 6. المشرف: اعتماد التجهيز
     function saveSupervisorPreparation() {
       const room = parseInt(document.getElementById('sup-prep-room').value);
       const inspector = document.getElementById('sup-prep-inspector').value.trim();
       const level = document.getElementById('sup-prep-clean-level').value;
       const status = document.getElementById('sup-prep-final-status').value;
-      const notes = document.getElementById('sup-prep-notes').value.trim();
+      const today = new Date().toISOString().split('T')[0];
 
-      let supItems = [];
-      if (document.getElementById('sup-sup-towels').checked) supItems.push('مناشف');
-      if (document.getElementById('sup-sup-soap').checked) supItems.push('صابون');
-      if (document.getElementById('sup-sup-shampoo').checked) supItems.push('شامبو');
-      if (document.getElementById('sup-sup-toothpaste').checked) supItems.push('معجون');
-      if (document.getElementById('sup-sup-cream').checked) supItems.push('كريم');
-      if (document.getElementById('sup-sup-tissues').checked) supItems.push('فاين');
+      let items = [];
+      if (document.getElementById('sup-sup-towels').checked) items.push('مناشف');
+      if (document.getElementById('sup-sup-soap').checked) items.push('صابون');
+      if (document.getElementById('sup-sup-shampoo').checked) items.push('شامبو');
+      if (document.getElementById('sup-sup-toothpaste').checked) items.push('معجون');
+      if (document.getElementById('sup-sup-cream').checked) items.push('كريم');
+      if (document.getElementById('sup-sup-tissues').checked) items.push('فاين');
 
       prepLog.unshift({
         room: room,
         inspector: inspector,
         level: level,
-        supplies: supItems.join('، ') || 'لم تحدد',
+        supplies: items.join('، ') || 'مكتملة',
         status: status,
-        time: 'اليوم ' + new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
+        date: today
       });
 
       const r = rooms.find(x => x.id === room);
       if (r) {
-        r.clean = level.includes('ممتازة') ? 'مستوى ممتاز (مكتملة المستلزمات)' : 'تحتاج استكمال مستلزمات';
-        if (status.includes('جاهزة')) {
-          r.occ = 'شاغرة';
-        }
+        r.clean = level.includes('ممتازة') ? 'ممتاز (مكتملة)' : 'تحتاج مستلزمات';
+        if (status.includes('جاهزة')) r.occ = 'شاغرة';
       }
 
       saveToStorage();
-      alert(`تم بنجاح اعتماد تجهيز الغرفة [${room}] وصرف المستلزمات وتحديث حالتها للنظام!`);
+      alert(`تم اعتماد جاهزية الغرفة [${room}] وصرف المستلزمات!`);
     }
 
-    // 2. عامل الخدمات: حفظ محضر تشييك الأثاث والأجهزة عند المغادرة
+    // 7. التقارير الفترية
+    function initDefaultReportDates() {
+      const today = new Date().toISOString().split('T')[0];
+      if (!document.getElementById('rep-from-date').value) {
+        document.getElementById('rep-from-date').value = today;
+      }
+      if (!document.getElementById('rep-to-date').value) {
+        document.getElementById('rep-to-date').value = today;
+      }
+    }
+
+    function filterReportsByDate() {
+      const from = document.getElementById('rep-from-date').value;
+      const to = document.getElementById('rep-to-date').value;
+
+      // تقرير الصيانة
+      const fMaint = maintTickets.filter(t => (!from || t.date >= from) && (!to || t.date <= to));
+      document.getElementById('rep-maint-count-badge').textContent = `${fMaint.length} بلاغ`;
+      const mtb = document.getElementById('rep-maint-tbody');
+      mtb.innerHTML = '';
+      fMaint.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td><strong>${t.id}</strong></td><td>غرفة ${t.room}</td><td>${t.desc}</td><td><span class="badge ${t.prio.includes('عاجل')?'badge-danger':'badge-warning'}">${t.prio}</span></td><td><span class="badge ${t.status.includes('تم')?'badge-success':'badge-warning'}">${t.status}</span></td><td>${t.tech}</td><td>${t.notes}</td><td>${t.date}</td>`;
+        mtb.appendChild(tr);
+      });
+
+      // تقرير المغسلة
+      const fLaundry = laundryOrders.filter(l => (!from || l.date >= from) && (!to || l.date <= to));
+      document.getElementById('rep-laundry-count-badge').textContent = `${fLaundry.length} طلب`;
+      const ltb = document.getElementById('rep-laundry-tbody');
+      ltb.innerHTML = '';
+      fLaundry.forEach(l => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td><strong>${l.id}</strong></td><td>غرفة ${l.room}</td><td>${l.sheets} ملايات + ${l.towels} مناشف</td><td><span class="badge badge-teal">${l.status}</span></td><td>${l.damagedCount > 0 ? l.damagedCount + ' تالف (' + l.damagedCost + ' ريال) - ' + l.damagedNotes : 'لا يوجد تلفيات'}</td><td>${l.staff}</td><td>${l.date}</td>`;
+        ltb.appendChild(tr);
+      });
+
+      // تقرير المشرف
+      const fSup = prepLog.filter(s => (!from || s.date >= from) && (!to || s.date <= to));
+      document.getElementById('rep-sup-count-badge').textContent = `${fSup.length} محضر`;
+      const stb = document.getElementById('rep-sup-tbody');
+      stb.innerHTML = '';
+      fSup.forEach(s => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>غرفة ${s.room}</td><td>${s.inspector}</td><td><span class="badge badge-success">${s.level}</span></td><td>${s.supplies}</td><td>${s.status}</td><td>${s.date}</td>`;
+        stb.appendChild(tr);
+      });
+
+      // تقرير التذاكر
+      const fTickets = ticketsLog.filter(t => (!from || t.date >= from) && (!to || t.date <= to));
+      const totalRev = fTickets.reduce((acc, curr) => acc + (curr.total || 0), 0);
+      document.getElementById('rep-tickets-total-badge').textContent = `${totalRev} ريال`;
+      const ttb = document.getElementById('rep-tickets-tbody');
+      ttb.innerHTML = '';
+      fTickets.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td><strong>${t.id}</strong></td><td>${t.type}</td><td>${t.count}</td><td><strong>${t.total} ر.ي</strong></td><td>${t.guest}</td><td>${t.cashier}</td><td>${t.date}</td>`;
+        ttb.appendChild(tr);
+      });
+    }
+
+    // دوال فرعية: خدمات ومفاتيح ومسابح
     function saveHousekeepingAudit() {
       const room = parseInt(document.getElementById('hk-audit-room').value);
-      const worker = document.getElementById('hk-audit-worker').value.trim();
-      const guest = document.getElementById('hk-audit-guest').value.trim() || 'نزيل مغادر';
-      const decision = document.getElementById('hk-audit-decision').value;
-      const cost = document.getElementById('hk-audit-cost').value || 0;
-      const notes = document.getElementById('hk-audit-notes').value.trim() || 'كافة الأجهزة والمحتويات سليمة';
-
       auditsLog.unshift({
         room: room,
-        worker: worker,
-        guest: guest,
-        decision: decision,
-        cost: cost,
-        notes: notes,
-        time: 'اليوم ' + new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
+        worker: document.getElementById('hk-audit-worker').value,
+        guest: document.getElementById('hk-audit-guest').value || 'نزيل مغادر',
+        decision: document.getElementById('hk-audit-decision').value,
+        cost: document.getElementById('hk-audit-cost').value || 0,
+        notes: document.getElementById('hk-audit-notes').value || 'سليمة',
+        date: new Date().toISOString().split('T')[0]
       });
-
       const r = rooms.find(x => x.id === room);
-      if (r) {
-        r.audit = decision.includes('سليمة') ? 'سليمة 100%' : 'توجد تلفيات أو فقدان';
-        r.clean = 'تحتاج تجهيز وإعادة تنظيف';
-        r.occ = 'شاغرة';
-        r.guest = '-';
-        r.checkout = '-';
-      }
-
+      if (r) { r.clean = 'تحتاج تنظيف وتجهيز'; r.occ = 'شاغرة'; }
       saveToStorage();
-      alert(`تم بنجاح توثيق تشييك الغرفة [${room}] وتحويلها لمشرف الغرف للتجهيز!`);
+      alert('تم توثيق محضر التشييك بنجاح!');
     }
 
-    // 3. عامل المسابح والنادي: حفظ أعمال المسبح والنادي
     function savePoolRecord() {
       const pId = document.getElementById('pool-select').value;
       const p = pools.find(x => x.id === pId);
       if (p) {
         p.status = document.getElementById('pool-status-select').value;
         p.tech = document.getElementById('pool-tech-name').value;
-        p.date = 'اليوم ' + new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' });
+        p.date = new Date().toISOString().split('T')[0];
         saveToStorage();
-        alert('تم بنجاح اعتماد حالة وأعمال المسبح!');
+        alert('تم اعتماد حالة المسبح بنجاح!');
       }
     }
 
-    function registerClubUser() {
-      const user = document.getElementById('club-user-input').value.trim();
-      if (!user) { alert('يرجى كتابة اسم العضو أو رقم الجناح'); return; }
-      clubLog.unshift({
-        id: 'CL-' + (clubLog.length + 101),
-        user: user,
-        type: document.getElementById('club-type-input').value,
-        facility: document.getElementById('club-fac-input').value,
-        time: 'اليوم ' + new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
-      });
-      document.getElementById('club-user-input').value = '';
-      saveToStorage();
-      alert('تم قيد دخول النادي بنجاح!');
-    }
-
-    // 4. الاستقبال والصيانة
     function recordKeyMovement() {
       const room = document.getElementById('key-room-select').value;
       keysLog.unshift({
         room: room,
         type: document.getElementById('key-action-type').value,
-        rec: document.getElementById('key-reception-officer').value,
-        sup: document.getElementById('key-supervisor-officer').value,
-        time: 'اليوم ' + new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
+        rec: document.getElementById('key-rec-officer').value,
+        sup: document.getElementById('key-sup-officer').value,
+        time: new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
       });
       saveToStorage();
-      alert('تم توثيق حركة المفتاح بنجاح!');
+      alert('تم توثيق حركة المفتاح!');
     }
 
     function saveGuestFeedback() {
       const room = document.getElementById('fb-room-select').value;
       const guest = document.getElementById('fb-guest-name').value.trim();
-      if (!guest) { alert('يرجى إدخال اسم النزيل'); return; }
+      if (!guest) { alert('اكتب اسم النزيل'); return; }
       feedbacks.unshift({
         room: room,
         guest: guest,
         overall: document.getElementById('fb-overall-rate').value,
         status: document.getElementById('fb-status').value,
-        details: document.getElementById('fb-details').value.trim() || 'خدمة ممتازة',
-        date: 'اليوم ' + new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
+        details: document.getElementById('fb-details').value || 'ممتاز',
+        date: new Date().toISOString().split('T')[0]
       });
-      document.getElementById('fb-guest-name').value = '';
-      document.getElementById('fb-details').value = '';
       saveToStorage();
-      alert('تم توثيق انطباع النزيل بنجاح!');
-    }
-
-    function saveMaintenanceRecord() {
-      const room = parseInt(document.getElementById('tech-room-select').value);
-      const r = rooms.find(x => x.id === room);
-      if (r) {
-        r.maint = document.getElementById('tech-status').value === 'تم الإصلاح بنجاح' ? 'سليمة' : 'تحت الصيانة';
-        saveToStorage();
-        alert('تم حفظ تقرير الصيانة بنجاح!');
-      }
+      alert('تم حفظ تقييم وانطباع النزيل!');
     }
 
     function populateAllRoomSelects() {
       const selects = [
+        document.getElementById('sup-maint-room'),
+        document.getElementById('sup-laundry-room'),
         document.getElementById('sup-prep-room'),
         document.getElementById('hk-audit-room'),
         document.getElementById('key-room-select'),
-        document.getElementById('fb-room-select'),
-        document.getElementById('tech-room-select')
+        document.getElementById('fb-room-select')
       ];
 
       selects.forEach(sel => {
         if (!sel) return;
-        const currentVal = sel.value;
+        const cur = sel.value;
         sel.innerHTML = '';
         rooms.forEach(r => {
           const opt = document.createElement('option');
@@ -1174,46 +1526,82 @@
           opt.textContent = `غرفة / وحدة ${r.id} (${r.type} - ${r.floor})`;
           sel.appendChild(opt);
         });
-        if (currentVal) sel.value = currentVal;
+        if (cur) sel.value = cur;
       });
     }
 
     function refreshUI() {
-      // جدول إشراف التجهيز
-      const ptb = document.getElementById('sup-prep-log-tbody');
-      if (ptb) {
-        ptb.innerHTML = '';
-        prepLog.forEach(p => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td><strong>غرفة ${p.room}</strong></td>
-            <td>${p.inspector}</td>
-            <td><span class="badge ${p.level.includes('ممتازة') ? 'badge-success' : 'badge-warning'}">${p.level}</span></td>
-            <td>${p.supplies}</td>
-            <td><span class="badge badge-primary">${p.status}</span></td>
-            <td>${p.time}</td>
-          `;
-          ptb.appendChild(tr);
+      // تغذية قوائم البلاغات والمغسلة
+      const tktSel = document.getElementById('maint-ticket-select');
+      if (tktSel) {
+        tktSel.innerHTML = '';
+        maintTickets.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t.id;
+          opt.textContent = `[${t.id}] غرفة ${t.room} - ${t.desc} (${t.status})`;
+          tktSel.appendChild(opt);
         });
       }
 
-      // جدول تشييك عامل الخدمات
-      const atb = document.getElementById('hk-audits-tbody');
-      if (atb) {
-        atb.innerHTML = '';
-        auditsLog.forEach(a => {
+      const lndSel = document.getElementById('laundry-order-select');
+      if (lndSel) {
+        lndSel.innerHTML = '';
+        laundryOrders.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l.id;
+          opt.textContent = `[${l.id}] غرفة ${l.room} - (${l.sheets} ملايات + ${l.towels} مناشف) - ${l.status}`;
+          lndSel.appendChild(opt);
+        });
+      }
+
+      // جدول بلاغات الصيانة لموظف الصيانة
+      const mtb = document.getElementById('maint-tickets-tbody');
+      if (mtb) {
+        mtb.innerHTML = '';
+        maintTickets.forEach(t => {
           const tr = document.createElement('tr');
-          let b = a.decision.includes('سليمة') ? 'badge-success' : 'badge-danger';
           tr.innerHTML = `
-            <td><strong>غرفة ${a.room}</strong></td>
-            <td>${a.worker}</td>
-            <td>${a.guest}</td>
-            <td><span class="badge ${b}">${a.decision}</span></td>
-            <td>${a.cost > 0 ? a.cost + ' ريال' : 'لا يوجد'}</td>
-            <td>${a.notes}</td>
-            <td>${a.time}</td>
+            <td><strong>${t.id}</strong></td>
+            <td>غرفة ${t.room}</td>
+            <td>${t.desc}</td>
+            <td><span class="badge ${t.prio.includes('عاجل')?'badge-danger':'badge-warning'}">${t.prio}</span></td>
+            <td><span class="badge ${t.status.includes('تم')?'badge-success':'badge-warning'}">${t.status}</span></td>
+            <td>${t.tech}</td>
+            <td>${t.notes}</td>
+            <td>${t.date}</td>
+            <td><button class="btn btn-secondary btn-sm" onclick="selectTicket('${t.id}')">معالجة</button></td>
           `;
-          atb.appendChild(tr);
+          mtb.appendChild(tr);
+        });
+      }
+
+      // جدول المغسلة
+      const ltb = document.getElementById('laundry-orders-tbody');
+      if (ltb) {
+        ltb.innerHTML = '';
+        laundryOrders.forEach(l => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>${l.id}</strong></td>
+            <td>غرفة ${l.room}</td>
+            <td>${l.sheets} ملايات / ${l.towels} مناشف</td>
+            <td><span class="badge badge-teal">${l.status}</span></td>
+            <td>${l.damagedCount > 0 ? l.damagedCount + ' تالف (' + l.damagedCost + ' ر.ي) - ' + l.damagedNotes : 'سليمة'}</td>
+            <td>${l.staff}</td>
+            <td>${l.date}</td>
+          `;
+          ltb.appendChild(tr);
+        });
+      }
+
+      // جدول التذاكر
+      const tkttb = document.getElementById('tickets-log-tbody');
+      if (tkttb) {
+        tkttb.innerHTML = '';
+        ticketsLog.forEach(t => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td><strong>${t.id}</strong></td><td>${t.type}</td><td>${t.count}</td><td><strong>${t.total} ر.ي</strong></td><td>${t.guest}</td><td>${t.cashier}</td><td>${t.date}</td>`;
+          tkttb.appendChild(tr);
         });
       }
 
@@ -1239,7 +1627,7 @@
         });
       }
 
-      // كروت المسابح الـ 10
+      // كروت المسابح
       const pGrid = document.getElementById('pools-cards-grid');
       if (pGrid) {
         pGrid.innerHTML = '';
@@ -1251,29 +1639,22 @@
         });
       }
 
-      // جدول النادي
-      const clTb = document.getElementById('club-tbody');
-      if (clTb) {
-        clTb.innerHTML = '';
-        clubLog.forEach(c => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `<td>${c.id}</td><td><strong>${c.user}</strong></td><td>${c.type}</td><td>${c.facility}</td><td>${c.time}</td>`;
-          clTb.appendChild(tr);
-        });
-      }
-
-      // لوحة تحكم المدير العام
+      // إحصائيات المدير العام
       const total = rooms.length;
       const occupied = rooms.filter(r => r.occ === 'مشغولة').length;
       const poolsReady = pools.filter(p => p.status.includes('جاهز')).length;
+      const openMaint = maintTickets.filter(t => !t.status.includes('تم الإصلاح')).length;
+      const today = new Date().toISOString().split('T')[0];
+      const todayRev = ticketsLog.filter(t => t.date === today).reduce((acc, c) => acc + (c.total || 0), 0);
 
       if (document.getElementById('kpi-total-rooms')) {
         document.getElementById('kpi-total-rooms').textContent = total;
         document.getElementById('kpi-occupied-rooms').textContent = occupied;
         document.getElementById('kpi-occupancy-rate').textContent = Math.round((occupied / total) * 100) + '%';
         document.getElementById('kpi-pools-ready').textContent = `${poolsReady} / 10`;
-        document.getElementById('kpi-total-audits').textContent = auditsLog.length;
-        document.getElementById('kpi-active-complaints').textContent = feedbacks.filter(f => f.status.includes('عاجلة')).length;
+        document.getElementById('kpi-open-maint').textContent = openMaint;
+        document.getElementById('kpi-laundry-orders').textContent = laundryOrders.length;
+        document.getElementById('kpi-tickets-revenue').textContent = todayRev + ' ر.ي';
       }
 
       const mgrTb = document.getElementById('mgr-rooms-tbody');
@@ -1288,24 +1669,17 @@
             <td>${r.guest}</td>
             <td>${r.checkout}</td>
             <td><span class="badge ${r.clean.includes('ممتاز') ? 'badge-success' : 'badge-warning'}">${r.clean}</span></td>
-            <td><span class="badge ${r.audit.includes('سليمة') ? 'badge-success' : 'badge-danger'}">${r.audit}</span></td>
             <td><span class="badge ${r.maint === 'سليمة' ? 'badge-success' : 'badge-danger'}">${r.maint}</span></td>
           `;
           mgrTb.appendChild(tr);
         });
       }
+    }
 
-      // ملخص التقارير
-      const repTb = document.getElementById('reports-summary-tbody');
-      if (repTb) {
-        repTb.innerHTML = `
-          <tr><td>تشغيل وإشغال الغرف (65 وحدة)</td><td>65 وحدة</td><td>${occupied} مشغولة / ${65-occupied} شاغرة</td><td>نسبة الإشغال ${Math.round((occupied/65)*100)}%</td><td>حركة مستقرة</td></tr>
-          <tr><td>إشراف النظافة وتوزيع المستلزمات</td><td>${prepLog.length} محضر</td><td>مناشف، صابون، شامبو، معجون، كريم، فاين</td><td>جاهزية 100%</td><td>مطابقة للمعايير</td></tr>
-          <tr><td>فحص أثاث وأجهزة المغادرة (الخدمات)</td><td>${auditsLog.length} عملية فحص</td><td>تلفون، تلفزيون، مكيف، ريموت، مرايا، إضاءة</td><td>حماية كاملة للعهدة</td><td>فحص دقيق قبل إخلاء الطرف</td></tr>
-          <tr><td>جاهزية مسابح المنتجع الـ 10</td><td>10 مسابح</td><td>${poolsReady} مسابح جاهزة للسباحة</td><td>جاهزية ${(poolsReady/10)*100}%</td><td>فلترة وتعقيم دوري</td></tr>
-          <tr><td>نشاط النادي والمرافق الرياضية</td><td>${clubLog.length} زيارة</td><td>صالة اللياقة، المسبح، الساونا</td><td>تشغيل منتظم</td><td>متابعة مستمرة</td></tr>
-        `;
-      }
+    function selectTicket(id) {
+      document.getElementById('maint-ticket-select').value = id;
+      loadSelectedTicket();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function resetOfficial() {
@@ -1318,21 +1692,21 @@
     }
 
     function exportData() {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ rooms, pools, prepLog, auditsLog, keysLog, feedbacks, clubLog }, null, 2));
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ rooms, pools, maintTickets, laundryOrders, ticketsLog, prepLog, auditsLog, keysLog, feedbacks }, null, 2));
       const a = document.createElement('a');
       a.setAttribute("href", dataStr);
-      a.setAttribute("download", "بيانات_منتجع_الواحة_الحديدة.json");
+      a.setAttribute("download", "بيانات_منتجع_الواحة_الشاملة.json");
       document.body.appendChild(a);
       a.click();
       a.remove();
     }
 
-    // تهيئة النظام
+    // التهيئة
     updateLiveDateTime();
     populateAllRoomSelects();
     refreshUI();
 
-    const savedUser = localStorage.getItem('alwaha_auth_active');
+    const savedUser = localStorage.getItem('alwaha_auth_active_v5');
     if (savedUser && USERS_DB[savedUser]) {
       currentUser = USERS_DB[savedUser];
       document.getElementById('login-screen').style.display = 'none';
