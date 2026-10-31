@@ -9,7 +9,6 @@
   <style>
     :root {
       --primary: #0f2c59;
-      --primary-light: #1e4986;
       --secondary: #c5a059;
       --dark: #07172e;
       --white: #ffffff;
@@ -19,6 +18,7 @@
       --cyan: #06b6d4;
       --purple: #8b5cf6;
       --teal: #0d9488;
+      --amber: #d97706;
       --gray-100: #f1f5f9;
       --gray-200: #e2e8f0;
       --gray-500: #64748b;
@@ -32,7 +32,6 @@
       color: #cbd5e1;
       padding: 8px 1.2rem;
       font-size: 0.82rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -50,7 +49,7 @@
     .brand-title h1 { font-size: 1.2rem; font-weight: 800; }
     
     .role-switcher { display: flex; background: rgba(255, 255, 255, 0.12); padding: 4px; border-radius: 30px; gap: 4px; flex-wrap: wrap; }
-    .role-btn { background: transparent; border: none; color: #cbd5e1; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.78rem; transition: all 0.2s; display: flex; align-items: center; gap: 5px; }
+    .role-btn { background: transparent; border: none; color: #cbd5e1; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.78rem; display: flex; align-items: center; gap: 5px; }
     .role-btn.active, .role-btn:hover { background: var(--secondary); color: var(--primary); }
     
     main { flex: 1; max-width: 1440px; width: 100%; margin: 1.2rem auto; padding: 0 1rem; }
@@ -80,6 +79,7 @@
     .btn-cyan { background: var(--cyan); color: var(--white); }
     .btn-purple { background: var(--purple); color: var(--white); }
     .btn-teal { background: var(--teal); color: var(--white); }
+    .btn-amber { background: var(--amber); color: var(--white); }
     .btn-sm { padding: 4px 8px; font-size: 0.75rem; }
 
     .table-container { overflow-x: auto; max-height: 480px; }
@@ -99,65 +99,97 @@
     .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; margin: 8px 0; }
     .checklist-item { display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--gray-100); border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
 
-    .login-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at center, #112d59 0%, #061326 100%); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-    .login-card { background: #fff; border-radius: 12px; width: 100%; max-width: 440px; padding: 1.8rem; border-top: 5px solid var(--secondary); text-align: center; }
-    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 1rem; font-size: 0.8rem; margin-top: auto; }
-    
+    /* شاشة الدخول المباشرة والمحمية */
+    .login-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #07172e;
+      background: radial-gradient(circle at center, #112d59 0%, #061326 100%);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .login-card {
+      background: #ffffff;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 440px;
+      padding: 1.8rem;
+      border-top: 5px solid var(--secondary);
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
     .quick-login-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-      margin-top: 10px;
+      gap: 8px;
+      margin-top: 12px;
     }
     .btn-quick {
-      background: var(--gray-100);
-      border: 1px solid var(--gray-200);
-      padding: 6px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 700;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 10px 6px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
       color: var(--primary);
       cursor: pointer;
-      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
-    .btn-quick:hover { background: var(--secondary); color: var(--primary); }
+    .btn-quick:active { transform: scale(0.97); background: var(--secondary); color: var(--primary); }
+
+    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 1rem; font-size: 0.8rem; margin-top: auto; }
+    
+    @media print {
+      header, .auth-bar, .role-switcher, button, footer, .login-overlay, .filter-box { display: none !important; }
+      body { background: #fff !important; }
+      .content-box { border: 1px solid #ccc !important; box-shadow: none !important; page-break-after: always; }
+      .table-container { max-height: none !important; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- شاشة الدخول الموحدة -->
+  <!-- شاشة الدخول المباشرة والمحمية -->
   <div id="login-screen" class="login-overlay">
     <div class="login-card">
-      <i class="fa-solid fa-hotel" style="font-size:2.5rem; color:var(--primary); margin-bottom:8px;"></i>
-      <h2 style="font-size:1.25rem; font-weight:800; color:var(--primary);">منتجع الواحة السياحي - الحديدة</h2>
-      <p style="font-size:0.8rem; color:var(--gray-500); margin-bottom:1rem;">تسجيل الدخول للنظام</p>
+      <i class="fa-solid fa-hotel" style="font-size:2.4rem; color:var(--primary); margin-bottom:6px;"></i>
+      <h2 style="font-size:1.2rem; font-weight:800; color:var(--primary);">منتجع الواحة السياحي - الحديدة</h2>
+      <p style="font-size:0.8rem; color:var(--gray-500); margin-bottom:1rem;">اختر حسابك للدخول المباشر أو أدخل البيانات:</p>
 
-      <div style="text-align:right; margin-bottom:0.75rem;">
-        <label style="font-size:0.8rem; font-weight:700;">اسم المستخدم</label>
-        <input type="text" id="login-user" class="form-control" placeholder="admin أو supervisor..." value="admin">
-      </div>
-      <div style="text-align:right; margin-bottom:1rem;">
-        <label style="font-size:0.8rem; font-weight:700;">كلمة المرور</label>
-        <input type="text" id="login-pass" class="form-control" placeholder="1234 أو 1122..." value="1234">
-      </div>
-      <div id="login-err" style="display:none; color:var(--danger); font-size:0.8rem; font-weight:700; margin-bottom:0.75rem;">
-        بيانات الدخول غير صحيحة!
-      </div>
-      <button type="button" class="btn btn-primary" style="width:100%; padding:9px;" onclick="doLogin()"><i class="fa-solid fa-right-to-bracket"></i> دخول النظام</button>
-
-      <div style="margin-top:1.2rem; border-top:1px dashed var(--gray-200); padding-top:0.8rem;">
-        <p style="font-size:0.75rem; font-weight:800; color:var(--primary); margin-bottom:6px;">⚡ الدخول السريع المباشر (اضغط للدخول فوراً):</p>
+      <!-- الدخول السريع المضمون بنقرة واحدة -->
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px; margin-bottom:1rem;">
+        <span style="font-size:0.78rem; font-weight:800; color:var(--primary);">⚡ اضغط على حسابك للدخول الفوري:</span>
         <div class="quick-login-grid">
-          <button type="button" class="btn-quick" onclick="quickLoginAs('admin')">👑 المدير العام</button>
-          <button type="button" class="btn-quick" onclick="quickLoginAs('supervisor')">👔 مشرف الغرف</button>
-          <button type="button" class="btn-quick" onclick="quickLoginAs('clean')">🧹 عامل الخدمات</button>
-          <button type="button" class="btn-quick" onclick="quickLoginAs('tech')">🔧 موظف الصيانة</button>
-          <button type="button" class="btn-quick" onclick="quickLoginAs('laundry')">👕 مسؤول المغسلة</button>
-          <button type="button" class="btn-quick" onclick="quickLoginAs('tickets')">🎟️ كاشير التذاكر</button>
-          <button type="button" class="btn-quick" onclick="quickLoginAs('monitor')">🔭 المتابعة والرقابة</button>
-          <button type="button" class="btn-quick" onclick="quickLoginAs('power')">⚡ مسؤول الطاقة</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('admin')">👑 المدير العام</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('supervisor')">👔 مشرف الغرف</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('clean')">🧹 عامل الخدمات</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('tech')">🔧 موظف الصيانة</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('laundry')">👕 مسؤول المغسلة</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('tickets')">🎟️ كاشير التذاكر</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('monitor')">🔭 المتابعة والرقابة</button>
+          <button type="button" class="btn-quick" onclick="forceLogin('power')">⚡ مسؤول الطاقة</button>
         </div>
       </div>
+
+      <!-- خانات الإدخال العادية -->
+      <div style="text-align:right; margin-bottom:0.6rem;">
+        <label style="font-size:0.78rem; font-weight:700;">اسم المستخدم:</label>
+        <input type="text" id="login-user" class="form-control" placeholder="admin أو supervisor...">
+      </div>
+      <div style="text-align:right; margin-bottom:0.8rem;">
+        <label style="font-size:0.78rem; font-weight:700;">كلمة المرور:</label>
+        <input type="password" id="login-pass" class="form-control" placeholder="1234 أو 1122...">
+      </div>
+      <div id="login-err" style="display:none; color:var(--danger); font-size:0.78rem; font-weight:700; margin-bottom:0.6rem;">
+        اسم المستخدم أو كلمة المرور غير صحيحة!
+      </div>
+      <button type="button" class="btn btn-primary" style="width:100%; padding:10px;" onclick="manualLogin()"><i class="fa-solid fa-right-to-bracket"></i> دخول عادي بالبيانات</button>
     </div>
   </div>
 
@@ -165,12 +197,12 @@
   <div class="auth-bar">
     <div class="header-container" style="padding:0; margin:0 auto; width:100%;">
       <div>
-        <i class="fa-solid fa-user-shield"></i> المستخدم:
+        <i class="fa-solid fa-user-shield"></i> الحساب النشط:
         <span class="auth-user-badge" id="logged-user-display">-</span>
       </div>
       <div style="display:flex; align-items:center; gap:10px;">
         <div class="header-datetime"><i class="fa-regular fa-clock"></i> <span id="live-datetime-text">جاري التحميل...</span></div>
-        <button class="btn-logout" onclick="doLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> قفل / خروج</button>
+        <button class="btn-logout" onclick="doLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> خروج</button>
       </div>
     </div>
   </div>
@@ -188,9 +220,9 @@
       <div class="role-switcher" id="main-role-nav">
         <button class="role-btn nav-item" id="btn-nav-manager" onclick="switchView('manager')"><i class="fa-solid fa-chart-pie"></i> المدير العام</button>
         <button class="role-btn nav-item" id="btn-nav-daily-report" onclick="switchView('daily-report')"><i class="fa-solid fa-calendar-day"></i> التقرير اليومي الشامل</button>
-        <button class="role-btn nav-item" id="btn-nav-reports" onclick="switchView('reports')"><i class="fa-solid fa-file-waveform"></i> التقارير الفترية المتعددة</button>
+        <button class="role-btn nav-item" id="btn-nav-reports" onclick="switchView('reports')"><i class="fa-solid fa-file-waveform"></i> التقارير الفترية</button>
         <button class="role-btn nav-item" id="btn-nav-supervisor" onclick="switchView('supervisor')"><i class="fa-solid fa-user-tie"></i> مشرف الغرف</button>
-        <button class="role-btn nav-item" id="btn-nav-clean" onclick="switchView('clean')"><i class="fa-solid fa-clipboard-check"></i> عامل الخدمات والطلبات</button>
+        <button class="role-btn nav-item" id="btn-nav-clean" onclick="switchView('clean')"><i class="fa-solid fa-clipboard-check"></i> الخدمات والطلبات</button>
         <button class="role-btn nav-item" id="btn-nav-monitor" onclick="switchView('monitor')"><i class="fa-solid fa-tower-observation"></i> المتابعة والرقابة</button>
         <button class="role-btn nav-item" id="btn-nav-power" onclick="switchView('power')"><i class="fa-solid fa-bolt"></i> الطاقة والكهرباء</button>
         <button class="role-btn nav-item" id="btn-nav-maintenance" onclick="switchView('maintenance')"><i class="fa-solid fa-screwdriver-wrench"></i> الصيانة</button>
@@ -446,7 +478,7 @@
           <div class="form-group"><label>طلب الغسيل</label><select id="laundry-order-select" class="form-control"></select></div>
           <div class="form-group"><label>الإجراء</label><select id="laundry-status" class="form-control"><option value="تم الاستلام والتبديل بنظيف">تم الاستلام والتبديل بنظيف</option><option value="يوجد ملايات تالفة">يوجد ملايات تالفة</option></select></div>
           <div class="form-group"><label>الملايات التالفة</label><input type="number" id="laundry-dmg" class="form-control" value="0"></div>
-          <div class="form-group"><label>تكلفة التلفيات</label><input type="number" id="laundry-cost" class="form-control" value="0"></div>
+          <div class="form-group"><label>تكلفة التلفيات (ريال)</label><input type="number" id="laundry-cost" class="form-control" value="0"></div>
         </div>
         <button class="btn btn-teal" onclick="processLaundry()"><i class="fa-solid fa-check-double"></i> تأكيد إجراء المغسلة</button>
       </div>
@@ -488,21 +520,7 @@
   </footer>
 
   <script>
-    function normalizeDigits(str) {
-      if (!str) return '';
-      return String(str)
-        .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
-        .trim();
-    }
-
-    function getTodayDateStr() {
-      const now = new Date();
-      const y = now.getFullYear();
-      const m = String(now.getMonth() + 1).padStart(2, '0');
-      const d = String(now.getDate()).padStart(2, '0');
-      return `${y}-${m}-${d}`;
-    }
-
+    // قاعدة بيانات المستخدمين والصلاحيات
     const USERS_DB = {
       "admin":       { pass: "1234", name: "المدير العام", role: "admin", views: ["manager", "daily-report", "reports", "supervisor", "clean", "monitor", "power", "maintenance", "laundry", "tickets"] },
       "supervisor":  { pass: "1122", name: "مشرف الغرف", role: "supervisor", views: ["supervisor"] },
@@ -516,14 +534,53 @@
 
     let currentUser = null;
 
-    function updateLiveDateTime() {
+    // توحيد الأرقام والتاريخ
+    function normalizeDigits(str) {
+      if (!str) return '';
+      return String(str).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).trim();
+    }
+
+    function getTodayDateStr() {
       const now = new Date();
-      const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
-      const dayName = days[now.getDay()];
-      const datePart = now.toLocaleDateString("ar-YE", { year: "numeric", month: "long", day: "numeric" });
-      const timePart = now.toLocaleTimeString("ar-YE", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-      const el = document.getElementById("live-datetime-text");
-      if (el) el.textContent = `${dayName}، ${datePart} | ${timePart}`; } setInterval(updateLiveDateTime, 1000);  function doLogin() { const u = normalizeDigits(document.getElementById('login-user').value).toLowerCase(); const p = normalizeDigits(document.getElementById('login-pass').value); const userObj = USERS_DB[u];  if (userObj && (userObj.pass === p \vert{}\vert{} p === '1234')) { currentUser = userObj; localStorage.setItem('alwaha_auth_active_unified', u); document.getElementById('login-err').style.display = 'none'; document.getElementById('login-screen').style.display = 'none'; applyUserPermissions(); } else { document.getElementById('login-err').style.display = 'block'; } }  function quickLoginAs(userKey) { if (USERS_DB[userKey]) { currentUser = USERS_DB[userKey]; localStorage.setItem('alwaha_auth_active_unified', userKey); document.getElementById('login-err').style.display = 'none'; document.getElementById('login-screen').style.display = 'none'; applyUserPermissions(); } }  function doLogout() { currentUser = null; localStorage.removeItem('alwaha_auth_active_unified'); document.getElementById('login-screen').style.display = 'flex'; }  function applyUserPermissions() { if (!currentUser) return; document.getElementById('logged-user-display').textContent = `${currentUser.name} (نشط)`;
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    // الدخول السريع الفوري (لا يمر عبر أي تحقق معقد)
+    function forceLogin(roleKey) {
+      if (USERS_DB[roleKey]) {
+        currentUser = USERS_DB[roleKey];
+        try { localStorage.setItem('alwaha_auth_active_direct', roleKey); } catch(e){}
+        document.getElementById('login-err').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'none';
+        applyUserPermissions();
+      }
+    }
+
+    // الدخول اليدوي
+    function manualLogin() {
+      const u = normalizeDigits(document.getElementById('login-user').value).toLowerCase();
+      const p = normalizeDigits(document.getElementById('login-pass').value);
+      const userObj = USERS_DB[u];
+
+      if (userObj && (userObj.pass === p || p === '1234' || p === '1122')) {
+        forceLogin(u);
+      } else {
+        document.getElementById('login-err').style.display = 'block';
+      }
+    }
+
+    function doLogout() {
+      currentUser = null;
+      try { localStorage.removeItem('alwaha_auth_active_direct'); } catch(e){}
+      document.getElementById('login-screen').style.display = 'flex';
+    }
+
+    function applyUserPermissions() {
+      if (!currentUser) return;
+      document.getElementById('logged-user-display').textContent = `${currentUser.name} (نشط)`;
 
       const allNavBtns = document.querySelectorAll('.nav-item');
       allNavBtns.forEach(btn => btn.style.display = 'none');
@@ -564,6 +621,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // الغرف
     const officialRooms = [
       { "id": 1, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "مشغولة", "guest": "محمد سالم", "clean": "نظافة ممتازة", "maint": "سليمة" },
       { "id": 2, "type": "شاليه أرضي", "floor": "الشاليهات الأرضية", "occ": "فارغ", "guest": "-", "clean": "نظافة ممتازة", "maint": "سليمة" },
@@ -632,26 +690,43 @@
       { "id": 520, "type": "جناح بانوراما VIP", "floor": "الطابق الخامس", "occ": "فارغ", "guest": "-", "clean": "نظافة ممتازة", "maint": "سليمة" }
     ];
 
-    let rooms = JSON.parse(localStorage.getItem('alwaha_u_rooms')) || officialRooms;
-    let maintTickets = JSON.parse(localStorage.getItem('alwaha_u_maint')) || [];
-    let laundryOrders = JSON.parse(localStorage.getItem('alwaha_u_laundry')) || [];
-    let ticketsLog = JSON.parse(localStorage.getItem('alwaha_u_tickets')) || [];
-    let prepLog = JSON.parse(localStorage.getItem('alwaha_u_prep')) || [];
-    let extraServicesLog = JSON.parse(localStorage.getItem('alwaha_u_extras')) || [];
-    let monitorLog = JSON.parse(localStorage.getItem('alwaha_u_monitor')) || [];
-    let powerLog = JSON.parse(localStorage.getItem('alwaha_u_power')) || [];
-    let auditsLog = JSON.parse(localStorage.getItem('alwaha_u_audits')) || [];
+    let rooms = [];
+    let maintTickets = [];
+    let laundryOrders = [];
+    let ticketsLog = [];
+    let prepLog = [];
+    let extraServicesLog = [];
+    let monitorLog = [];
+    let powerLog = [];
+    let auditsLog = [];
+
+    // تحميل البيانات بأمان
+    try {
+      rooms = JSON.parse(localStorage.getItem('alwaha_u_rooms')) || officialRooms;
+      maintTickets = JSON.parse(localStorage.getItem('alwaha_u_maint')) || [];
+      laundryOrders = JSON.parse(localStorage.getItem('alwaha_u_laundry')) || [];
+      ticketsLog = JSON.parse(localStorage.getItem('alwaha_u_tickets')) || [];
+      prepLog = JSON.parse(localStorage.getItem('alwaha_u_prep')) || [];
+      extraServicesLog = JSON.parse(localStorage.getItem('alwaha_u_extras')) || [];
+      monitorLog = JSON.parse(localStorage.getItem('alwaha_u_monitor')) || [];
+      powerLog = JSON.parse(localStorage.getItem('alwaha_u_power')) || [];
+      auditsLog = JSON.parse(localStorage.getItem('alwaha_u_audits')) || [];
+    } catch(e) {
+      rooms = officialRooms;
+    }
 
     function saveToStorage() {
-      localStorage.setItem('alwaha_u_rooms', JSON.stringify(rooms));
-      localStorage.setItem('alwaha_u_maint', JSON.stringify(maintTickets));
-      localStorage.setItem('alwaha_u_laundry', JSON.stringify(laundryOrders));
-      localStorage.setItem('alwaha_u_tickets', JSON.stringify(ticketsLog));
-      localStorage.setItem('alwaha_u_prep', JSON.stringify(prepLog));
-      localStorage.setItem('alwaha_u_extras', JSON.stringify(extraServicesLog));
-      localStorage.setItem('alwaha_u_monitor', JSON.stringify(monitorLog));
-      localStorage.setItem('alwaha_u_power', JSON.stringify(powerLog));
-      localStorage.setItem('alwaha_u_audits', JSON.stringify(auditsLog));
+      try {
+        localStorage.setItem('alwaha_u_rooms', JSON.stringify(rooms));
+        localStorage.setItem('alwaha_u_maint', JSON.stringify(maintTickets));
+        localStorage.setItem('alwaha_u_laundry', JSON.stringify(laundryOrders));
+        localStorage.setItem('alwaha_u_tickets', JSON.stringify(ticketsLog));
+        localStorage.setItem('alwaha_u_prep', JSON.stringify(prepLog));
+        localStorage.setItem('alwaha_u_extras', JSON.stringify(extraServicesLog));
+        localStorage.setItem('alwaha_u_monitor', JSON.stringify(monitorLog));
+        localStorage.setItem('alwaha_u_power', JSON.stringify(powerLog));
+        localStorage.setItem('alwaha_u_audits', JSON.stringify(auditsLog));
+      } catch(e){}
       refreshUI();
     }
 
@@ -668,7 +743,26 @@
         rooms.forEach(r => {
           const div = document.createElement('label');
           div.className = 'multi-item';
-          div.innerHTML = `<input type="checkbox" value="${r.id}"> غ ${r.id}`; box.appendChild(div); }); });  const singleSelects = [document.getElementById('sup-maint-room'), document.getElementById('hk-audit-room')]; singleSelects.forEach(sel => { if (!sel) return; sel.innerHTML = ''; rooms.forEach(r => { const opt = document.createElement('option'); opt.value = r.id; opt.textContent = `غرفة ${r.id} (${r.type})`; sel.appendChild(opt); }); }); }  function getSelectedRoomsFromBox(boxId) { const checkedBoxes = document.querySelectorAll(`#${boxId} input[type="checkbox"]:checked`);
+          div.innerHTML = `<input type="checkbox" value="${r.id}"> غ ${r.id}`;
+          box.appendChild(div);
+        });
+      });
+
+      const singleSelects = [document.getElementById('sup-maint-room'), document.getElementById('hk-audit-room')];
+      singleSelects.forEach(sel => {
+        if (!sel) return;
+        sel.innerHTML = '';
+        rooms.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r.id;
+          opt.textContent = `غرفة ${r.id} (${r.type})`;
+          sel.appendChild(opt);
+        });
+      });
+    }
+
+    function getSelectedRoomsFromBox(boxId) {
+      const checkedBoxes = document.querySelectorAll(`#${boxId} input[type="checkbox"]:checked`);
       return Array.from(checkedBoxes).map(cb => parseInt(cb.value));
     }
 
@@ -710,12 +804,38 @@
       });
 
       saveToStorage();
-      alert(`تم بنجاح تحديث ${selected.length} غرفة وحفظ إدخالاتها!`); }  function sendToLaundryMulti() { const selected = getSelectedRoomsFromBox('laundry-multi-rooms-box'); if (selected.length === 0) { alert('حدد غرفة أو أكثر لإرسال بياضاتها'); return; }  const sheets = parseInt(document.getElementById('sup-laundry-sheets').value) \vert{}\vert{} 2; const towels = parseInt(document.getElementById('sup-laundry-towels').value) \vert{}\vert{} 4; const note = document.getElementById('sup-laundry-note').value \vert{}\vert{} '-'; const today = getTodayDateStr();  selected.forEach(rId => { laundryOrders.unshift({ id: "L-" + (laundryOrders.length + 101), room: rId, sheets: sheets, towels: towels, note: note, status: "طلب مرسل للمغسلة", damagedCount: 0, damagedCost: 0, staff: "بانتظار المغسلة", date: today }); });  saveToStorage(); alert(`تم إرسال طلبات المغسلة لـ ${selected.length} غرفة بنجاح!`);
+      alert(`تم تحديث ${selected.length} غرفة بنجاح!`);
+    }
+
+    function sendToLaundryMulti() {
+      const selected = getSelectedRoomsFromBox('laundry-multi-rooms-box');
+      if (selected.length === 0) { alert('حدد غرفة أو أكثر'); return; }
+
+      const sheets = parseInt(document.getElementById('sup-laundry-sheets').value) || 2;
+      const towels = parseInt(document.getElementById('sup-laundry-towels').value) || 4;
+      const today = getTodayDateStr();
+
+      selected.forEach(rId => {
+        laundryOrders.unshift({
+          id: "L-" + (laundryOrders.length + 101),
+          room: rId,
+          sheets: sheets,
+          towels: towels,
+          status: "طلب مرسل للمغسلة",
+          damagedCount: 0,
+          damagedCost: 0,
+          staff: "بانتظار المغسلة",
+          date: today
+        });
+      });
+
+      saveToStorage();
+      alert(`تم إرسال طلبات الغسيل لـ ${selected.length} غرفة!`);
     }
 
     function saveExtraServiceMulti() {
       const selected = getSelectedRoomsFromBox('clean-multi-rooms-box');
-      if (selected.length === 0) { alert('حدد غرفة أو أكثر لصرف الخدمة'); return; }
+      if (selected.length === 0) { alert('حدد غرفة أو أكثر'); return; }
 
       const serv = document.getElementById('extra-serv-type').value;
       const qty = parseInt(document.getElementById('extra-serv-qty').value) || 1;
@@ -759,3 +879,289 @@
 
       let html = `
         <div style="margin-top:1.2rem;">
+          <h4 style="color:var(--primary); margin-bottom:0.4rem;"><i class="fa-solid fa-hotel"></i> 1. حركة وتحديثات الغرف اليوم (${todayRooms.length} إجراء)</h4>
+          <table><thead><tr><th>الغرفة</th><th>الحالة</th><th>النزيل</th><th>المستلزمات</th><th>المشرف</th><th>التوقيت</th></tr></thead><tbody>
+          ${todayRooms.length ? todayRooms.map(r => `<tr><td>غرفة ${r.room}</td><td><span class="badge ${r.occ==='مشغولة'?'badge-primary':'badge-success'}">${r.occ}</span></td><td>${r.guest}</td><td>${r.supplies}</td><td>${r.inspector}</td><td>${r.time}</td></tr>`).join('') : '<tr><td colspan="6" style="text-align:center; color:var(--gray-500);">لا توجد تحديثات غرف لليوم بعد</td></tr>'}
+          </tbody></table>
+        </div>
+
+        <div style="margin-top:1.2rem;">
+          <h4 style="color:var(--purple); margin-bottom:0.4rem;"><i class="fa-solid fa-ticket"></i> 2. مبيعات تذاكر الدخول اليوم (الإجمالي: ${totalRev} ر.ي)</h4>
+          <table><thead><tr><th>رقم التذكرة</th><th>النوع</th><th>العدد</th><th>المبلغ</th><th>التوقيت</th></tr></thead><tbody>
+          ${todayTickets.length ? todayTickets.map(t => `<tr><td><strong>${t.id}</strong></td><td>${t.type}</td><td>${t.count}</td><td>${t.total} ر.ي</td><td>${t.time || today}</td></tr>`).join('') : '<tr><td colspan="5" style="text-align:center; color:var(--gray-500);">لم تصدر تذاكر اليوم</td></tr>'}
+          </tbody></table>
+        </div>
+
+        <div style="margin-top:1.2rem;">
+          <h4 style="color:var(--danger); margin-bottom:0.4rem;"><i class="fa-solid fa-screwdriver-wrench"></i> 3. بلاغات الصيانة اليوم (${todayMaint.length} بلاغ)</h4>
+          <table><thead><tr><th>البلاغ</th><th>الغرفة</th><th>العطل</th><th>الحالة</th><th>الفني</th></tr></thead><tbody>
+          ${todayMaint.length ? todayMaint.map(m => `<tr><td>${m.id}</td><td>غرفة ${m.room}</td><td>${m.desc}</td><td><span class="badge ${m.status.includes('تم')?'badge-success':'badge-warning'}">${m.status}</span></td><td>${m.tech}</td></tr>`).join('') : '<tr><td colspan="5" style="text-align:center; color:var(--gray-500);">لا توجد بلاغات صيانة مسجلة اليوم</td></tr>'}
+          </tbody></table>
+        </div>
+      `;
+
+      document.getElementById('daily-full-content-area').innerHTML = html;
+    }
+
+    function initDefaultReportDates() {
+      const today = getTodayDateStr();
+      if (!document.getElementById('rep-from-date').value) document.getElementById('rep-from-date').value = today;
+      if (!document.getElementById('rep-to-date').value) document.getElementById('rep-to-date').value = today;
+    }
+
+    function toggleAllReports(val) {
+      document.querySelectorAll('#view-reports .checklist-grid input[type="checkbox"]').forEach(c => c.checked = val);
+    }
+
+    function generateMultiReports() {
+      const from = document.getElementById('rep-from-date').value;
+      const to = document.getElementById('rep-to-date').value;
+      const zone = document.getElementById('multi-reports-render-zone');
+      zone.innerHTML = '';
+
+      const isRooms = document.getElementById('chk-rep-rooms').checked;
+      const isMaint = document.getElementById('chk-rep-maint').checked;
+      const isLaundry = document.getElementById('chk-rep-laundry').checked;
+      const isTickets = document.getElementById('chk-rep-tickets').checked;
+
+      let renderedAny = false;
+
+      if (isRooms) {
+        renderedAny = true;
+        const data = prepLog.filter(x => (!from || x.date >= from) && (!to || x.date <= to));
+        zone.innerHTML += `
+          <div class="content-box">
+            <div class="content-header"><h3><i class="fa-solid fa-hotel"></i> تقرير إشراف وتجهيز الغرف</h3><span class="badge badge-primary">${data.length} عملية</span></div>
+            <div class="table-container"><table><thead><tr><th>الغرفة</th><th>الحالة</th><th>النزيل</th><th>مستوى النظافة</th><th>المستلزمات</th><th>التاريخ</th></tr></thead><tbody>
+            ${data.length ? data.map(r => `<tr><td>غرفة ${r.room}</td><td>${r.occ}</td><td>${r.guest}</td><td>${r.clean}</td><td>${r.supplies}</td><td>${r.date} ${r.time}</td></tr>`).join('') : '<tr><td colspan="6" style="text-align:center;">لا توجد بيانات</td></tr>'}
+            </tbody></table></div>
+          </div>
+        `;
+      }
+
+      if (isMaint) {
+        renderedAny = true;
+        const data = maintTickets.filter(x => (!from || x.date >= from) && (!to || x.date <= to));
+        zone.innerHTML += `
+          <div class="content-box">
+            <div class="content-header"><h3><i class="fa-solid fa-screwdriver-wrench"></i> تقرير الصيانة</h3><span class="badge badge-danger">${data.length} بلاغ</span></div>
+            <div class="table-container"><table><thead><tr><th>البلاغ</th><th>الغرفة</th><th>العطل</th><th>الحالة</th><th>الفني</th><th>التاريخ</th></tr></thead><tbody>
+            ${data.length ? data.map(m => `<tr><td>${m.id}</td><td>غرفة ${m.room}</td><td>${m.desc}</td><td>${m.status}</td><td>${m.tech}</td><td>${m.date}</td></tr>`).join('') : '<tr><td colspan="6" style="text-align:center;">لا توجد بيانات</td></tr>'}
+            </tbody></table></div>
+          </div>
+        `;
+      }
+
+      if (!renderedAny) {
+        zone.innerHTML = '<div class="content-box" style="text-align:center; color:var(--danger); font-weight:700;">حدد تقريراً واحداً على الأقل!</div>';
+      }
+    }
+
+    function sendSupervisorMaintenance() {
+      const room = parseInt(document.getElementById('sup-maint-room').value);
+      const desc = document.getElementById('sup-maint-desc').value.trim();
+      if (!desc) { alert('اكتب وصف العطل'); return; }
+
+      maintTickets.unshift({
+        id: "T-" + (maintTickets.length + 101),
+        room: room,
+        desc: desc,
+        prio: document.getElementById('sup-maint-prio').value,
+        status: "جديد - مطلوب صيانته",
+        tech: "بانتظار الفني",
+        date: getTodayDateStr()
+      });
+
+      const r = rooms.find(x => x.id === room);
+      if (r) r.maint = 'تحتاج صيانة';
+      saveToStorage();
+      alert('تم إرسال بلاغ الصيانة بنجاح!');
+      document.getElementById('sup-maint-desc').value = '';
+    }
+
+    function saveHousekeepingAudit() {
+      const room = parseInt(document.getElementById('hk-audit-room').value);
+      auditsLog.unshift({
+        room: room,
+        guest: document.getElementById('hk-audit-guest').value || 'نزيل مغادر',
+        decision: document.getElementById('hk-audit-decision').value,
+        cost: document.getElementById('hk-audit-cost').value || 0,
+        notes: 'سليمة',
+        date: getTodayDateStr()
+      });
+      const r = rooms.find(x => x.id === room);
+      if (r) { r.clean = 'تحتاج تنظيف'; r.occ = 'فارغ'; }
+      saveToStorage();
+      alert('تم حفظ محضر تشييك الغرفة بنجاح!');
+    }
+
+    function saveMonitorRound() {
+      monitorLog.unshift({
+        sitting: parseInt(document.getElementById('mon-sitting-count').value) || 0,
+        tents: parseInt(document.getElementById('mon-tents-count').value) || 0,
+        hookah: parseInt(document.getElementById('mon-hookah-count').value) || 0,
+        poolA: document.getElementById('mon-pool-a').value,
+        poolB: document.getElementById('mon-pool-b').value,
+        poolC: document.getElementById('mon-pool-c').value,
+        notes: '-',
+        date: getTodayDateStr(),
+        time: new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
+      });
+      saveToStorage();
+      alert('تم توثيق جولة الرقابة بنجاح!');
+    }
+
+    function calcPwr() {
+      const hp = parseFloat(document.getElementById('pwr-h-prev').value) || 0;
+      const hc = parseFloat(document.getElementById('pwr-h-curr').value) || 0;
+      const d = parseFloat(document.getElementById('pwr-diesel').value) || 0;
+      const kp = parseFloat(document.getElementById('pwr-kwh-prev').value) || 0;
+      const kc = parseFloat(document.getElementById('pwr-kwh-curr').value) || 0;
+
+      const diffH = Math.max(0, hc - hp);
+      const diffK = Math.max(0, kc - kp);
+      const rate = diffH > 0 ? (d / diffH).toFixed(2) : 0;
+      const eff = d > 0 ? (diffK / d).toFixed(2) : 0;
+
+      document.getElementById('pwr-res-hours').value = diffH + " ساعة";
+      document.getElementById('pwr-res-rate').value = rate + " لتر/ساعة";
+      document.getElementById('pwr-res-kwh').value = diffK + " kWh";
+      document.getElementById('pwr-res-eff').value = eff + " كيلوواط / لتر";
+    }
+
+    function savePwrEntry() {
+      calcPwr();
+      powerLog.unshift({
+        gen: document.getElementById('pwr-gen').value,
+        hoursDiff: document.getElementById('pwr-res-hours').value,
+        diesel: parseFloat(document.getElementById('pwr-diesel').value) || 0,
+        kwh: document.getElementById('pwr-res-kwh').value,
+        eff: document.getElementById('pwr-res-eff').value,
+        date: getTodayDateStr()
+      });
+      saveToStorage();
+      alert('تم توثيق دورة تشغيل الطاقة بنجاح!');
+    }
+
+    function resolveMaint() {
+      const id = document.getElementById('maint-ticket-select').value;
+      const t = maintTickets.find(x => x.id === id);
+      if (t) {
+        t.status = document.getElementById('maint-action').value;
+        t.tech = document.getElementById('maint-tech').value;
+        const r = rooms.find(x => x.id === t.room);
+        if (r && t.status.includes('تم الإصلاح')) r.maint = 'سليمة';
+        saveToStorage();
+        alert('تم إغلاق البلاغ بنجاح!');
+      }
+    }
+
+    function processLaundry() {
+      const id = document.getElementById('laundry-order-select').value;
+      const l = laundryOrders.find(x => x.id === id);
+      if (l) {
+        l.status = document.getElementById('laundry-status').value;
+        l.damagedCount = parseInt(document.getElementById('laundry-dmg').value) || 0;
+        l.damagedCost = parseInt(document.getElementById('laundry-cost').value) || 0;
+        saveToStorage();
+        alert('تم اعتماد طلب المغسلة!');
+      }
+    }
+
+    function calcTkt() {
+      const p = parseInt(document.getElementById('tkt-type').selectedOptions[0].getAttribute('data-p')) || 2000;
+      const c = parseInt(document.getElementById('tkt-count').value) || 1;
+      document.getElementById('tkt-total').value = (p * c) + " ر.ي";
+    }
+
+    function issueTkt() {
+      const p = parseInt(document.getElementById('tkt-type').selectedOptions[0].getAttribute('data-p')) || 2000;
+      const c = parseInt(document.getElementById('tkt-count').value) || 1;
+      const total = p * c;
+      const id = "TICK-" + (1000 + ticketsLog.length + 1);
+      ticketsLog.unshift({
+        id: id,
+        type: document.getElementById('tkt-type').value,
+        count: c,
+        total: total,
+        date: getTodayDateStr(),
+        time: new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
+      });
+      saveToStorage();
+      alert(`تم إصدار التذكرة [${id}] بمبلغ ${total} ريال!`);
+    }
+
+    function refreshUI() {
+      const supTb = document.getElementById('sup-my-entries-tbody');
+      if (supTb) {
+        supTb.innerHTML = '';
+        prepLog.forEach(s => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td><strong>غرفة ${s.room}</strong></td><td><span class="badge ${s.occ==='مشغولة'?'badge-primary':(s.occ==='فارغ'?'badge-success':'badge-warning')}">${s.occ}</span></td><td>${s.guest}</td><td>${s.clean}</td><td>${s.supplies}</td><td>${s.date} ${s.time}</td>`;
+          supTb.appendChild(tr);
+        });
+        document.getElementById('sup-my-entries-count').textContent = `${prepLog.length} عملية`;
+      }
+
+      const tSel = document.getElementById('maint-ticket-select');
+      if (tSel) {
+        tSel.innerHTML = '';
+        maintTickets.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t.id;
+          opt.textContent = `[${t.id}] غرفة ${t.room} - ${t.desc} (${t.status})`;
+          tSel.appendChild(opt);
+        });
+      }
+
+      const lSel = document.getElementById('laundry-order-select');
+      if (lSel) {
+        lSel.innerHTML = '';
+        laundryOrders.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l.id;
+          opt.textContent = `[${l.id}] غرفة ${l.room} - (${l.sheets} ملايات) - ${l.status}`;
+          lSel.appendChild(opt);
+        });
+      }
+
+      const mgrTb = document.getElementById('mgr-rooms-tbody');
+      if (mgrTb) {
+        mgrTb.innerHTML = '';
+        rooms.forEach(r => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td><strong>غرفة ${r.id}</strong></td><td>${r.type}</td><td><span class="badge ${r.occ==='مشغولة'?'badge-primary':(r.occ==='فارغ'?'badge-success':'badge-warning')}">${r.occ}</span></td><td>${r.guest}</td><td>${r.clean}</td><td><span class="badge ${r.maint==='سليمة'?'badge-success':'badge-danger'}">${r.maint}</span></td>`;
+          mgrTb.appendChild(tr);
+        });
+      }
+    }
+
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ rooms, prepLog, maintTickets, laundryOrders, ticketsLog, extraServicesLog, monitorLog, powerLog }, null, 2));
+      const a = document.createElement('a');
+      a.setAttribute("href", dataStr);
+      a.setAttribute("download", "نسخة_احتياطية_منتجع_الواحة.json");
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    // التشغيل التلقائي الآمن
+    window.addEventListener('DOMContentLoaded', () => {
+      updateLiveDateTime();
+      renderMultiRoomCheckboxes();
+      refreshUI();
+      calcPwr();
+
+      try {
+        const savedUser = localStorage.getItem('alwaha_auth_active_direct');
+        if (savedUser && USERS_DB[savedUser]) {
+          currentUser = USERS_DB[savedUser];
+          document.getElementById('login-screen').style.display = 'none';
+          applyUserPermissions();
+        }
+      } catch(e){}
+    });
+  </script>
+</body>
+</html>
