@@ -11,9 +11,7 @@
       --primary: #0f2c59;
       --primary-light: #1e4986;
       --secondary: #c5a059;
-      --secondary-light: #dfba73;
       --dark: #07172e;
-      --light: #f8fafc;
       --white: #ffffff;
       --success: #10b981;
       --warning: #f59e0b;
@@ -25,9 +23,7 @@
       --gray-100: #f1f5f9;
       --gray-200: #e2e8f0;
       --gray-500: #64748b;
-      --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
-      --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
-      --radius: 12px;
+      --radius: 10px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
     body { background-color: #f1f5f9; color: #334155; min-height: 100vh; display: flex; flex-direction: column; }
@@ -35,7 +31,7 @@
     .auth-bar {
       background: var(--dark);
       color: #cbd5e1;
-      padding: 8px 1.5rem;
+      padding: 8px 1.2rem;
       font-size: 0.82rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
@@ -44,91 +40,40 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-    .auth-user-info { display: flex; align-items: center; gap: 8px; font-weight: 700; }
-    .auth-user-badge { background: var(--secondary); color: var(--primary); padding: 3px 12px; border-radius: 12px; font-size: 0.75rem; }
-    .header-datetime {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(197, 160, 89, 0.4);
-      padding: 4px 12px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: #f8fafc;
-      font-weight: 700;
-    }
-    .btn-logout {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid var(--danger);
-      color: #fca5a5;
-      padding: 5px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.78rem;
-      transition: all 0.2s;
-    }
-    .btn-logout:hover { background: var(--danger); color: var(--white); }
+    .auth-user-badge { background: var(--secondary); color: var(--primary); padding: 2px 10px; border-radius: 12px; font-weight: 700; }
+    .header-datetime { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(197, 160, 89, 0.4); padding: 3px 10px; border-radius: 20px; color: #fff; font-weight: 700; }
+    .btn-logout { background: rgba(239, 68, 68, 0.2); border: 1px solid var(--danger); color: #fca5a5; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-weight: 700; }
 
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, #081a36 100%);
-      color: var(--white);
-      padding: 1rem 1.5rem;
-      box-shadow: var(--shadow-md);
-      border-bottom: 3px solid var(--secondary);
-    }
+    header { background: linear-gradient(135deg, var(--primary) 0%, #081a36 100%); color: var(--white); padding: 0.8rem 1.2rem; border-bottom: 3px solid var(--secondary); }
     .header-container { max-width: 1440px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand i { font-size: 2.2rem; color: var(--secondary); }
-    .brand-title h1 { font-size: 1.25rem; font-weight: 800; }
-    .brand-title p { font-size: 0.8rem; color: var(--secondary-light); }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand i { font-size: 2rem; color: var(--secondary); }
+    .brand-title h1 { font-size: 1.2rem; font-weight: 800; }
     
-    .role-switcher {
-      display: flex;
-      background: rgba(255, 255, 255, 0.12);
-      padding: 4px;
-      border-radius: 30px;
-      gap: 4px;
-      flex-wrap: wrap;
-    }
-    .role-btn {
-      background: transparent;
-      border: none;
-      color: #cbd5e1;
-      padding: 6px 11px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.78rem;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+    .role-switcher { display: flex; background: rgba(255, 255, 255, 0.12); padding: 4px; border-radius: 30px; gap: 4px; flex-wrap: wrap; }
+    .role-btn { background: transparent; border: none; color: #cbd5e1; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.78rem; transition: all 0.2s; display: flex; align-items: center; gap: 5px; }
     .role-btn.active, .role-btn:hover { background: var(--secondary); color: var(--primary); }
     
-    main { flex: 1; max-width: 1440px; width: 100%; margin: 1.5rem auto; padding: 0 1rem; }
-    .view-section { display: none; animation: fadeIn 0.25s ease; }
-    .view-section.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    main { flex: 1; max-width: 1440px; width: 100%; margin: 1.2rem auto; padding: 0 1rem; }
+    .view-section { display: none; }
+    .view-section.active { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     
-    .content-box { background: var(--white); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-sm); margin-bottom: 1.5rem; border: 1px solid var(--gray-200); }
-    .content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--gray-100); flex-wrap: wrap; gap: 10px; }
-    .content-header h3 { font-size: 1.15rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    .content-box { background: var(--white); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.25rem; border: 1px solid var(--gray-200); box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+    .content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--gray-100); flex-wrap: wrap; gap: 8px; }
+    .content-header h3 { font-size: 1.1rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
     
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .kpi-card { background: var(--white); border-radius: var(--radius); padding: 1.15rem; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-sm); border-right: 4px solid var(--primary); }
-    .kpi-info p { font-size: 0.8rem; color: var(--gray-500); font-weight: 700; }
-    .kpi-info h2 { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
-    .kpi-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--primary); }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; margin-bottom: 1.2rem; }
+    .kpi-card { background: var(--white); border-radius: var(--radius); padding: 1rem; display: flex; align-items: center; justify-content: space-between; border-right: 4px solid var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .kpi-info p { font-size: 0.78rem; color: var(--gray-500); font-weight: 700; }
+    .kpi-info h2 { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-top: 2px; }
 
-    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .form-group label { font-size: 0.82rem; font-weight: 700; color: var(--dark); }
-    .form-control { padding: 9px 12px; border-radius: 8px; border: 1px solid var(--gray-200); font-size: 0.88rem; background: #fafbfc; }
-    .form-control:focus { outline: none; border-color: var(--primary); background: #fff; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.8rem; margin-bottom: 0.8rem; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-group label { font-size: 0.8rem; font-weight: 700; color: var(--dark); }
+    .form-control { padding: 8px 10px; border-radius: 6px; border: 1px solid var(--gray-200); font-size: 0.85rem; background: #fafbfc; }
 
-    .btn { padding: 9px 18px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 7px; transition: all 0.2s; }
+    .btn { padding: 8px 16px; border-radius: 6px; border: none; font-weight: 700; cursor: pointer; font-size: 0.82rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
     .btn-primary { background: var(--primary); color: var(--white); }
     .btn-secondary { background: var(--secondary); color: var(--primary); }
     .btn-success { background: var(--success); color: var(--white); }
@@ -137,17 +82,119 @@
     .btn-purple { background: var(--purple); color: var(--white); }
     .btn-teal { background: var(--teal); color: var(--white); }
     .btn-amber { background: var(--amber); color: var(--white); }
-    .btn-sm { padding: 5px 10px; font-size: 0.78rem; border-radius: 6px; }
+    .btn-sm { padding: 4px 8px; font-size: 0.75rem; }
 
-    .table-container { overflow-x: auto; max-height: 520px; }
+    .table-container { overflow-x: auto; max-height: 480px; }
     table { width: 100%; border-collapse: collapse; text-align: right; }
-    th { background: var(--gray-100); color: var(--dark); padding: 11px 13px; font-size: 0.82rem; font-weight: 700; border-bottom: 2px solid var(--gray-200); position: sticky; top: 0; z-index: 5; }
-    td { padding: 11px 13px; font-size: 0.82rem; border-bottom: 1px solid var(--gray-200); }
+    th { background: var(--gray-100); color: var(--dark); padding: 9px 11px; font-size: 0.8rem; font-weight: 700; border-bottom: 2px solid var(--gray-200); position: sticky; top: 0; z-index: 5; }
+    td { padding: 9px 11px; font-size: 0.8rem; border-bottom: 1px solid var(--gray-200); }
     tr:hover { background: #f8fafc; }
 
-    .badge { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; }
     .badge-primary { background: #e0e7ff; color: #3730a3; }
     .badge-success { background: #dcfce7; color: #166534; }
     .badge-warning { background: #fef3c7; color: #92400e; }
     .badge-danger { background: #fee2e2; color: #991b1b; }
-    .badge-cyan { background:
+
+    .multi-select-box { border: 1px solid var(--gray-200); border-radius: 6px; padding: 8px; max-height: 140px; overflow-y: auto; background: #fafbfc; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 6px; }
+    .multi-item { font-size: 0.78rem; display: flex; align-items: center; gap: 5px; cursor: pointer; }
+    .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; margin: 8px 0; }
+    .checklist-item { display: flex; align-items: center; gap: 6px; padding: 8px; background: var(--gray-100); border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+
+    .login-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at center, #112d59 0%, #061326 100%); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .login-card { background: #fff; border-radius: 12px; width: 100%; max-width: 420px; padding: 1.8rem; border-top: 5px solid var(--secondary); text-align: center; }
+    footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 1rem; font-size: 0.8rem; margin-top: auto; }
+    
+    @media print {
+      header, .auth-bar, .role-switcher, button, footer, .login-overlay, .filter-box { display: none !important; }
+      body { background: #fff !important; }
+      .content-box { border: 1px solid #ccc !important; box-shadow: none !important; page-break-after: always; }
+      .table-container { max-height: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شاشة الدخول الموحدة -->
+  <div id="login-screen" class="login-overlay">
+    <div class="login-card">
+      <i class="fa-solid fa-hotel" style="font-size:2.5rem; color:var(--primary); margin-bottom:8px;"></i>
+      <h2 style="font-size:1.25rem; font-weight:800; color:var(--primary);">منتجع الواحة السياحي - الحديدة</h2>
+      <p style="font-size:0.8rem; color:var(--gray-500); margin-bottom:1rem;">تسجيل الدخول للنظام (تفتح شاشة اختصاصك تلقائياً)</p>
+
+      <form onsubmit="event.preventDefault(); doLogin();">
+        <div class="form-group" style="text-align:right; margin-bottom:0.75rem;">
+          <label>اسم المستخدم</label>
+          <input type="text" id="login-user" class="form-control" placeholder="اسم المستخدم" required>
+        </div>
+        <div class="form-group" style="text-align:right; margin-bottom:1rem;">
+          <label>كلمة المرور</label>
+          <input type="password" id="login-pass" class="form-control" placeholder="كلمة المرور" required>
+        </div>
+        <div id="login-err" style="display:none; color:var(--danger); font-size:0.8rem; font-weight:700; margin-bottom:0.75rem;">
+          بيانات الدخول غير صحيحة!
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fa-solid fa-right-to-bracket"></i> دخول النظام</button>
+      </form>
+
+      <div style="background:var(--gray-100); border-radius:6px; padding:10px; margin-top:1rem; font-size:0.72rem; text-align:right; line-height:1.6; color:#475569; border-right:3px solid var(--secondary);">
+        <strong>المستخدمين:</strong><br>
+        • المدير: <code>admin</code> / <code>1234</code> | المشرف: <code>supervisor</code> / <code>1122</code><br>
+        • الخدمات: <code>clean</code> / <code>3344</code> | الصيانة: <code>tech</code> / <code>5566</code><br>
+        • المغسلة: <code>laundry</code> / <code>6677</code> | التذاكر: <code>tickets</code> / <code>4455</code><br>
+        • الرقابة: <code>monitor</code> / <code>8899</code> | الطاقة: <code>power</code> / <code>1100</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- الشريط العلوي -->
+  <div class="auth-bar">
+    <div class="header-container" style="padding:0; margin:0 auto; width:100%;">
+      <div>
+        <i class="fa-solid fa-user-shield"></i> المستخدم:
+        <span class="auth-user-badge" id="logged-user-display">-</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="header-datetime"><i class="fa-regular fa-clock"></i> <span id="live-datetime-text">جاري التحميل...</span></div>
+        <button class="btn-logout" onclick="doLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> خروج</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- رأس الصفحة وشريط التبديل -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <div class="brand-title">
+          <h1>منتجع الواحة السياحي - الحديدة</h1>
+        </div>
+      </div>
+
+      <div class="role-switcher" id="main-role-nav">
+        <button class="role-btn nav-item" id="btn-nav-manager" onclick="switchView('manager')"><i class="fa-solid fa-chart-pie"></i> المدير العام</button>
+        <button class="role-btn nav-item" id="btn-nav-daily-report" onclick="switchView('daily-report')"><i class="fa-solid fa-calendar-day"></i> التقرير اليومي الشامل</button>
+        <button class="role-btn nav-item" id="btn-nav-reports" onclick="switchView('reports')"><i class="fa-solid fa-file-waveform"></i> التقارير الفترية المتعددة</button>
+        <button class="role-btn nav-item" id="btn-nav-supervisor" onclick="switchView('supervisor')"><i class="fa-solid fa-user-tie"></i> مشرف الغرف</button>
+        <button class="role-btn nav-item" id="btn-nav-clean" onclick="switchView('clean')"><i class="fa-solid fa-clipboard-check"></i> عامل الخدمات والطلبات</button>
+        <button class="role-btn nav-item" id="btn-nav-monitor" onclick="switchView('monitor')"><i class="fa-solid fa-tower-observation"></i> المتابعة والرقابة</button>
+        <button class="role-btn nav-item" id="btn-nav-power" onclick="switchView('power')"><i class="fa-solid fa-bolt"></i> الطاقة والكهرباء</button>
+        <button class="role-btn nav-item" id="btn-nav-maintenance" onclick="switchView('maintenance')"><i class="fa-solid fa-screwdriver-wrench"></i> الصيانة</button>
+        <button class="role-btn nav-item" id="btn-nav-laundry" onclick="switchView('laundry')"><i class="fa-solid fa-shirt"></i> المغسلة</button>
+        <button class="role-btn nav-item" id="btn-nav-tickets" onclick="switchView('tickets')"><i class="fa-solid fa-ticket"></i> تذاكر الدخول</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 1. واجهة التقرير العام اليومي الشامل -->
+    <div id="view-daily-report" class="view-section">
+      <div class="content-box" style="border-top: 4px solid var(--secondary);">
+        <div class="content-header">
+          <div>
+            <h3><i class="fa-solid fa-calendar-day" style="color:var(--secondary);"></i> التقرير العام اليومي الشامل (تاريخ اليوم)</h3>
+            <p style="font-size:0.8rem; color:var(--gray-500);">كشف فوري ومجمع لكافة الإدخالات اليومية في كافة الأقسام</p>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button class="btn btn-primary btn-sm" onclick="renderDailyFullReport()"><i class="fa-solid fa-rotate">
